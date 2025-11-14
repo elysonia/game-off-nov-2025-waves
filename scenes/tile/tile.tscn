@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvex0uxatt47j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_be64o"]
+size = Vector2(64, 64)
+
+[node name="Tile" type="Area2D"]
+metadata/_edit_horizontal_guides_ = [-32.0, 32.0]
+metadata/_edit_vertical_guides_ = [-32.0, 32.0]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.09019608, 1, 1, 1)
+polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_be64o")
