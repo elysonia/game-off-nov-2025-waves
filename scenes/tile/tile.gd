@@ -54,7 +54,10 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-    pass
+    if not is_instance_of(body, Player):
+        return
+
+    # TODO: Complete
 
 
 func _on_mouse_entered() -> void:
