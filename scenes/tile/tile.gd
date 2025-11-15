@@ -8,9 +8,13 @@ const COLOR = {
 }
 
 var _is_mouse_entered: bool = false
+var _default_status: Status = Status.ENABLED
 
 @export var status: Status = Status.ENABLED
+## Status duration when is_status_fixed is false
+@export var status_duration: float = 10.0
 
+## True if the status is fixed, false if modifiable by interaction
 @export var is_status_fixed: bool = true
 
 
@@ -19,6 +23,8 @@ func _ready():
     body_entered.connect(_on_body_entered)
     mouse_entered.connect(_on_mouse_entered)
     mouse_exited.connect(_on_mouse_exited)
+
+    _default_status = status
     %Polygon2D.color = COLOR[status]
 
     # Make sure the collision shape of the instantiated scene is unique
@@ -29,16 +35,22 @@ func _ready():
 
 func _unhandled_input(_event: InputEvent) -> void:
     if Input.is_action_just_pressed("lmb") and _is_mouse_entered:
-        if status == Status.ENABLED and is_status_fixed:
+        if status == Status.ENABLED:
             %Ripple.handle_ripple()
 
 
 func _on_area_entered(area: Area2D) -> void:
-    if not is_instance_of(area, Tile) or status == Status.ENABLED:
+    var should_change_status = status == _default_status and not is_status_fixed
+    if not is_instance_of(area, Tile) or not should_change_status:
         return
 
     status = Status.ENABLED
     %Polygon2D.color = COLOR[status]
+
+    if not is_status_fixed:
+        await get_tree().create_timer(status_duration).timeout
+        status = _default_status
+        %Polygon2D.color = COLOR[status]
 
 
 func _on_body_entered(body: Node2D) -> void:
