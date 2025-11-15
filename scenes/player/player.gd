@@ -1,8 +1,11 @@
 class_name Player
 extends CharacterBody2D
 
+enum Status {IDLE, STANDBY, JUMPING}
+
 var _next_position: Vector2 = Vector2.ZERO
-var max_jump_strength: float = 5.0
+var status: Status = Status.IDLE
+var max_jump_strength: float = State.max_jumping_strength
 var jump_strength: float = 0.0
 
 

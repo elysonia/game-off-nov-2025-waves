@@ -33,12 +33,6 @@ func _ready():
     %Ripple.initialize(%CollisionShape2D)
 
 
-func _unhandled_input(_event: InputEvent) -> void:
-    if Input.is_action_just_pressed("lmb") and _is_mouse_entered:
-        if status == Status.ENABLED:
-            %Ripple.handle_ripple()
-
-
 func _on_area_entered(area: Area2D) -> void:
     var should_change_status = status == _default_status and not is_status_fixed
     if not is_instance_of(area, Tile) or not should_change_status:
@@ -57,7 +51,7 @@ func _on_body_entered(body: Node2D) -> void:
     if not is_instance_of(body, Player):
         return
 
-    # TODO: Complete
+    %Ripple.handle_ripple(body.jump_strength)
 
 
 func _on_mouse_entered() -> void:

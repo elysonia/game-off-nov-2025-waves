@@ -1,19 +1,18 @@
 class_name Ripple
 extends Node2D
 
-const SPEED = 3
-const DEFAULT_WIDTH = 3
-const DEFAULT_RADIUS = 32
-const MAX_STRENGTH = 5
-const DEFAULT_STRENGTH = 3
+const SPEED = 3.0
+const DEFAULT_WIDTH = 3.0
+const DEFAULT_RADIUS = roundi(float(State.GRID_SIZE) / 2)
 const STARTING_RIPPLE = 1.0
 
 var _collision_shape: CollisionShape2D
 
-@export var speed: int = SPEED
-@export var width: int = DEFAULT_WIDTH
-@export var radius: int = DEFAULT_RADIUS
-@export var ripple_strength: int = DEFAULT_STRENGTH
+var ripple_strength: float = 0.0
+
+@export var speed: float = SPEED
+@export var width: float = DEFAULT_WIDTH
+@export var radius: float = DEFAULT_RADIUS
 @export var current_ripple: float = STARTING_RIPPLE
 
 @export var is_rippling: bool = false
@@ -23,7 +22,7 @@ func initialize(collision_shape: CollisionShape2D) -> void:
 	_collision_shape = collision_shape
 
 
-func handle_ripple(strength: int = DEFAULT_STRENGTH) -> void:
+func handle_ripple(strength: float = 0.0) -> void:
 	ripple_strength = strength
 	current_ripple = 1.0
 	is_rippling = true
@@ -46,7 +45,7 @@ func _process(delta: float):
 		is_rippling = false
 		visible = false
 		current_ripple = STARTING_RIPPLE
-		ripple_strength = DEFAULT_STRENGTH
+		ripple_strength = 0.0
 
 		if _collision_shape:
 			_collision_shape.shape.radius = radius
