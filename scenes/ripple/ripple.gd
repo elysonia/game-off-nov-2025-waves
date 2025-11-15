@@ -6,38 +6,51 @@ const DEFAULT_WIDTH = 3
 const DEFAULT_RADIUS = 32
 const MAX_STRENGTH = 5
 const DEFAULT_STRENGTH = 3
+const STARTING_RIPPLE = 1.0
+
+var _collision_shape: CollisionShape2D
 
 @export var speed: int = SPEED
 @export var width: int = DEFAULT_WIDTH
 @export var radius: int = DEFAULT_RADIUS
 @export var ripple_strength: int = DEFAULT_STRENGTH
-@export var current_ripple: float = 1.0
+@export var current_ripple: float = STARTING_RIPPLE
+
 @export var is_rippling: bool = false
 
 
+func initialize(collision_shape: CollisionShape2D) -> void:
+	_collision_shape = collision_shape
+
+
 func handle_ripple(strength: int = DEFAULT_STRENGTH) -> void:
-    ripple_strength = strength
-    current_ripple = 1.0
-    is_rippling = true
+	ripple_strength = strength
+	current_ripple = 1.0
+	is_rippling = true
+	visible = true
 
 
 func _draw():
-    if is_rippling:
-        var ripple_radius = radius * current_ripple
-        var ripple_width = width * (ripple_strength / current_ripple)
-        var alpha = 1 - (current_ripple / ripple_strength)
-        draw_circle(position, ripple_radius, Color(1, 1, 1, alpha), false, ripple_width)
+	if is_rippling:
+		var ripple_radius = radius * current_ripple
+		var ripple_width = width * (ripple_strength / current_ripple)
+		var alpha = 1 - (current_ripple / ripple_strength)
+		draw_circle(position, ripple_radius, Color(1, 1, 1, alpha), false, ripple_width)
+
+		if _collision_shape:
+			_collision_shape.shape.radius = ripple_radius
 
 
 func _process(delta: float):
-    if current_ripple >= ripple_strength:
-        is_rippling = false
-        # TODO: Decide:
-        # queue_free()
-        # or
-        # visible = false
-    else:
-        current_ripple += speed * delta
+	if current_ripple >= ripple_strength:
+		is_rippling = false
+		visible = false
+		current_ripple = STARTING_RIPPLE
+		ripple_strength = DEFAULT_STRENGTH
 
-    if is_rippling:
-        queue_redraw()
+		if _collision_shape:
+			_collision_shape.shape.radius = radius
+
+	if is_rippling:
+		current_ripple += speed * delta
+		queue_redraw()
