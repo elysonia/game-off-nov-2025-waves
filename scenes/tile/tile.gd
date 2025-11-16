@@ -3,66 +3,72 @@ extends Area2D
 
 enum Status {ENABLED, DISABLED}
 const COLOR = {
-    Status.ENABLED: "#b9f84f",
-    Status.DISABLED: "#111c02",
+	Status.ENABLED: "#b9f84f",
+	Status.DISABLED: "#111c02",
 }
+const MODULATE_COLOR = "#000000c7"
 
 var _is_mouse_entered: bool = false
-var _default_status: Status = Status.ENABLED
+var player: Player = null
 
 @export var status: Status = Status.ENABLED
 ## Status duration when is_status_fixed is false
 @export var status_duration: float = 10.0
-
 ## True if the status is fixed, false if modifiable by interaction
 @export var is_status_fixed: bool = true
 
 
 func _ready():
-    area_entered.connect(_on_area_entered)
-    body_entered.connect(_on_body_entered)
-    mouse_entered.connect(_on_mouse_entered)
-    mouse_exited.connect(_on_mouse_exited)
+	area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+	mouse_entered.connect(_on_mouse_entered)
+	mouse_exited.connect(_on_mouse_exited)
 
-    _default_status = status
-    %Polygon2D.color = COLOR[status]
+	%Timer.wait_time = status_duration
+	%Polygon2D.color = COLOR[status]
 
-    # Make sure the collision shape of the instantiated scene is unique
-    # https://forum.godotengine.org/t/collisionshape2d-changes-for-every-instance-with-every-instance/95614/2
-    %CollisionShape2D.shape =  %CollisionShape2D.shape.duplicate(true)
-    %Ripple.initialize(%CollisionShape2D)
-
-
-func _unhandled_input(_event: InputEvent) -> void:
-    if Input.is_action_just_pressed("lmb") and _is_mouse_entered:
-        if status == Status.ENABLED:
-            %Ripple.handle_ripple()
+	# Make sure the collision shape of the instantiated scene is unique
+	# https://forum.godotengine.org/t/collisionshape2d-changes-for-every-instance-with-every-instance/95614/2
+	%CollisionShape2D.shape =  %CollisionShape2D.shape.duplicate(true)
+	%Ripple.initialize(%CollisionShape2D)
 
 
 func _on_area_entered(area: Area2D) -> void:
-    var should_change_status = status == _default_status and not is_status_fixed
-    if not is_instance_of(area, Tile) or not should_change_status:
-        return
+	if not is_instance_of(area, Tile) or is_status_fixed:
+		return
 
-    status = Status.ENABLED
-    %Polygon2D.color = COLOR[status]
+	status = Status.ENABLED
+	%Polygon2D.color = COLOR[status]
 
-    if not is_status_fixed:
-        await get_tree().create_timer(status_duration).timeout
-        status = _default_status
-        %Polygon2D.color = COLOR[status]
+	if not is_status_fixed:
+		%Timer.start(status_duration)
+		await %Timer.timeout
+		status = Status.DISABLED
+		%Polygon2D.color = COLOR[status]
+
+		if player:
+			player = null
+			Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:
-    if not is_instance_of(body, Player):
-        return
+	if not is_instance_of(body, Player):
+		return
 
-    # TODO: Complete
+	player = body
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if not is_instance_of(body, Player):
+		return
+
+	player = null
 
 
 func _on_mouse_entered() -> void:
-    _is_mouse_entered = true
+	_is_mouse_entered = true
 
 
 func _on_mouse_exited() -> void:
-    _is_mouse_entered = false
+	_is_mouse_entered = false

@@ -14,11 +14,14 @@ metadata/_edit_vertical_guides_ = [-32.0, 32.0]
 [node name="Polygon2D" type="Polygon2D" parent="."]
 unique_name_in_owner = true
 color = Color(0.06683193, 0.10821242, 0.0071717827, 1)
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+polygon = PackedVector2Array(-19, -26, -7, -31, 8, -31, 22, -23, 30, -12, 32, 1, 30, 12, 22, 24, 9, 31, -8, 31, -21, 25, -29, 14, -32, 0, -28, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_dvver")
 
 [node name="Ripple" parent="." instance=ExtResource("1_vb0sl")]
+unique_name_in_owner = true
+
+[node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
