@@ -9,7 +9,6 @@ const COLOR = {
 const MODULATE_COLOR = "#000000c7"
 
 var _is_mouse_entered: bool = false
-var _default_status: Status = Status.ENABLED
 var player: Player = null
 
 @export var status: Status = Status.ENABLED
@@ -26,7 +25,6 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
-	_default_status = status
 	%Timer.wait_time = status_duration
 	%Polygon2D.color = COLOR[status]
 
@@ -39,7 +37,6 @@ func _ready():
 func _on_area_entered(area: Area2D) -> void:
 	if not is_instance_of(area, Tile) or is_status_fixed:
 		return
-	print(name, " ", area)
 
 	status = Status.ENABLED
 	%Polygon2D.color = COLOR[status]
@@ -47,8 +44,12 @@ func _on_area_entered(area: Area2D) -> void:
 	if not is_status_fixed:
 		%Timer.start(status_duration)
 		await %Timer.timeout
-		status = _default_status
+		status = Status.DISABLED
 		%Polygon2D.color = COLOR[status]
+
+		if player:
+			player = null
+			Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:

@@ -1,6 +1,7 @@
 class_name Game
 extends Control
 
+
 func _ready():
 	%Player.player_landed.connect(_on_player_landed)
 
@@ -20,15 +21,8 @@ func _on_player_landed(player: Player) -> void:
 	for tile in tiles:
 		if tile.player == player:
 			is_game_ended = false
-			player.is_on_tile = true
 			tile.get_node("%Ripple").handle_ripple(player.jump_strength)
 			break
 
 	if is_game_ended:
-		GlobalSignal.game_ended.emit()
-		get_tree().paused = true
-
-		# TODO: Replace with real game over screen
-		var label = Label.new()
-		label.text = "Game over"
-		get_tree().root.add_child(label)
+		Utils.goto_game_over()

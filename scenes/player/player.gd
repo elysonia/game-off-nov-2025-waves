@@ -3,18 +3,17 @@ extends CharacterBody2D
 
 signal player_jumped(player: Player)
 signal player_landed(player: Player)
+
 enum Status {IDLE, READY, JUMPING}
 
 var _next_position: Vector2 = Vector2.ZERO
 
-var is_on_tile: bool = true
 var status: Status = Status.IDLE
 var max_jump_strength: float = State.max_jumping_strength
 var jump_strength: float = 0.0
 
 
 func handle_jump(to: Vector2) -> void:
-    is_on_tile = false
     status = Status.JUMPING
     var tween = create_tween().set_parallel()
     player_jumped.emit(self)
