@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 State="*res://autoload/state.gd"
+GlobalSignal="*res://autoload/signal.gd"
 
 [display]
 
