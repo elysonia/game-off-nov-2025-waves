@@ -14,7 +14,6 @@ var jump_strength: float = 0.0
 
 
 func handle_jump(to: Vector2) -> void:
-    status = Status.JUMPING
     var tween = create_tween().set_parallel()
     player_jumped.emit(self)
     # Play start jump animation here

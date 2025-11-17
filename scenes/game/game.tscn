@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ouwkh8ty1wng"]
+[gd_scene load_steps=6 format=3 uid="uid://ouwkh8ty1wng"]
 
 [ext_resource type="Script" uid="uid://duocxikip7u2b" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="2_7h61r"]
+[ext_resource type="PackedScene" uid="uid://vskn803ncoqh" path="res://scenes/enemy/enemy.tscn" id="4_kelw5"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
+vertices = PackedVector2Array(1270, 710, 10, 710, 10, 10, 1270, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)])
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -28,20 +34,62 @@ handle_input_locally = false
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/GameArea"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.4392157, 0.654902, 0.29803923)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
+navigation_polygon = SubResource("NavigationPolygon_kelw5")
+
 [node name="Tile" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(224, 88)
+position = Vector2(560, 112)
 
 [node name="Tile2" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(304, 176)
+position = Vector2(712, 192)
+status = 1
+is_status_fixed = false
+
+[node name="Tile8" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
+position = Vector2(592, 600)
+status = 1
+is_status_fixed = false
+
+[node name="Tile9" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
+position = Vector2(888, 544)
 status = 1
 is_status_fixed = false
 
 [node name="Tile4" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(152, 168)
+position = Vector2(536, 384)
 
 [node name="Tile3" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(144, 280)
+position = Vector2(712, 464)
+
+[node name="Tile5" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
+position = Vector2(392, 192)
+
+[node name="Tile6" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
+position = Vector2(952, 208)
+
+[node name="Tile7" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
+position = Vector2(368, 376)
+
+[node name="Enemy" parent="SubViewportContainer/GameArea" instance=ExtResource("4_kelw5")]
+position = Vector2(896, 376)
+
+[node name="Enemy2" parent="SubViewportContainer/GameArea" instance=ExtResource("4_kelw5")]
+position = Vector2(152, 600)
+
+[node name="Enemy3" parent="SubViewportContainer/GameArea" instance=ExtResource("4_kelw5")]
+position = Vector2(152, 192)
+
+[node name="Enemy4" parent="SubViewportContainer/GameArea" instance=ExtResource("4_kelw5")]
+position = Vector2(64, 360)
 
 [node name="Player" parent="SubViewportContainer/GameArea" instance=ExtResource("2_7h61r")]
 unique_name_in_owner = true
-position = Vector2(144, 280)
+position = Vector2(560, 112)
