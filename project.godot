@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 State="*res://autoload/state.gd"
 GlobalSignal="*res://autoload/signal.gd"
 Utils="*res://autoload/utils.gd"
+Enum="*res://autoload/enum.gd"
 
 [display]
 
