@@ -3,7 +3,7 @@ extends Node2D
 
 const SPEED = 3.0
 const DEFAULT_WIDTH = 3.0
-const DEFAULT_RADIUS = roundi(float(State.GRID_SIZE) / 2)
+const DEFAULT_RADIUS = State.GRID_SIZE
 const STARTING_RIPPLE = 1.0
 
 var _collision_shape: CollisionShape2D
@@ -48,7 +48,7 @@ func _process(delta: float):
 		ripple_strength = 0.0
 
 		if _collision_shape:
-			_collision_shape.shape.radius = radius
+			_collision_shape.shape.radius = radius / 2
 
 	if is_rippling:
 		current_ripple += speed * delta
