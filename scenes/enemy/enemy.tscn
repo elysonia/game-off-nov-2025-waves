@@ -1,32 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://vskn803ncoqh"]
+[gd_scene load_steps=2 format=3 uid="uid://vskn803ncoqh"]
 
 [ext_resource type="Script" uid="uid://cwvp37skmajwc" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4a83h"]
-radius = 40.0
-
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(-8, 0)
 script = ExtResource("1_4a83h")
 metadata/_edit_horizontal_guides_ = [-32.0, 32.0]
 metadata/_edit_vertical_guides_ = [-32.0, 32.0]
 
 [node name="Attacking" type="Polygon2D" parent="."]
 unique_name_in_owner = true
-visible = false
-position = Vector2(-7, -1)
-color = Color(0.047058824, 0.75686276, 0, 1)
 polygon = PackedVector2Array(-28, 32, 5, 32, 7, 23, 17, 17, 22, 19, 27, 20, 34, 19, 44, 18, 48, 11, 48, 6, 44, 9, 40, 7, 37, 9, 34, 5, 30, 7, 2, 4, -1, -6, 12, -7, 17, -2, 21, -7, 25, -2, 29, -7, 32, -3, 36, -8, 41, 0, 43, -5, 48, -1, 51, -15, 39, -23, 18, -28, 5, -33, 0, -39, -5, -32, -24, -28, -25, -21, -30, -21, -30, -13, -33, -11, -32, 32)
 
 [node name="Stalking" type="Polygon2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-7, -1)
-color = Color(0.045916222, 0.7582655, 0, 1)
-polygon = PackedVector2Array(-33, 23, -28, 17, -25, 8, -19, 14, -10, 13, 4, 15, 15, 14, 24, 15, 35, 16, 42, 19, 43, 22, 43, 25, 39, 26, 36, 21, 35, 25, 31, 22, 30, 26, 24, 22, 24, 26, 18, 24, 15, 27, 10, 23, 10, 27, 11, 26, 15, 29, 18, 26, 25, 28, 25, 25, 30, 28, 32, 24, 35, 28, 36, 24, 38, 28, 43, 27, 42, 32, -32, 32)
+polygon = PackedVector2Array(-32, 16, -28, 17, -25, 8, -19, 14, -10, 13, 4, 15, 15, 14, 24, 15, 35, 16, 42, 19, 43, 22, 43, 25, 39, 26, 36, 21, 35, 25, 31, 22, 30, 26, 24, 22, 24, 26, 18, 24, 15, 27, 10, 23, 10, 27, 11, 26, 15, 29, 18, 26, 25, 28, 25, 25, 30, 28, 32, 24, 35, 28, 36, 24, 38, 28, 43, 27, 42, 32, -32, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionPolygon2D" parent="."]
 unique_name_in_owner = true
-shape = SubResource("CircleShape2D_4a83h")
+polygon = PackedVector2Array(-31, -29, -12, -33, -7, -40, -2, -34, 32, -24, 44, -16, 37, 17, 0, 22, -2, 32, -39, 32, -40, -12)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
