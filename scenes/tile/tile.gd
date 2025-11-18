@@ -53,17 +53,17 @@ func _on_area_entered(area: Area2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if not is_instance_of(body, Player):
+	if is_instance_of(body, Enemy) and %Ripple.is_rippling:
+		body.handle_death()
 		return
 
-	player = body
+	if is_instance_of(body, Player):
+		player = body
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if not is_instance_of(body, Player):
-		return
-
-	player = null
+	if is_instance_of(body, Player):
+		player = null
 
 
 func _on_mouse_entered() -> void:

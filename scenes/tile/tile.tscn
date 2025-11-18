@@ -27,6 +27,4 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 50.0
-affect_navigation_mesh = true
-carve_navigation_mesh = true
+radius = 40.0
