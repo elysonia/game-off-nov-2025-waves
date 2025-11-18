@@ -1,30 +1,53 @@
 class_name Game
 extends Control
 
+var _level_data: Level = null
+var _spawn_positions: Array[Vector2]
+
+@onready var _enemy = preload("res://scenes/enemy/enemy.tscn")
+
 
 func _ready():
 	%Player.player_landed.connect(_on_player_landed)
-	call_deferred("setup_entities")
+	%WaveTimer.timeout.connect(_on_wave_timer_timeout)
+	GlobalSignal.enemies_left_updated.connect(_on_enemies_left_updated)
+
+	set_physics_process(false)
+	initialize()
+	call_deferred("_post_ready")
 
 
-func setup_entities() -> void:
-	var tiles = %GameArea.get_children().filter(
-		func(child):
-			return is_instance_of(child, Tile)
-	)
+func initialize() -> void:
+	_level_data = LevelManager.get_level(State.level)
 
+	State.level = _level_data.level
+	State.enemy_wave = 1
+	State.max_enemy_wave = len(_level_data.waves)
+
+	var tiles = %Tiles.get_children()
 	for tile in tiles:
 		tile.add_to_group("tiles")
 
-	var enemies = %GameArea.get_children().filter(
-		func(child):
-			return is_instance_of(child, Enemy)
-	)
+	var wave = _level_data.waves[State.enemy_wave - 1]
 
-	for enemy in enemies:
-		enemy.add_to_group("enemies")
+	_spawn_positions.assign(wave.get_spawn_positions(50))
 
-	get_tree().call_group("enemies", "handle_switch_target_position", %Player.position)
+	handle_load_wave(wave)
+
+
+func handle_load_wave(wave: Wave) -> void:
+	State.enemy_left += wave.enemy_count
+
+	for i in range(wave.enemy_count):
+		var enemy_instance = _enemy.instantiate()
+		await %GameArea.call_deferred("add_child", enemy_instance)
+		enemy_instance.position = _spawn_positions.pick_random()
+		enemy_instance.load_data(wave)
+		enemy_instance.add_to_group("enemies")
+		enemy_instance.handle_switch_target_position(%Player.position)
+
+	%WaveTimer.start(wave.duration)
+	GlobalSignal.enemies_left_updated.emit()
 
 
 func _on_player_landed(player: Player) -> void:
@@ -41,3 +64,26 @@ func _on_player_landed(player: Player) -> void:
 
 	if is_game_ended:
 		Utils.goto_game_over()
+
+
+func _on_wave_timer_timeout() -> void:
+	if State.enemy_wave == State.max_enemy_wave:
+		return
+
+	State.enemy_wave += 1
+	handle_load_wave(_level_data.waves[State.enemy_wave - 1])
+
+
+func _on_enemies_left_updated() -> void:
+	%EnemiesLeft.text = str(State.enemy_left)
+	if State.enemy_left == 0:
+		if State.enemy_wave == State.max_enemy_wave:
+			Utils.goto_game_won()
+		else:
+			State.enemy_wave += 1
+			handle_load_wave(_level_data.waves[State.enemy_wave - 1])
+
+
+func _post_ready() -> void:
+	set_physics_process(true)
+
