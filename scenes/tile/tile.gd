@@ -46,21 +46,20 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if is_instance_of(area, Tile) or not is_status_fixed:
+	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
 		status = Status.ENABLED
 		%Polygon2D.color = COLOR[status]
 
-		if not is_status_fixed:
-			%Timer.start(status_duration)
-			%TimeLeft.visible = true
-			await %Timer.timeout
-			%TimeLeft.visible = false
-			status = Status.DISABLED
-			%Polygon2D.color = COLOR[status]
+		%Timer.start(status_duration)
+		%TimeLeft.visible = true
+		await %Timer.timeout
+		%TimeLeft.visible = false
+		status = Status.DISABLED
+		%Polygon2D.color = COLOR[status]
 
-			if player:
-				player = null
-				Utils.goto_game_over()
+		if player:
+			player = null
+			Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:
