@@ -92,7 +92,7 @@ func handle_navigate_to_target() -> void:
 		handle_switch_mode(Enum.EnemyAction.STALKING)
 
 	var next_position: Vector2 = %NavigationAgent2D.get_next_path_position()
-	var new_velocity = global_position.direction_to(next_position) * speed_map[_mode]
+	var new_velocity: Vector2 = global_position.direction_to(next_position) * speed_map[_mode]
 	%NavigationAgent2D.velocity = new_velocity
 	# sprite_holder.rotation = velocity.angle()
 
@@ -104,7 +104,6 @@ func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
 		handle_death()
 	else:
 		position += knockback * get_physics_process_delta_time()
-
 
 
 func handle_death() -> void:
