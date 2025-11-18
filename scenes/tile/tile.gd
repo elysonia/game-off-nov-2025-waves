@@ -11,6 +11,10 @@ const MODULATE_COLOR = "#000000c7"
 var _is_mouse_entered: bool = false
 var player: Player = null
 
+## The higher the value, the stronger the knockback
+@export var knockback_dampening: float = 1.1
+## Damage multiplier
+@export var power: float = 1.0
 @export var status: Status = Status.ENABLED
 ## Status duration when is_status_fixed is false
 @export var status_duration: float = 10.0
@@ -54,7 +58,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Enemy) and %Ripple.is_rippling:
-		body.handle_death()
+		var damage = power * %Ripple.ripple_strength
+		var knockback = position.direction_to(body.position) * damage * %Ripple.knockback_force / knockback_dampening
+		body.handle_damage(damage, knockback)
 		return
 
 	if is_instance_of(body, Player):

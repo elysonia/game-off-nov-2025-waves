@@ -7,11 +7,11 @@ const SPAWN_TOP_LEFT_BOUND = Vector2(-80, -80)
 const SPAWN_BOTTOM_RIGHT_BOUND = Vector2(1352, 784)
 
 
-## Level
+# Level
 var level: int = 1
 var enemy_wave: int = 0
 var max_enemy_wave: int = 0
 var enemy_left: int = 0
 
-## Character
+# Character
 var max_jumping_strength: float = DEFAULT_MAX_JUMPING_STRENGTH

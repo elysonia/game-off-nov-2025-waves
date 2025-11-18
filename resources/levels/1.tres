@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Level" load_steps=5 format=3 uid="uid://pgjlojs1hdbr"]
+[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://pgjlojs1hdbr"]
 
 [ext_resource type="Script" uid="uid://cp52fufqws5ws" path="res://scripts/level.gd" id="1_ce3ve"]
 [ext_resource type="Script" uid="uid://bmolqh8j1ubvw" path="res://scripts/wave.gd" id="2_wbadn"]
@@ -7,15 +7,26 @@
 script = ExtResource("2_wbadn")
 enemy_color = Color(0.36681896, 0.42825112, 0.81696624, 1)
 duration = 20.0
+health = 10.0
 metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
 
 [sub_resource type="Resource" id="Resource_wbadn"]
 script = ExtResource("2_wbadn")
 enemy_count = 15
 enemy_color = Color(0.6205139, 0.21925107, 0.7397295, 1)
+duration = 20.0
+health = 20.0
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[sub_resource type="Resource" id="Resource_b7fw4"]
+script = ExtResource("2_wbadn")
+enemy_count = 15
+enemy_color = Color(0.56466657, 0.4000135, 0.1938588, 1)
+health = 25.0
+attacking_range = 2.0
 metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
 
 [resource]
 script = ExtResource("1_ce3ve")
-waves = Array[ExtResource("2_wbadn")]([SubResource("Resource_ce3ve"), SubResource("Resource_wbadn")])
+waves = Array[ExtResource("2_wbadn")]([SubResource("Resource_ce3ve"), SubResource("Resource_wbadn"), SubResource("Resource_b7fw4")])
 metadata/_custom_type_script = "uid://cp52fufqws5ws"

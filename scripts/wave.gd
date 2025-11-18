@@ -9,6 +9,8 @@ extends Resource
 @export var enemy_color: Color = Color.TEAL
 ## Time to wait before spawning the next wave
 @export var duration: float = 10.0
+## Enemy health this wave
+@export var health: float = 1.0
 ## Enemy attacking range
 @export var attacking_range: float = State.DEFAULT_ENEMY_ATTACKING_RANGE
 ## Movement speed of enemy at each action

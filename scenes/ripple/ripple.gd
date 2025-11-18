@@ -9,6 +9,7 @@ const STARTING_RIPPLE = 1.0
 var _collision_shape: CollisionShape2D
 
 var ripple_strength: float = 0.0
+var knockback_force = 1000
 
 @export var speed: float = SPEED
 @export var width: float = DEFAULT_WIDTH

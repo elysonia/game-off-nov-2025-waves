@@ -23,6 +23,7 @@ var _mode_img = {
 }
 var _mode: Enum.EnemyAction = Enum.EnemyAction.STALKING
 
+@export var health: float = 1.0
 @export var attacking_range: float = State.DEFAULT_ENEMY_ATTACKING_RANGE
 @export var speed_map: Dictionary[Enum.EnemyAction, float] = {
 	Enum.EnemyAction.STALKING: 20.0,
@@ -56,6 +57,7 @@ func load_data(data: Wave):
 	modulate = Color(data.enemy_color)
 	attacking_range = data.attacking_range
 	speed_map = data.speed_map
+	health = data.health
 
 
 func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
@@ -98,6 +100,17 @@ func handle_navigate_to_target() -> void:
 	var new_velocity = global_position.direction_to(next_position) * speed_map[_mode]
 	%NavigationAgent2D.velocity = new_velocity
 	# sprite_holder.rotation = velocity.angle()
+
+
+func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
+	health -= damage
+
+	if health <= 0:
+		handle_death()
+	else:
+		velocity = knockback
+		move_and_slide()
+
 
 func handle_death() -> void:
 	State.enemy_left -= 1
