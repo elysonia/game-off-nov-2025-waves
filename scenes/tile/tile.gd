@@ -39,30 +39,22 @@ func _ready():
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not is_instance_of(area, Tile) or is_status_fixed:
-		return
-
-	status = Status.ENABLED
-	%Polygon2D.color = COLOR[status]
-
-	if not is_status_fixed:
-		%Timer.start(status_duration)
-		await %Timer.timeout
-		status = Status.DISABLED
+	if is_instance_of(area, Tile) or not is_status_fixed:
+		status = Status.ENABLED
 		%Polygon2D.color = COLOR[status]
 
-		if player:
-			player = null
-			Utils.goto_game_over()
+		if not is_status_fixed:
+			%Timer.start(status_duration)
+			await %Timer.timeout
+			status = Status.DISABLED
+			%Polygon2D.color = COLOR[status]
+
+			if player:
+				player = null
+				Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if is_instance_of(body, Enemy) and %Ripple.is_rippling:
-		var damage = power * %Ripple.ripple_strength
-		var knockback = position.direction_to(body.position) * damage * %Ripple.knockback_force / knockback_dampening
-		body.handle_damage(damage, knockback)
-		return
-
 	if is_instance_of(body, Player):
 		player = body
 

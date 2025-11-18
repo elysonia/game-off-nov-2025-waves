@@ -1,5 +1,5 @@
 class_name Enemy
-extends CharacterBody2D
+extends Area2D
 
 # TODO: Replace with actual image
 # const MODE_IMG = {
@@ -34,6 +34,8 @@ var _mode: Enum.EnemyAction = Enum.EnemyAction.STALKING
 func _ready() -> void:
 	_mode_img[Enum.EnemyAction.STALKING] = %Stalking
 	_mode_img[Enum.EnemyAction.ATTACKING] = %Attacking
+	body_entered.connect(_on_body_entered)
+	area_entered.connect(_on_area_entered)
 	handle_switch_mode(_mode)
 	%NavigationAgent2D.velocity_computed.connect(_on_velocity_computed)
 
@@ -44,13 +46,6 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	handle_navigate_to_target()
-
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-
-		if is_instance_of(collider, Player) and _mode == Enum.EnemyAction.ATTACKING:
-			Utils.goto_game_over()
 
 
 func load_data(data: Wave):
@@ -89,13 +84,13 @@ func handle_switch_target_position(target_position: Vector2) -> void:
 
 func handle_navigate_to_target() -> void:
 	if %NavigationAgent2D.is_navigation_finished():
-
 		return
 
 	if position.distance_to(%NavigationAgent2D.target_position) / State.GRID_SIZE <= attacking_range:
 		handle_switch_mode(Enum.EnemyAction.ATTACKING)
 	else:
 		handle_switch_mode(Enum.EnemyAction.STALKING)
+
 	var next_position: Vector2 = %NavigationAgent2D.get_next_path_position()
 	var new_velocity = global_position.direction_to(next_position) * speed_map[_mode]
 	%NavigationAgent2D.velocity = new_velocity
@@ -108,8 +103,8 @@ func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
 	if health <= 0:
 		handle_death()
 	else:
-		velocity = knockback
-		move_and_slide()
+		position += knockback * get_physics_process_delta_time()
+
 
 
 func handle_death() -> void:
@@ -120,6 +115,19 @@ func handle_death() -> void:
 
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
-	velocity = safe_velocity
-	move_and_slide()
+	# velocity = safe_velocity
+	position += safe_velocity * get_physics_process_delta_time()
+	# move_and_slide()
 	# sprite_holder.rotation = velocity.angle()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	if is_instance_of(body, Player) and _mode == Enum.EnemyAction.ATTACKING:
+			Utils.goto_game_over()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling:
+		var damage = area.power * area.get_node("%Ripple").ripple_strength
+		var knockback = area.position.direction_to(position) * damage * area.get_node("%Ripple").knockback_force / area.knockback_dampening
+		handle_damage(damage, knockback)

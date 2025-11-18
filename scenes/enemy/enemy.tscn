@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cwvp37skmajwc" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="Area2D"]
 script = ExtResource("1_4a83h")
 metadata/_edit_horizontal_guides_ = [-32.0, 32.0]
 metadata/_edit_vertical_guides_ = [-32.0, 32.0]
@@ -23,5 +23,6 @@ polygon = PackedVector2Array(-31, -29, -12, -33, -7, -40, -2, -34, 32, -24, 44, 
 unique_name_in_owner = true
 path_postprocessing = 1
 avoidance_enabled = true
+debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.8627451, 0.93333334, 0.28627452, 1)
