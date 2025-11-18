@@ -33,6 +33,7 @@ func initialize() -> void:
 	_spawn_positions.assign(wave.get_spawn_positions(50))
 
 	handle_load_wave(wave)
+	get_tree().call_group("enemies", "handle_switch_target_position", %Player.position)
 
 
 func handle_load_wave(wave: Wave) -> void:
@@ -40,11 +41,11 @@ func handle_load_wave(wave: Wave) -> void:
 
 	for i in range(wave.enemy_count):
 		var enemy_instance = _enemy.instantiate()
-		await %GameArea.call_deferred("add_child", enemy_instance)
 		enemy_instance.position = _spawn_positions.pick_random()
 		enemy_instance.load_data(wave)
 		enemy_instance.add_to_group("enemies")
-		enemy_instance.handle_switch_target_position(%Player.position)
+		await %GameArea.call_deferred("add_child", enemy_instance)
+		enemy_instance.call_deferred("handle_switch_target_position", %Player.position)
 
 	%WaveTimer.start(wave.duration)
 	GlobalSignal.enemies_left_updated.emit()
