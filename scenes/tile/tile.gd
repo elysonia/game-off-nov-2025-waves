@@ -38,6 +38,13 @@ func _ready():
 	%Ripple.initialize(%CollisionShape2D)
 
 
+func _process(_delta: float) -> void:
+	var time_left: int = roundi(%Timer.time_left)
+
+	if time_left > 0:
+		%TimeLeft.text = str(time_left)
+
+
 func _on_area_entered(area: Area2D) -> void:
 	if is_instance_of(area, Tile) or not is_status_fixed:
 		status = Status.ENABLED
@@ -45,7 +52,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 		if not is_status_fixed:
 			%Timer.start(status_duration)
+			%TimeLeft.visible = true
 			await %Timer.timeout
+			%TimeLeft.visible = false
 			status = Status.DISABLED
 			%Polygon2D.color = COLOR[status]
 
