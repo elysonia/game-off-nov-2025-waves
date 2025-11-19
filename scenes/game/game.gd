@@ -53,7 +53,6 @@ func handle_load_wave(wave: Wave) -> void:
 
 func _on_player_landed(player: Player) -> void:
 	var tiles = get_tree().get_nodes_in_group("tiles")
-	get_tree().call_group("enemies", "handle_switch_target_position", player.position)
 
 	var is_game_ended = true
 
@@ -69,6 +68,8 @@ func _on_player_landed(player: Player) -> void:
 		print("missed the landing")
 		# Play player drowning animation
 		Utils.goto_game_over()
+
+	get_tree().call_group("enemies", "handle_switch_target_position", player.position)
 
 
 func _on_wave_timer_timeout() -> void:
