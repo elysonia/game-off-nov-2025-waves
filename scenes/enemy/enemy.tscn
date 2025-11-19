@@ -9,15 +9,19 @@ metadata/_edit_vertical_guides_ = [-32.0, 32.0]
 
 [node name="Attacking" type="Polygon2D" parent="."]
 unique_name_in_owner = true
-polygon = PackedVector2Array(-28, 32, 5, 32, 7, 23, 17, 17, 22, 19, 27, 20, 34, 19, 44, 18, 48, 11, 48, 6, 44, 9, 40, 7, 37, 9, 34, 5, 30, 7, 2, 4, -1, -6, 12, -7, 17, -2, 21, -7, 25, -2, 29, -7, 32, -3, 36, -8, 41, 0, 43, -5, 48, -1, 51, -15, 39, -23, 18, -28, 5, -33, 0, -39, -5, -32, -24, -28, -25, -21, -30, -21, -30, -13, -33, -11, -32, 32)
+position = Vector2(-7.249999, 0)
+scale = Vector2(0.75, 1)
+polygon = PackedVector2Array(-28, 32, 5, 32, 7, 23, 17, 17, 22, 19, 27, 20, 34, 19, 44, 18, 49.666664, 11, 49.666664, 6, 44, 9, 40, 7, 37, 9, 34, 5, 30, 7, 2, 4, -1, -6, 12, -7, 17, -2, 21, -7, 25, -2, 29, -7, 32, -3, 36, -8, 41, 0, 43, -5, 51, -1, 51, -15, 39, -23, 16.333332, -26, 2.999999, -30, -10.333334, -29, -15.666668, -33, -24, -24, -29, -22, -30, -13, -33, -11, -32, 32)
 
 [node name="Stalking" type="Polygon2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(-4.6933327, -12)
+scale = Vector2(0.85333335, 1.375)
 polygon = PackedVector2Array(-32, 16, -28, 17, -25, 8, -19, 14, -10, 13, 4, 15, 15, 14, 24, 15, 35, 16, 42, 19, 43, 22, 43, 25, 39, 26, 36, 21, 35, 25, 31, 22, 30, 26, 24, 22, 24, 26, 18, 24, 15, 27, 10, 23, 10, 27, 11, 26, 15, 29, 18, 26, 25, 28, 25, 25, 30, 28, 32, 24, 35, 28, 36, 24, 38, 28, 43, 27, 42, 32, -32, 32)
 
 [node name="CollisionShape" type="CollisionPolygon2D" parent="."]
 unique_name_in_owner = true
-polygon = PackedVector2Array(-31, -29, -12, -33, -7, -40, -2, -34, 32, -24, 44, -16, 37, 17, 0, 22, -2, 32, -39, 32, -40, -12)
+polygon = PackedVector2Array(-29, -31, 30, -31, 29, 30, -27, 30)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
