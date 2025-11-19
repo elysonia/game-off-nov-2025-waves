@@ -123,6 +123,7 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player) and _mode == Enum.EnemyAction.ATTACKING:
 		print("caught by enemy")
+		# Play enemy catching player here
 		Utils.goto_game_over()
 
 

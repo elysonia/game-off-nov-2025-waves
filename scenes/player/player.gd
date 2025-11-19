@@ -12,14 +12,22 @@ var status: Status = Status.IDLE
 var max_jump_strength: float = State.max_jumping_strength
 var jump_strength: float = 0.0
 
+func _ready():
+    handle_switch_status(Status.IDLE)
+
+
+func handle_switch_status(next_status: Status) -> void:
+    status = next_status
+    # Status animation/sprite here
+
 
 func handle_jump(to: Vector2) -> void:
     var tween = create_tween().set_parallel()
     player_jumped.emit(self)
+    handle_switch_status(Status.JUMPING)
     # Play start jump animation here
     tween.tween_property(self, "position", to, 0.13 * jump_strength).set_ease(Tween.EASE_OUT_IN)
     # Play mid-jump animation here
-    # Play landing/drowing animation here
     await tween.finished
     tween.kill()
     player_landed.emit(self)
@@ -41,12 +49,14 @@ func _draw():
 
 func _process(_delta: float) -> void:
     if Input.is_action_pressed("lmb"):
-        status = Status.READY
-        queue_redraw()
+        if status == Status.IDLE:
+            handle_switch_status(Status.READY)
+        if status == Status.READY:
+            queue_redraw()
 
     if Input.is_action_just_released("lmb"):
         queue_redraw()
         if _next_position != Vector2.ZERO:
             handle_jump(_next_position)
         else:
-            status = Status.IDLE
+            handle_switch_status(Status.IDLE)

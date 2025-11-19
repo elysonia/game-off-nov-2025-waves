@@ -59,7 +59,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 		if player:
 			player = null
-			print("stayed on the same tile too long")
+			print("Fell on unstable ground")
+			# Play player drowning animation
 			Utils.goto_game_over()
 
 

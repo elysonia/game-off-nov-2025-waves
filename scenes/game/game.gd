@@ -61,10 +61,13 @@ func _on_player_landed(player: Player) -> void:
 		if tile.player == player and tile.status == tile.Status.ENABLED:
 			is_game_ended = false
 			tile.get_node("%Ripple").handle_ripple(player.jump_strength)
+			player.handle_switch_status(player.Status.IDLE)
+			# Play player landing animation
 			break
 
 	if is_game_ended:
 		print("missed the landing")
+		# Play player drowning animation
 		Utils.goto_game_over()
 
 
