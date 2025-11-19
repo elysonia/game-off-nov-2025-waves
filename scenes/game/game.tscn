@@ -1,18 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://ouwkh8ty1wng"]
+[gd_scene load_steps=7 format=3 uid="uid://ouwkh8ty1wng"]
 
 [ext_resource type="Script" uid="uid://duocxikip7u2b" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="2_7h61r"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
+vertices = PackedVector2Array(586.1406, 609.1406, 717.7969, 609, 739.52344, 609, 583.46875, 623.8281, 690.1406, 329.14063, 989.7969, 321, 1011.52344, 321, 687.46875, 343.82813, 770.1406, 569.1406, 1053.7969, 553, 1075.5234, 553, 767.46875, 583.8281, 319.46875, 207.82813, 322.14063, 193.14063, 749.7969, 169, 771.52344, 169, 658.65625, 287, 639, 287, 522.1406, 377.14063, 637.7969, 369, 659.52344, 369, 519.46875, 391.82813, 700.4375, 600.9922, 972.4375, 312.9922, 732.4375, 160.99219, 1036.4375, 544.9922, 620.4375, 360.9922, 1399, -118, 1399, 822.0469, 1042.1406, 281.14063, 1039.5078, 264.07813, 1039.4688, 295.82813, 1103.4688, 527.8281, 1106.1406, 513.1406, 961.6719, 298.17188, 689.6719, 586.1719, 583.5078, 592.0781, 721.6719, 146.17188, 1025.6719, 530.1719, 609.6719, 346.17188, 519.5078, 360.07813, 1028.9375, 311.6172, 802.1406, 129.14063, 799.5078, 112.078125, 1010.65625, 239, 991, 239, 1092.9375, 543.6172, 1028.8203, 249.38281, 788.9375, 159.61719, 957.7422, 279.82813, 687.5078, 312.07813, 717.7422, 127.828125, 319.5078, 176.07813, 685.7422, 567.8281, 572.8203, 577.3828, 1021.7422, 511.82813, 767.5078, 552.0781, 605.7422, 327.82813, 508.8203, 345.3828, 1103.5078, 496.07813, 1092.8203, 481.3828, 274.14063, 513.1406, 271.5078, 496.07813, 1026.8984, 491.15625, 271.46875, 527.8281, 788.8203, 97.38281, 975.0703, 245.64063, 799.46875, 143.82813, 962.89844, 259.15625, 676.8203, 297.3828, 623.0703, 293.64063, 610.89844, 307.15625, 490.65625, 335, 471, 335, 455.0703, 341.64063, 308.9375, 223.61719, 442.89844, 355.15625, 291.52344, 233, -125, 829.9375, 555.52344, 649, 722.89844, 107.15625, 308.8203, 161.38281, 690.89844, 547.15625, 554.65625, 567, 437.7422, 375.82813, 756.8203, 537.3828, 260.9375, 543.6172, 719, 527, 1039.0703, 477.64063, 260.8203, 481.3828, 676.9375, 359.6172, 572.9375, 639.6172, 756.9375, 599.6172, 770.65625, 87, -125, -118, 751, 87, 735.0703, 93.640625, 290.65625, 151, 271, 151, 255.07031, 157.64063, 242.89844, 171.15625, 237.74219, 191.82813, 241.67188, 210.17188, 252.4375, 224.99219, 269.79688, 233, 207.07031, 477.64063, 194.89844, 491.15625, 508.9375, 407.6172, 703.0703, 533.6406, 535, 567, 738.65625, 527, 1074.6563, 471, 1055, 471, 242.65625, 471, 441.67188, 394.17188, 223, 471, 533.7969, 649, 516.4375, 640.9922, 505.67188, 626.1719, 501.7422, 607.8281, 506.89844, 587.15625, 519.0703, 573.6406, 221.79688, 553, 243.52344, 553, 491.52344, 417, 469.79688, 417, 452.4375, 408.9922, 189.74219, 511.82813, 193.67188, 530.1719, 204.4375, 544.9922)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 1, 0), PackedInt32Array(23, 5, 4), PackedInt32Array(24, 14, 13), PackedInt32Array(25, 9, 8), PackedInt32Array(26, 19, 18), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(31, 29, 28), PackedInt32Array(32, 33, 28), PackedInt32Array(34, 23, 4), PackedInt32Array(35, 22, 0, 36), PackedInt32Array(37, 24, 13), PackedInt32Array(38, 25, 8), PackedInt32Array(39, 26, 18, 40), PackedInt32Array(41, 31, 28), PackedInt32Array(42, 43, 27, 44, 45), PackedInt32Array(46, 32, 28), PackedInt32Array(27, 30, 47), PackedInt32Array(48, 49, 34, 4, 50, 15), PackedInt32Array(51, 37, 13, 52), PackedInt32Array(53, 35, 36, 54), PackedInt32Array(55, 38, 8, 56), PackedInt32Array(57, 39, 40, 58), PackedInt32Array(6, 41, 28, 59, 60), PackedInt32Array(55, 61, 62, 63), PackedInt32Array(64, 61, 55), PackedInt32Array(27, 43, 65), PackedInt32Array(27, 47, 44), PackedInt32Array(42, 45, 66, 67), PackedInt32Array(67, 66, 68, 48), PackedInt32Array(48, 68, 49), PackedInt32Array(15, 50, 69), PackedInt32Array(15, 69, 16), PackedInt32Array(12, 17, 70), PackedInt32Array(12, 70, 71), PackedInt32Array(12, 71, 57, 58, 72), PackedInt32Array(12, 72, 73), PackedInt32Array(12, 73, 74, 75), PackedInt32Array(75, 74, 76, 77), PackedInt32Array(10, 46, 28), PackedInt32Array(2, 10, 28, 78, 79), PackedInt32Array(80, 51, 52, 81), PackedInt32Array(82, 53, 54, 83), PackedInt32Array(77, 76, 84), PackedInt32Array(55, 56, 85), PackedInt32Array(86, 64, 55, 87), PackedInt32Array(88, 63, 62, 89, 6), PackedInt32Array(90, 7, 6), PackedInt32Array(91, 3, 2), PackedInt32Array(92, 11, 10), PackedInt32Array(27, 65, 93), PackedInt32Array(94, 27, 93, 95), PackedInt32Array(94, 95, 96), PackedInt32Array(94, 96, 80, 81, 97), PackedInt32Array(94, 97, 98), PackedInt32Array(94, 98, 99), PackedInt32Array(94, 99, 100), PackedInt32Array(78, 94, 100, 101), PackedInt32Array(78, 101, 102), PackedInt32Array(78, 102, 103), PackedInt32Array(78, 103, 104), PackedInt32Array(78, 104, 77, 105, 106), PackedInt32Array(107, 21, 20), PackedInt32Array(108, 82, 83, 109), PackedInt32Array(55, 85, 110), PackedInt32Array(28, 33, 59), PackedInt32Array(6, 60, 111), PackedInt32Array(6, 111, 112), PackedInt32Array(6, 112, 88), PackedInt32Array(6, 89, 113), PackedInt32Array(77, 84, 114, 115), PackedInt32Array(20, 90, 6), PackedInt32Array(2, 92, 10), PackedInt32Array(79, 91, 2), PackedInt32Array(116, 79, 78), PackedInt32Array(117, 116, 78), PackedInt32Array(118, 117, 78), PackedInt32Array(119, 118, 78), PackedInt32Array(120, 119, 78), PackedInt32Array(121, 120, 78, 122, 123), PackedInt32Array(124, 107, 20, 6), PackedInt32Array(87, 108, 109, 86), PackedInt32Array(6, 113, 115, 124), PackedInt32Array(125, 124, 115), PackedInt32Array(126, 125, 115), PackedInt32Array(114, 126, 115), PackedInt32Array(77, 115, 105), PackedInt32Array(78, 106, 127), PackedInt32Array(78, 127, 128), PackedInt32Array(78, 128, 129), PackedInt32Array(78, 129, 122), PackedInt32Array(121, 123, 86, 109), PackedInt32Array(87, 55, 110)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-135, -128, 1409, -128, 1409, 832, -135, 840)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0sr1o"]
+vertices = PackedVector2Array(1270, 710, 10, 710, 10, 10, 1270, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 720, 1280, 720, 1280, 0)])
+
+[sub_resource type="LabelSettings" id="LabelSettings_0sr1o"]
+font_size = 24
 
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0sr1o")
+metadata/_edit_horizontal_guides_ = [784.0, -80.0]
+metadata/_edit_vertical_guides_ = [-80.0, 1352.0]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
@@ -28,20 +45,68 @@ handle_input_locally = false
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="Tile" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(224, 88)
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/GameArea"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42097098, 0.58346987, 0.51252794, 1)
 
-[node name="Tile2" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(304, 176)
+[node name="StalkNavRegion" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
+navigation_polygon = SubResource("NavigationPolygon_kelw5")
+
+[node name="Tiles" type="Node" parent="SubViewportContainer/GameArea/StalkNavRegion"]
+unique_name_in_owner = true
+
+[node name="Tile" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(648, 328)
+
+[node name="Tile2" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(760, 128)
 status = 1
 is_status_fixed = false
 
-[node name="Tile4" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(152, 168)
+[node name="Tile8" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(544, 608)
+status = 1
+is_status_fixed = false
 
-[node name="Tile3" parent="SubViewportContainer/GameArea" instance=ExtResource("1_sul5r")]
-position = Vector2(144, 280)
+[node name="Tile9" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(1064, 512)
+status = 1
+is_status_fixed = false
+
+[node name="Tile4" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(480, 376)
+
+[node name="Tile3" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(728, 568)
+
+[node name="Tile5" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(280, 192)
+
+[node name="Tile6" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(1000, 280)
+
+[node name="Tile7" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
+position = Vector2(232, 512)
+
+[node name="AttackNavRegion" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_0sr1o")
+navigation_layers = 2
 
 [node name="Player" parent="SubViewportContainer/GameArea" instance=ExtResource("2_7h61r")]
 unique_name_in_owner = true
-position = Vector2(144, 280)
+position = Vector2(648, 328)
+
+[node name="EnemiesLeft" type="Label" parent="SubViewportContainer/GameArea"]
+unique_name_in_owner = true
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 63.0
+label_settings = SubResource("LabelSettings_0sr1o")
+
+[node name="WaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true

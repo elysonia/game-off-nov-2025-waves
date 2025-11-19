@@ -8,9 +8,12 @@ const COLOR = {
 }
 const MODULATE_COLOR = "#000000c7"
 
-var _is_mouse_entered: bool = false
 var player: Player = null
 
+## The higher the value, the stronger the knockback
+@export var knockback_dampening: float = 1.1
+## Damage multiplier
+@export var power: float = 1.0
 @export var status: Status = Status.ENABLED
 ## Status duration when is_status_fixed is false
 @export var status_duration: float = 10.0
@@ -22,8 +25,6 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
 
 	%Timer.wait_time = status_duration
 	%Polygon2D.color = COLOR[status]
@@ -34,41 +35,37 @@ func _ready():
 	%Ripple.initialize(%CollisionShape2D)
 
 
+func _process(_delta: float) -> void:
+	var time_left: int = roundi(%Timer.time_left)
+
+	if time_left > 0:
+		%TimeLeft.text = str(time_left)
+
+
 func _on_area_entered(area: Area2D) -> void:
-	if not is_instance_of(area, Tile) or is_status_fixed:
-		return
+	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
+		status = Status.ENABLED
+		%Polygon2D.color = COLOR[status]
 
-	status = Status.ENABLED
-	%Polygon2D.color = COLOR[status]
-
-	if not is_status_fixed:
 		%Timer.start(status_duration)
+		%TimeLeft.visible = true
 		await %Timer.timeout
+		%TimeLeft.visible = false
 		status = Status.DISABLED
 		%Polygon2D.color = COLOR[status]
 
-		if player:
+		if is_instance_valid(player):
 			player = null
+			print("Fell on unstable ground")
+			# Play player drowning animation
 			Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if not is_instance_of(body, Player):
-		return
-
-	player = body
+	if is_instance_of(body, Player):
+		player = body
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if not is_instance_of(body, Player):
-		return
-
-	player = null
-
-
-func _on_mouse_entered() -> void:
-	_is_mouse_entered = true
-
-
-func _on_mouse_exited() -> void:
-	_is_mouse_entered = false
+	if is_instance_of(body, Player):
+		player = null

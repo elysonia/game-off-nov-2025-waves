@@ -2,3 +2,8 @@
 .godot/
 /android/
 .vscode/
+
+# Ignore all addons except gd-plug
+addons/
+!addons/gd-plug/plug.gd
+example/

@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvex0uxatt47j"]
+[gd_scene load_steps=5 format=3 uid="uid://bvex0uxatt47j"]
 
 [ext_resource type="Script" uid="uid://cpxyv0tgobvso" path="res://scenes/tile/tile.gd" id="1_dvver"]
 [ext_resource type="PackedScene" uid="uid://dhfxm7ed04mqb" path="res://scenes/ripple/ripple.tscn" id="1_vb0sl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvver"]
-radius = 32.0
+radius = 40.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_dvver"]
+font_size = 20
 
 [node name="Tile" type="Area2D"]
 script = ExtResource("1_dvver")
@@ -25,3 +28,17 @@ unique_name_in_owner = true
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 40.0
+
+[node name="TimeLeft" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+label_settings = SubResource("LabelSettings_dvver")
+horizontal_alignment = 1
+vertical_alignment = 1
