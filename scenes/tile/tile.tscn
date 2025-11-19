@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dhfxm7ed04mqb" path="res://scenes/ripple/ripple.tscn" id="1_vb0sl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvver"]
-radius = 32.0
+radius = 40.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_dvver"]
 font_size = 20

@@ -64,6 +64,7 @@ func _on_player_landed(player: Player) -> void:
 			break
 
 	if is_game_ended:
+		print("missed the landing")
 		Utils.goto_game_over()
 
 

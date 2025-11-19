@@ -59,16 +59,19 @@ func _on_area_entered(area: Area2D) -> void:
 
 		if player:
 			player = null
+			print("stayed on the same tile too long")
 			Utils.goto_game_over()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player):
+		print("entered tile: ", name)
 		player = body
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if is_instance_of(body, Player):
+		print("exited tile: ", name)
 		player = null
 
 
