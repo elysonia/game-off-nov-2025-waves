@@ -8,7 +8,6 @@ const COLOR = {
 }
 const MODULATE_COLOR = "#000000c7"
 
-var _is_mouse_entered: bool = false
 var player: Player = null
 
 ## The higher the value, the stronger the knockback
@@ -26,8 +25,6 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	mouse_entered.connect(_on_mouse_entered)
-	mouse_exited.connect(_on_mouse_exited)
 
 	%Timer.wait_time = status_duration
 	%Polygon2D.color = COLOR[status]
@@ -66,19 +63,9 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player):
-		print("entered tile: ", name)
 		player = body
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if is_instance_of(body, Player):
-		print("exited tile: ", name)
 		player = null
-
-
-func _on_mouse_entered() -> void:
-	_is_mouse_entered = true
-
-
-func _on_mouse_exited() -> void:
-	_is_mouse_entered = false
