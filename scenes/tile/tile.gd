@@ -57,7 +57,7 @@ func _on_area_entered(area: Area2D) -> void:
 		status = Status.DISABLED
 		%Polygon2D.color = COLOR[status]
 
-		if player:
+		if is_instance_valid(player):
 			player = null
 			print("Fell on unstable ground")
 			# Play player drowning animation
