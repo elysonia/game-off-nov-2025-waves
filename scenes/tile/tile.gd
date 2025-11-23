@@ -3,7 +3,7 @@ extends Area2D
 
 enum Status {ENABLED, DISABLED}
 const COLOR = {
-	Status.ENABLED: "#b9f84f",
+	Status.ENABLED: "#ffffff",
 	Status.DISABLED: "#111c02",
 }
 const MODULATE_COLOR = "#000000c7"
@@ -16,7 +16,7 @@ var player: Player = null
 @export var power: float = 1.0
 @export var status: Status = Status.ENABLED
 ## Status duration when is_status_fixed is false
-@export var status_duration: float = 10.0
+@export var status_duration: float = 12.0
 ## True if the status is fixed, false if modifiable by interaction
 @export var is_status_fixed: bool = true
 
@@ -27,12 +27,19 @@ func _ready():
 	body_exited.connect(_on_body_exited)
 
 	%Timer.wait_time = status_duration
-	%Polygon2D.color = COLOR[status]
+	modulate = COLOR[status]
 
 	# Make sure the collision shape of the instantiated scene is unique
 	# https://forum.godotengine.org/t/collisionshape2d-changes-for-every-instance-with-every-instance/95614/2
 	%CollisionShape2D.shape =  %CollisionShape2D.shape.duplicate(true)
 	%Ripple.initialize(%CollisionShape2D)
+
+	if status == Status.DISABLED and not is_status_fixed:
+		%AnimationPlayer.play("flower-timer-disabled")
+	else:
+		%AnimationPlayer.play("flower-decor")
+
+	%AnimationPlayer.seek(randf_range(0.0, %AnimationPlayer.current_animation_length), true)
 
 
 func _process(_delta: float) -> void:
@@ -45,14 +52,25 @@ func _process(_delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
 		status = Status.ENABLED
-		%Polygon2D.color = COLOR[status]
+		modulate = COLOR[status]
+		%LilyFlowerDecor.modulate = Color("#fdd2aeff")
+		%LilypadSprite.modulate = Color("#fdd2aeff")
 
 		%Timer.start(status_duration)
+		%AnimationPlayer.stop()
+		%AnimationPlayer.play("flower-timer")
+
 		%TimeLeft.visible = true
 		await %Timer.timeout
+
 		%TimeLeft.visible = false
 		status = Status.DISABLED
-		%Polygon2D.color = COLOR[status]
+		modulate = COLOR[status]
+
+		var current_animation_position = %AnimationPlayer.current_animation_position
+		%AnimationPlayer.play_backwards("flower-timer")
+		await get_tree().create_timer(current_animation_position).timeout
+		%AnimationPlayer.play("flower-timer-disabled")
 
 		if is_instance_valid(player):
 			player = null
