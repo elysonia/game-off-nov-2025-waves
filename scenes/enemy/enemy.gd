@@ -7,6 +7,11 @@ extends Area2D
 #     Enum.EnemyAction.ATTACKING: %Attacking
 # }
 
+var _collision_polygon = {
+	Enum.EnemyAction.ATTACKING: PackedVector2Array([Vector2(-32, -32), Vector2(32, -32), Vector2(32, 32), Vector2(-32, 32)]),
+	Enum.EnemyAction.STALKING: PackedVector2Array([Vector2(-32, 0), Vector2(32, 0), Vector2(32, 32), Vector2(-32, 32)])
+}
+
 const MODE_COLLISION = {
 	Enum.EnemyAction.STALKING: 1,
 	Enum.EnemyAction.ATTACKING: 2
@@ -17,10 +22,6 @@ const MODE_NAVIGATION = {
 	Enum.EnemyAction.ATTACKING: 2
 }
 
-var _mode_img = {
-	Enum.EnemyAction.STALKING: null,
-	Enum.EnemyAction.ATTACKING: null
-}
 var _mode: Enum.EnemyAction = Enum.EnemyAction.STALKING
 
 @export var health: float = 1.0
@@ -32,16 +33,10 @@ var _mode: Enum.EnemyAction = Enum.EnemyAction.STALKING
 
 
 func _ready() -> void:
-	_mode_img[Enum.EnemyAction.STALKING] = %Stalking
-	_mode_img[Enum.EnemyAction.ATTACKING] = %Attacking
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
 	handle_switch_mode(_mode)
 	%NavigationAgent2D.velocity_computed.connect(_on_velocity_computed)
-
-	# TODO: Switch to MODE_IMG after assets are made
-	for node in _mode_img.values():
-		node.visible = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -49,16 +44,24 @@ func _physics_process(_delta: float) -> void:
 
 
 func load_data(data: Wave):
-	modulate = Color(data.enemy_color)
 	attacking_range = data.attacking_range
 	speed_map = data.speed_map
 	health = data.health
 
 
 func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
-	# TODO: Use MODE_IMG after assets are made
+	if next_mode != _mode or not %AnimationPlayer.is_playing():
+		if next_mode == Enum.EnemyAction.ATTACKING:
+			%AnimationPlayer.play("attacking")
+			var animation_length = %AnimationPlayer.get_animation("attacking").length
+			%AnimationPlayer.seek(randf_range(0.0, animation_length))
+			%CollisionShape.polygon = _collision_polygon[next_mode]
 
-	_mode_img[_mode].visible = false
+		if next_mode == Enum.EnemyAction.STALKING:
+			%AnimationPlayer.play("stalking")
+			var animation_length = %AnimationPlayer.get_animation("attacking").length
+			%AnimationPlayer.seek(randf_range(0.0, animation_length))
+			%CollisionShape.polygon = _collision_polygon[next_mode]
 
 	if MODE_COLLISION[_mode] > 1:
 		set_collision_layer_value(MODE_COLLISION[_mode], false)
@@ -66,11 +69,6 @@ func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
 
 	if MODE_NAVIGATION[_mode] > 1:
 		%NavigationAgent2D.set_navigation_layer_value(MODE_NAVIGATION[_mode], false)
-
-	_mode_img[next_mode].visible = true
-
-	if is_instance_of(%CollisionShape, CollisionPolygon2D):
-		%CollisionShape.polygon = _mode_img[next_mode].polygon
 
 	set_collision_layer_value(MODE_COLLISION[next_mode], true)
 	set_collision_mask_value(MODE_COLLISION[next_mode], true)
@@ -91,8 +89,15 @@ func handle_navigate_to_target() -> void:
 	else:
 		handle_switch_mode(Enum.EnemyAction.STALKING)
 
+	var speed: float
+	if _mode == Enum.EnemyAction.ATTACKING:
+		speed =  randf_range(speed_map[_mode] - 3, speed_map[Enum.EnemyAction.ATTACKING] + 5)
+	if _mode == Enum.EnemyAction.STALKING:
+		speed =  randf_range(speed_map[_mode] - 3, speed_map[Enum.EnemyAction.ATTACKING] - 1)
+
+
 	var next_position: Vector2 = %NavigationAgent2D.get_next_path_position()
-	var new_velocity: Vector2 = global_position.direction_to(next_position) * speed_map[_mode]
+	var new_velocity: Vector2 = global_position.direction_to(next_position) * speed
 	%NavigationAgent2D.velocity = new_velocity
 	# sprite_holder.rotation = velocity.angle()
 
@@ -123,7 +128,7 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player) and _mode == Enum.EnemyAction.ATTACKING:
 		print("caught by enemy")
-		# Play enemy catching player here
+		%AnimationPlayer.play("caught-player")
 		Utils.goto_game_over()
 
 
