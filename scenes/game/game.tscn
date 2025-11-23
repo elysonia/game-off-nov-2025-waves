@@ -51,7 +51,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.42097098, 0.58346987, 0.51252794, 1)
+color = Color(0.4509804, 0.8235294, 1, 1)
 
 [node name="StalkNavRegion" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
 navigation_polygon = SubResource("NavigationPolygon_kelw5")
@@ -96,6 +96,9 @@ position = Vector2(232, 512)
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_0sr1o")
 navigation_layers = 2
+
+[node name="Enemies" type="Node" parent="SubViewportContainer/GameArea"]
+unique_name_in_owner = true
 
 [node name="Player" parent="SubViewportContainer/GameArea" instance=ExtResource("2_7h61r")]
 unique_name_in_owner = true

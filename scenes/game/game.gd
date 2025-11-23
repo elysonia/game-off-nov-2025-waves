@@ -44,7 +44,7 @@ func handle_load_wave(wave: Wave) -> void:
 		enemy_instance.position = _spawn_positions.pick_random()
 		enemy_instance.load_data(wave)
 		enemy_instance.add_to_group("enemies")
-		await %GameArea.call_deferred("add_child", enemy_instance)
+		await %Enemies.call_deferred("add_child", enemy_instance)
 		enemy_instance.call_deferred("handle_switch_target_position", %Player.position)
 
 	%WaveTimer.start(wave.duration)
@@ -60,8 +60,7 @@ func _on_player_landed(player: Player) -> void:
 		if tile.player == player and tile.status == tile.Status.ENABLED:
 			is_game_ended = false
 			tile.get_node("%Ripple").handle_ripple(player.jump_strength)
-			player.handle_switch_status(player.Status.IDLE)
-			# Play player landing animation
+			player.handle_switch_status(player.Status.LANDING)
 			break
 
 	if is_game_ended:
