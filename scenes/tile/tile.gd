@@ -67,10 +67,8 @@ func _on_area_entered(area: Area2D) -> void:
 		status = Status.DISABLED
 		modulate = COLOR[status]
 
-		var current_animation_position = %AnimationPlayer.current_animation_position
+		%AnimationPlayer.animation_set_next("flower_timer", "flower-timer-disabled")
 		%AnimationPlayer.play_backwards("flower-timer")
-		await get_tree().create_timer(current_animation_position).timeout
-		%AnimationPlayer.play("flower-timer-disabled")
 
 		if is_instance_valid(player):
 			player = null

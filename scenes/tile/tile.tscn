@@ -801,9 +801,6 @@ unique_name_in_owner = true
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
-radius = 40.0
-
 [node name="TimeLeft" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
@@ -814,6 +811,10 @@ offset_bottom = 32.0
 label_settings = SubResource("LabelSettings_dvver")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 50.0
+affect_navigation_mesh = true
 
 [node name="LilypadSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
