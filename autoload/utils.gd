@@ -1,13 +1,12 @@
 extends Node
 
+@onready var _game_over_screen = preload("res://scenes/game_over_screen/game_over_screen.tscn")
+
 
 func goto_game_over() -> void:
     get_tree().paused = true
-
-    # TODO: Replace with real game over screen
-    var label = Label.new()
-    label.text = "Game over"
-    get_tree().root.add_child(label)
+    var game_over_screen_instance = _game_over_screen.instantiate()
+    get_tree().root.add_child(game_over_screen_instance)
 
 
 func goto_game_won() -> void:

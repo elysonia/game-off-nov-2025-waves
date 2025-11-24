@@ -1,17 +1,6 @@
 class_name Enemy
 extends Area2D
 
-# TODO: Replace with actual image
-# const MODE_IMG = {
-#     Enum.EnemyAction.STALKING: %Stalking,
-#     Enum.EnemyAction.ATTACKING: %Attacking
-# }
-
-var _collision_polygon = {
-	Enum.EnemyAction.ATTACKING: PackedVector2Array([Vector2(-32, -32), Vector2(32, -32), Vector2(32, 32), Vector2(-32, 32)]),
-	Enum.EnemyAction.STALKING: PackedVector2Array([Vector2(-32, 0), Vector2(32, 0), Vector2(32, 32), Vector2(-32, 32)])
-}
-
 const MODE_COLLISION = {
 	Enum.EnemyAction.STALKING: 1,
 	Enum.EnemyAction.ATTACKING: 2
@@ -55,13 +44,30 @@ func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
 			%AnimationPlayer.play("attacking")
 			var animation_length = %AnimationPlayer.get_animation("attacking").length
 			%AnimationPlayer.seek(randf_range(0.0, animation_length))
-			%CollisionShape.polygon = _collision_polygon[next_mode]
+			%AttackCollision.set_deferred("disabled", false)
+			%AttackCollision.set_deferred("visible", true)
+			%StalkCollision.set_deferred("disabled", true)
+			%StalkCollision.set_deferred("visible", false)
 
 		if next_mode == Enum.EnemyAction.STALKING:
 			%AnimationPlayer.play("stalking")
 			var animation_length = %AnimationPlayer.get_animation("attacking").length
 			%AnimationPlayer.seek(randf_range(0.0, animation_length))
-			%CollisionShape.polygon = _collision_polygon[next_mode]
+			%AttackCollision.set_deferred("disabled", true)
+			%AttackCollision.set_deferred("visible", false)
+			%StalkCollision.set_deferred("disabled", false)
+			%StalkCollision.set_deferred("visible", true)
+
+	var flip_h = position.direction_to(%NavigationAgent2D.target_position).x < 0
+	%Attacking.flip_h = flip_h
+	%Stalking.flip_h = flip_h
+	%PlayerCaught.flip_h = flip_h
+	%WaterSplash.flip_h = flip_h
+
+	if flip_h:
+		%PlayerCaught.offset = Vector2(-100, 0)
+	else:
+		%PlayerCaught.offset = Vector2(0, 0)
 
 	if MODE_COLLISION[_mode] > 1:
 		set_collision_layer_value(MODE_COLLISION[_mode], false)
@@ -127,8 +133,21 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player) and _mode == Enum.EnemyAction.ATTACKING:
+
 		print("caught by enemy")
 		%AnimationPlayer.play("caught-player")
+		body.visible = false
+		body.process_mode = Node.PROCESS_MODE_DISABLED
+		process_mode = Node.PROCESS_MODE_ALWAYS
+		get_tree().paused = true
+		z_index = 100
+		collision_layer = 0
+		collision_mask = 0
+		var tween = create_tween().set_parallel()
+		tween.tween_property(self, "position", body.position, 2)
+		await tween.finished
+		tween.kill()
+		process_mode = Node.PROCESS_MODE_INHERIT
 		Utils.goto_game_over()
 
 
