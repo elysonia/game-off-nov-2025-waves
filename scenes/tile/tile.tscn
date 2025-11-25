@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvex0uxatt47j"]
+[gd_scene load_steps=29 format=3 uid="uid://bvex0uxatt47j"]
 
 [ext_resource type="Script" uid="uid://cpxyv0tgobvso" path="res://scenes/tile/tile.gd" id="1_dvver"]
 [ext_resource type="PackedScene" uid="uid://dhfxm7ed04mqb" path="res://scenes/ripple/ripple.tscn" id="1_vb0sl"]
@@ -336,6 +336,30 @@ tracks/25/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("WaterSurface:polygon")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, -2, 2, -1, 2, 2, -2, 2, -3, 0)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("LilypadSprite:modulate")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_b2xwj"]
@@ -730,6 +754,18 @@ tracks/27/keys = {
 "update": 0,
 "values": [0.0, -0.22689280275926285, 0.0]
 }
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = false
+tracks/28/path = NodePath("LilypadSprite:modulate")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.06666667, 0.10980392, 0.007843138, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8d4sr"]
 resource_name = "flower-timer-disabled"
@@ -772,12 +808,190 @@ tracks/2/keys = {
 "values": [0.0, -0.22689280275926285, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_tiu3h"]
+resource_name = "flower-timer-emerge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LilyFlowerDecor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LilyFlowerDecor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0666667, 2.5333333, 4.0666666, 5.5333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(4.000004, -16), Vector2(7, -15), Vector2(4.0251007, -16), Vector2(6, -17), Vector2(4.0083694, -15.974903)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LilypadSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.266667, 11.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.22689280275926285, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WaterSurface:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-2, -2, 0, -3, 2, -2, 3, 0, 2, 2, 0, 3, -2, 2, -3, 0), PackedVector2Array(3, -43, 28, -34, 38, -22, 42, -9.22104, 43, 2.4589465, 42, 15, 32, 32, 16, 40, -14, 40, -32, 34, -40, 19, -44, -1, -38, -21, -24, -37)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_acevu"]
 _data = {
 &"RESET": SubResource("Animation_acevu"),
 &"flower-decor": SubResource("Animation_b2xwj"),
 &"flower-timer": SubResource("Animation_wswbm"),
-&"flower-timer-disabled": SubResource("Animation_8d4sr")
+&"flower-timer-disabled": SubResource("Animation_8d4sr"),
+&"flower-timer-emerge": SubResource("Animation_tiu3h")
+}
+
+[sub_resource type="Animation" id="Animation_xnr2r"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSurface:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaterSurface:invert_enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sl5vv"]
+resource_name = "water-surface"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSurface:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaterSurface:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, -1, 1, 0, 0, 1, -1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WaterSurface:invert_border")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [40.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WaterSurface:invert_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vgnnm"]
+resource_name = "water-surface-emerge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSurface:polygon")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-2, -2, 0, -3, 2, -2, 3, 0, 2, 2, 0, 3, -2, 2, -3, 0), PackedVector2Array(3, -43, 28, -34, 38, -22, 42, -9.22104, 43, 2.4589465, 42, 15, 32, 32, 16, 40, -14, 40, -32, 34, -40, 19, -44, -1, -38, -21, -24, -37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WaterSurface:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WaterSurface:invert_enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xnr2r"]
+_data = {
+&"RESET": SubResource("Animation_xnr2r"),
+&"water-surface": SubResource("Animation_sl5vv"),
+&"water-surface-emerge": SubResource("Animation_vgnnm")
 }
 
 [node name="Tile" type="Area2D"]
@@ -894,8 +1108,23 @@ position = Vector2(-3.999969, 4.000015)
 texture = ExtResource("16_7my1c")
 metadata/_edit_group_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="WaterSurface" type="Polygon2D" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-2, -1)
+color = Color(0.4509804, 0.8235294, 1, 0.59607846)
+invert_enabled = true
+invert_border = 40.0
+polygon = PackedVector2Array(0, -2, 2, -1, 2, 2, -2, 2, -3, 0)
+
+[node name="LilypadAnim" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_acevu")
+}
+
+[node name="WaterAnim" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_xnr2r")
 }

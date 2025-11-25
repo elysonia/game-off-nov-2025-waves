@@ -8,6 +8,8 @@ const COLOR = {
 }
 const MODULATE_COLOR = "#000000c7"
 
+var _is_water_anim_playing: bool = false
+var _is_lilypad_anim_playing: bool = false
 var player: Player = null
 
 ## The higher the value, the stronger the knockback
@@ -25,9 +27,10 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	%LilypadAnim.animation_finished.connect(_on_lilypad_anim_finished)
+	%WaterAnim.animation_finished.connect(_on_water_anim_finished)
 
 	%Timer.wait_time = status_duration
-	modulate = COLOR[status]
 
 	# Make sure the collision shape of the instantiated scene is unique
 	# https://forum.godotengine.org/t/collisionshape2d-changes-for-every-instance-with-every-instance/95614/2
@@ -35,11 +38,15 @@ func _ready():
 	%Ripple.initialize(%CollisionShape2D)
 
 	if status == Status.DISABLED and not is_status_fixed:
-		%AnimationPlayer.play("flower-timer-disabled")
+		%LilypadAnim.play("flower-timer-disabled")
+		%WaterAnim.play("water-surface")
+		%LilyFlowerDecor.modulate = COLOR[status]
+		%LilypadSprite.modulate = COLOR[status]
 	else:
-		%AnimationPlayer.play("flower-decor")
+		%LilypadAnim.play("flower-decor")
+		%WaterAnim.play("RESET")
 
-	%AnimationPlayer.seek(randf_range(0.0, %AnimationPlayer.current_animation_length), true)
+	%LilypadAnim.seek(randf_range(0.0, %LilypadAnim.current_animation_length), true)
 
 
 func _process(_delta: float) -> void:
@@ -50,25 +57,43 @@ func _process(_delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
-		status = Status.ENABLED
-		modulate = COLOR[status]
-		%LilyFlowerDecor.modulate = Color("#fdd2aeff")
-		%LilypadSprite.modulate = Color("#fdd2aeff")
+	if not is_instance_of(area, Tile):
+		return
 
+	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
+		%WaterAnim.stop()
+		%WaterAnim.clear_queue()
+		%LilypadAnim.stop()
+		%LilypadAnim.clear_queue()
+
+		var transition_animation: Animation = %WaterAnim.get_animation("water-surface-emerge")
+		if status == Status.DISABLED:
+			var enabled_tween = create_tween().set_parallel()
+			%WaterAnim.play("water-surface-emerge")
+			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color("#fdd2aeff"), transition_animation.length)
+			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color("#fdd2aeff"), transition_animation.length)
+			await enabled_tween.finished
+			enabled_tween.kill()
+
+		status = Status.ENABLED
+		%LilypadAnim.play("flower-timer")
 		%Timer.start(status_duration)
-		%AnimationPlayer.stop()
-		%AnimationPlayer.play("flower-timer")
 
 		%TimeLeft.visible = true
 		await %Timer.timeout
-
 		%TimeLeft.visible = false
-		status = Status.DISABLED
-		modulate = COLOR[status]
 
-		%AnimationPlayer.animation_set_next("flower_timer", "flower-timer-disabled")
-		%AnimationPlayer.play_backwards("flower-timer")
+		%WaterAnim.play_backwards("water-surface-emerge")
+		var timer_tween = create_tween().set_parallel()
+		timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
+		timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
+		await timer_tween.finished
+		timer_tween.kill()
+
+		%LilypadAnim.animation_set_next("flower-timer", "flower-timer-disabled")
+		%LilypadAnim.play_backwards("flower-timer")
+
+		status = Status.DISABLED
 
 		if is_instance_valid(player):
 			player = null
@@ -85,3 +110,13 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if is_instance_of(body, Player):
 		player = null
+
+
+func _on_lilypad_anim_finished() -> void:
+	if len(%LilypadAnim.get_queue()) == 0:
+		_is_lilypad_anim_playing = false
+
+
+func _on_water_anim_finished() -> void:
+	if len(%WaterAnim.get_queue()) == 0:
+		_is_water_anim_playing = false
