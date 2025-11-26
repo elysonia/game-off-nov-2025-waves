@@ -105,10 +105,18 @@ func handle_navigate_to_target() -> void:
 	var next_position: Vector2 = %NavigationAgent2D.get_next_path_position()
 	var new_velocity: Vector2 = global_position.direction_to(next_position) * speed
 	%NavigationAgent2D.velocity = new_velocity
-	# sprite_holder.rotation = velocity.angle()
 
 
 func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
+	Utils.play_sound(Enum.SoundType.SFX, "hurt")
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color("#ff1e21"), 0.1)
+	tween.tween_property(self, "modulate", Color("#ffffff"), 0.1)
+	tween.tween_property(self, "modulate", Color("#ff1e21"), 0.1)
+	tween.tween_property(self, "modulate", Color("#ffffff"), 0.1)
+	await tween.finished
+	tween.kill()
+
 	health -= damage
 
 	if health <= 0:
@@ -125,17 +133,14 @@ func handle_death() -> void:
 
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
-	# velocity = safe_velocity
 	position += safe_velocity * get_physics_process_delta_time()
-	# move_and_slide()
-	# sprite_holder.rotation = velocity.angle()
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if is_instance_of(body, Player) and _mode == Enum.EnemyAction.ATTACKING:
-
 		print("caught by enemy")
 		%AnimationPlayer.play("caught-player")
+		Utils.play_sound(Enum.SoundType.SFX, "caught-player")
 		body.visible = false
 		body.process_mode = Node.PROCESS_MODE_DISABLED
 		process_mode = Node.PROCESS_MODE_ALWAYS
@@ -147,7 +152,7 @@ func _on_body_entered(body: Node2D) -> void:
 		tween.tween_property(self, "position", body.position, 2)
 		await tween.finished
 		tween.kill()
-		process_mode = Node.PROCESS_MODE_INHERIT
+		process_mode = Node.PROCESS_MODE_DISABLED
 		Utils.goto_game_over()
 
 

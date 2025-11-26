@@ -789,10 +789,12 @@ frame = 2
 
 [node name="StalkCollision" type="CollisionPolygon2D" parent="."]
 unique_name_in_owner = true
+visible = false
 polygon = PackedVector2Array(-33, 32, -33, 20, -34, 16, -31, 6, 6, 2, 7, 3, 21, 5, 36, 12, 35, 19, 34, 21, 33, 26, 24, 30, 12, 32)
 
 [node name="AttackCollision" type="CollisionPolygon2D" parent="."]
 unique_name_in_owner = true
+visible = false
 polygon = PackedVector2Array(-5, -23, -29, -18, -33, -9, -32, 30, -3, 29, -4, 14, 26, 14, 38, -12, 21, -20, 8, -22)
 
 [node name="PlayerCaught" type="Sprite2D" parent="."]
