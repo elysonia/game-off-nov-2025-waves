@@ -29,10 +29,13 @@ func handle_switch_status(next_status: Status) -> void:
 	status = next_status
 
 	if next_status == Status.LANDING:
+		Utils.play_sound(Enum.SoundType.SFX, "player-landing")
 		%AnimationPlayer.animation_set_next(STATUS_ANIMATION[next_status], STATUS_ANIMATION[Status.IDLE])
 		status = Status.IDLE
 
 	if next_status == Status.JUMPING:
+		var sound_name = "jump-{number}".format({"number": randi_range(1, 3)})
+		Utils.play_sound(Enum.SoundType.SFX, sound_name)
 		%AnimationPlayer.animation_set_next(STATUS_ANIMATION[next_status], STATUS_ANIMATION[Status.MIDAIR_DOWN])
 
 	%AnimationPlayer.play(STATUS_ANIMATION[next_status])
