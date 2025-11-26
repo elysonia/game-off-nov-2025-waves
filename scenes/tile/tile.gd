@@ -27,8 +27,6 @@ func _ready():
 	area_entered.connect(_on_area_entered)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	%LilypadAnim.animation_finished.connect(_on_lilypad_anim_finished)
-	%WaterAnim.animation_finished.connect(_on_water_anim_finished)
 
 	%Timer.wait_time = status_duration
 
@@ -39,7 +37,7 @@ func _ready():
 
 	if status == Status.DISABLED and not is_status_fixed:
 		%LilypadAnim.play("flower-timer-disabled")
-		%WaterAnim.play("water-surface")
+		%WaterAnim.play("water-surface-still")
 		%LilyFlowerDecor.modulate = COLOR[status]
 		%LilypadSprite.modulate = COLOR[status]
 	else:
@@ -68,32 +66,35 @@ func _on_area_entered(area: Area2D) -> void:
 		if status == Status.DISABLED:
 			%WaterAnim.stop()
 			%WaterAnim.clear_queue()
+			status = Status.ENABLED
 			var enabled_tween = create_tween().set_parallel()
 			%WaterAnim.play("water-surface-emerge")
 			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color("#fdd2aeff"), transition_animation.length)
 			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color("#fdd2aeff"), transition_animation.length)
+			Utils.play_sound(Enum.SoundType.SFX, "lilypad-emerge")
 			await enabled_tween.finished
 			enabled_tween.kill()
 
+		%WaterAnim.play("RESET")
 		status = Status.ENABLED
 		%LilypadAnim.play("flower-timer")
 		%Timer.start(status_duration)
 
-		%TimeLeft.visible = true
 		await %Timer.timeout
-		%TimeLeft.visible = false
 
-		%WaterAnim.play_backwards("water-surface-emerge")
+		%WaterAnim.animation_set_next("water-surface-emerge", "water-surface-still")
+		%WaterAnim.play("water-surface-emerge", 1.0, true)
 		var timer_tween = create_tween().set_parallel()
 		timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
 		timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
+		Utils.play_sound(Enum.SoundType.SFX, "lilypad-submerge")
+
 		await timer_tween.finished
-		timer_tween.kill()
-
-		%LilypadAnim.animation_set_next("flower-timer", "flower-timer-disabled")
-		%LilypadAnim.play_backwards("flower-timer")
-
 		status = Status.DISABLED
+		timer_tween.kill()
+		%LilypadAnim.animation_set_next("flower-timer", "flower-timer-disabled")
+		%LilypadAnim.play("flower-timer", 1.0, true)
+
 
 		if is_instance_valid(player):
 			player = null
@@ -110,13 +111,3 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if is_instance_of(body, Player):
 		player = null
-
-
-func _on_lilypad_anim_finished() -> void:
-	if len(%LilypadAnim.get_queue()) == 0:
-		_is_lilypad_anim_playing = false
-
-
-func _on_water_anim_finished() -> void:
-	if len(%WaterAnim.get_queue()) == 0:
-		_is_water_anim_playing = false

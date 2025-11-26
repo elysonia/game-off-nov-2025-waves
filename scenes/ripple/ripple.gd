@@ -28,6 +28,7 @@ func handle_ripple(strength: float = 0.0) -> void:
 	current_ripple = 1.0
 	is_rippling = true
 	visible = true
+	Utils.play_sound(Enum.SoundType.SFX, "ripples")
 
 
 func _draw():
