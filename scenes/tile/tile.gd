@@ -61,13 +61,13 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 
 	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
-		%WaterAnim.stop()
-		%WaterAnim.clear_queue()
 		%LilypadAnim.stop()
 		%LilypadAnim.clear_queue()
 
 		var transition_animation: Animation = %WaterAnim.get_animation("water-surface-emerge")
 		if status == Status.DISABLED:
+			%WaterAnim.stop()
+			%WaterAnim.clear_queue()
 			var enabled_tween = create_tween().set_parallel()
 			%WaterAnim.play("water-surface-emerge")
 			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color("#fdd2aeff"), transition_animation.length)
