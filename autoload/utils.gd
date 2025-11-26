@@ -4,6 +4,7 @@ extends Node
 
 
 func goto_game_over() -> void:
+    play_sound(Enum.SoundType.BGS, "game-over")
     get_tree().paused = true
     var game_over_screen_instance = _game_over_screen.instantiate()
     get_tree().root.add_child(game_over_screen_instance)
