@@ -11,7 +11,7 @@ func _ready():
 	%Player.player_landed.connect(_on_player_landed)
 	%WaveTimer.timeout.connect(_on_wave_timer_timeout)
 	GlobalSignal.enemies_left_updated.connect(_on_enemies_left_updated)
-
+	Utils.play_sound(Enum.SoundType.BGM, "bgm-1")
 	set_physics_process(false)
 	initialize()
 	call_deferred("_post_ready")
@@ -65,7 +65,14 @@ func _on_player_landed(player: Player) -> void:
 
 	if is_game_ended:
 		print("missed the landing")
-		# Play player drowning animation
+		# TODO: Play player drowning animation
+		var tween = player.create_tween()
+		tween.tween_property(player, "modulate", Color("#ff1e21"), 0.1)
+		tween.tween_property(player, "modulate", Color("#ffffff"), 0.1)
+		tween.tween_property(player, "modulate", Color("#ff1e21"), 0.1)
+		tween.tween_property(player, "modulate", Color("#ffffff"), 0.1)
+		await tween.finished
+		tween.kill()
 		Utils.goto_game_over()
 
 	get_tree().call_group("enemies", "handle_switch_target_position", player.position)
