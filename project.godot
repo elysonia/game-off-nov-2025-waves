@@ -35,6 +35,7 @@ GlobalSignal="*res://autoload/signal.gd"
 Utils="*res://autoload/utils.gd"
 Enum="*res://autoload/enum.gd"
 LevelManager="*res://autoload/level_manager.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 
 [display]
 
@@ -45,7 +46,7 @@ window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
 
 [input]
 
