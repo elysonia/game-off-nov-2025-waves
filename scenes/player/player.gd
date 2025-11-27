@@ -55,7 +55,7 @@ func handle_jump(to: Vector2) -> void:
 
 
 func _draw():
-	if Input.is_action_pressed("lmb"):
+	if status == Status.READY:
 		var line_mouse_position = get_local_mouse_position()
 		var next_jump_strength = Vector2.ZERO.distance_to(line_mouse_position) / State.GRID_SIZE
 		jump_strength = next_jump_strength if next_jump_strength <= max_jump_strength else max_jump_strength
@@ -63,20 +63,21 @@ func _draw():
 		draw_dashed_line(Vector2.ZERO, line_end_position, Color(0,0,0, 1), 5)
 		_next_position = to_global(line_end_position)
 
-	if Input.is_action_just_released("lmb"):
+	if Input.is_action_just_pressed("rmb"):
 		draw_dashed_line(Vector2.ZERO, Vector2.ZERO, Color(1, 1, 1, 0))
 
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("lmb"):
+	if status == Status.READY:
+		queue_redraw()
+
+	if Input.is_action_just_pressed("lmb"):
 		if status == Status.IDLE:
 			handle_switch_status(Status.READY)
-		if status == Status.READY:
-			queue_redraw()
+		elif status == Status.READY:
+			if _next_position != Vector2.ZERO:
+				handle_jump(_next_position)
 
-	if Input.is_action_just_released("lmb"):
+	if Input.is_action_just_pressed("rmb"):
+		handle_switch_status(Status.IDLE)
 		queue_redraw()
-		if _next_position != Vector2.ZERO:
-			handle_jump(_next_position)
-		else:
-			handle_switch_status(Status.IDLE)
