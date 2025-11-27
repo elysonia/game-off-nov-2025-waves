@@ -10,6 +10,7 @@ func _plugging():
 
 	# GitHub
 	plug("don-tnowe/godot-resources-as-sheets-plugin/tree/Godot-4")
+	plug("glass-brick/Scene-Manager")
 
 	# GitLab
 	plug("https://gitlab.com/Xecestel/sound-manager")

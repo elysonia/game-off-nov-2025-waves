@@ -36,6 +36,7 @@ Utils="*res://autoload/utils.gd"
 Enum="*res://autoload/enum.gd"
 LevelManager="*res://autoload/level_manager.gd"
 SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 
 [display]
 
@@ -46,7 +47,12 @@ window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://d3dsr3iudi3gj"
+theme/custom_font="uid://cne0ch42p1qx6"
 
 [input]
 
