@@ -23,6 +23,14 @@ func goto_next_wave() -> void:
     pass
 
 
+func restart_level() -> void:
+    pass
+
+
+func goto_main_menu() -> void:
+    pass
+
+
 func play_sound(type: Enum.SoundType, sound_name: String) -> void:
     if SoundManager.is_playing(sound_name):
         SoundManager.stop(sound_name)

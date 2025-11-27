@@ -1,21 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvex0uxatt47j"]
+[gd_scene load_steps=18 format=3 uid="uid://bvex0uxatt47j"]
 
 [ext_resource type="Script" uid="uid://cpxyv0tgobvso" path="res://scenes/tile/tile.gd" id="1_dvver"]
 [ext_resource type="PackedScene" uid="uid://dhfxm7ed04mqb" path="res://scenes/ripple/ripple.tscn" id="1_vb0sl"]
 [ext_resource type="Texture2D" uid="uid://bx0bw0hirykuu" path="res://assets/lilypad2.png" id="3_b2xwj"]
-[ext_resource type="Texture2D" uid="uid://ex4i7dlcafa4" path="res://assets/lilyflower_merged/7.png" id="4_acevu"]
-[ext_resource type="Texture2D" uid="uid://mey5pjifw5o6" path="res://assets/lilyflower_merged/8.png" id="5_wswbm"]
-[ext_resource type="Texture2D" uid="uid://bnurady4eg8e5" path="res://assets/lilyflower_merged/9.png" id="6_8d4sr"]
-[ext_resource type="Texture2D" uid="uid://cwygi2olyjplf" path="res://assets/lilyflower_merged/10.png" id="7_tiu3h"]
-[ext_resource type="Texture2D" uid="uid://bm11ojj3yn6ea" path="res://assets/lilyflower_merged/11.png" id="8_vgnnm"]
-[ext_resource type="Texture2D" uid="uid://dwjlw6f1ro2u0" path="res://assets/lilyflower_merged/12.png" id="9_xnr2r"]
-[ext_resource type="Texture2D" uid="uid://bg7sy5bk732v1" path="res://assets/lilyflower_merged/1.png" id="10_sl5vv"]
-[ext_resource type="Texture2D" uid="uid://blvkm4w70q0fj" path="res://assets/lilyflower_merged/2.png" id="11_k23g1"]
-[ext_resource type="Texture2D" uid="uid://dhr16fj2ko1jf" path="res://assets/lilyflower_merged/3.png" id="12_8yx80"]
-[ext_resource type="Texture2D" uid="uid://1ckgstiegbov" path="res://assets/lilyflower_merged/4.png" id="13_n5cp0"]
-[ext_resource type="Texture2D" uid="uid://rrk7k5ayvpv4" path="res://assets/lilyflower_merged/5.png" id="14_5nqdt"]
-[ext_resource type="Texture2D" uid="uid://46xqilysfneh" path="res://assets/lilyflower_merged/6.png" id="15_88par"]
-[ext_resource type="Texture2D" uid="uid://bn7loyoishjwv" path="res://assets/lilyflower_merged/flower_center.png" id="16_7my1c"]
+[ext_resource type="PackedScene" uid="uid://c3p1hirdbrrp3" path="res://scenes/tile/lily_flower_decor.tscn" id="4_2jaqc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvver"]
 radius = 40.0
@@ -1087,77 +1075,9 @@ texture_filter = 2
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_b2xwj")
 
-[node name="LilyFlowerDecor" type="Node2D" parent="."]
+[node name="LilyFlowerDecor" parent="." instance=ExtResource("4_2jaqc")]
 unique_name_in_owner = true
-texture_filter = 2
 position = Vector2(51, 22)
-rotation = 1.6551743
-scale = Vector2(0.3, 0.3)
-
-[node name="P7" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(17, -24.5)
-texture = ExtResource("4_acevu")
-metadata/_edit_group_ = true
-
-[node name="P8" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(30, 1.5)
-texture = ExtResource("5_wswbm")
-metadata/_edit_group_ = true
-
-[node name="P9" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(11, 28.5)
-texture = ExtResource("6_8d4sr")
-metadata/_edit_group_ = true
-
-[node name="P10" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-17, 25.5)
-texture = ExtResource("7_tiu3h")
-metadata/_edit_group_ = true
-
-[node name="P11" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-32, 2.5)
-texture = ExtResource("8_vgnnm")
-metadata/_edit_group_ = true
-
-[node name="P12" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-15, -22.5)
-texture = ExtResource("9_xnr2r")
-metadata/_edit_group_ = true
-
-[node name="P1" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(30, -10.5)
-texture = ExtResource("10_sl5vv")
-metadata/_edit_group_ = true
-
-[node name="P2" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(22, 20.5)
-texture = ExtResource("11_k23g1")
-metadata/_edit_group_ = true
-
-[node name="P3" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-4, 30.5)
-texture = ExtResource("12_8yx80")
-metadata/_edit_group_ = true
-
-[node name="P4" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-29, 14.5)
-texture = ExtResource("13_n5cp0")
-metadata/_edit_group_ = true
-
-[node name="P5" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-31, -16.5)
-texture = ExtResource("14_5nqdt")
-metadata/_edit_group_ = true
-
-[node name="P6" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(3.0517578e-05, -27.999985)
-texture = ExtResource("15_88par")
-metadata/_edit_group_ = true
-
-[node name="Center" type="Sprite2D" parent="LilyFlowerDecor"]
-position = Vector2(-3.999969, 4.000015)
-texture = ExtResource("16_7my1c")
-metadata/_edit_group_ = true
 
 [node name="WaterSurface" type="Polygon2D" parent="."]
 unique_name_in_owner = true

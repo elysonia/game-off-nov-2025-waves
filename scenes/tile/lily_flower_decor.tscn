@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3p1hirdbrrp3"]
+
+[ext_resource type="Texture2D" uid="uid://ex4i7dlcafa4" path="res://assets/lilyflower_merged/7.png" id="1_0t2mx"]
+[ext_resource type="Texture2D" uid="uid://mey5pjifw5o6" path="res://assets/lilyflower_merged/8.png" id="2_ndijh"]
+[ext_resource type="Texture2D" uid="uid://bnurady4eg8e5" path="res://assets/lilyflower_merged/9.png" id="3_eyc77"]
+[ext_resource type="Texture2D" uid="uid://cwygi2olyjplf" path="res://assets/lilyflower_merged/10.png" id="4_w68vx"]
+[ext_resource type="Texture2D" uid="uid://bm11ojj3yn6ea" path="res://assets/lilyflower_merged/11.png" id="5_655ac"]
+[ext_resource type="Texture2D" uid="uid://dwjlw6f1ro2u0" path="res://assets/lilyflower_merged/12.png" id="6_7juuq"]
+[ext_resource type="Texture2D" uid="uid://bg7sy5bk732v1" path="res://assets/lilyflower_merged/1.png" id="7_fp8k1"]
+[ext_resource type="Texture2D" uid="uid://blvkm4w70q0fj" path="res://assets/lilyflower_merged/2.png" id="8_1y4l0"]
+[ext_resource type="Texture2D" uid="uid://dhr16fj2ko1jf" path="res://assets/lilyflower_merged/3.png" id="9_snyoq"]
+[ext_resource type="Texture2D" uid="uid://1ckgstiegbov" path="res://assets/lilyflower_merged/4.png" id="10_1jvwy"]
+[ext_resource type="Texture2D" uid="uid://rrk7k5ayvpv4" path="res://assets/lilyflower_merged/5.png" id="11_vfbup"]
+[ext_resource type="Texture2D" uid="uid://46xqilysfneh" path="res://assets/lilyflower_merged/6.png" id="12_7b5o1"]
+[ext_resource type="Texture2D" uid="uid://bn7loyoishjwv" path="res://assets/lilyflower_merged/flower_center.png" id="13_odcuq"]
+
+[node name="LilyFlowerDecor" type="Node2D"]
+texture_filter = 2
+rotation = 1.6551743
+scale = Vector2(0.3, 0.3)
+
+[node name="P7" type="Sprite2D" parent="."]
+position = Vector2(17, -24.5)
+texture = ExtResource("1_0t2mx")
+metadata/_edit_group_ = true
+
+[node name="P8" type="Sprite2D" parent="."]
+position = Vector2(30, 1.5)
+texture = ExtResource("2_ndijh")
+metadata/_edit_group_ = true
+
+[node name="P9" type="Sprite2D" parent="."]
+position = Vector2(11, 28.5)
+texture = ExtResource("3_eyc77")
+metadata/_edit_group_ = true
+
+[node name="P10" type="Sprite2D" parent="."]
+position = Vector2(-17, 25.5)
+texture = ExtResource("4_w68vx")
+metadata/_edit_group_ = true
+
+[node name="P11" type="Sprite2D" parent="."]
+position = Vector2(-32, 2.5)
+texture = ExtResource("5_655ac")
+metadata/_edit_group_ = true
+
+[node name="P12" type="Sprite2D" parent="."]
+position = Vector2(-15, -22.5)
+texture = ExtResource("6_7juuq")
+metadata/_edit_group_ = true
+
+[node name="P1" type="Sprite2D" parent="."]
+position = Vector2(30, -10.5)
+texture = ExtResource("7_fp8k1")
+metadata/_edit_group_ = true
+
+[node name="P2" type="Sprite2D" parent="."]
+position = Vector2(22, 20.5)
+texture = ExtResource("8_1y4l0")
+metadata/_edit_group_ = true
+
+[node name="P3" type="Sprite2D" parent="."]
+position = Vector2(-4, 30.5)
+texture = ExtResource("9_snyoq")
+metadata/_edit_group_ = true
+
+[node name="P4" type="Sprite2D" parent="."]
+position = Vector2(-29, 14.5)
+texture = ExtResource("10_1jvwy")
+metadata/_edit_group_ = true
+
+[node name="P5" type="Sprite2D" parent="."]
+position = Vector2(-31, -16.5)
+texture = ExtResource("11_vfbup")
+metadata/_edit_group_ = true
+
+[node name="P6" type="Sprite2D" parent="."]
+position = Vector2(3.0517578e-05, -27.999985)
+texture = ExtResource("12_7b5o1")
+metadata/_edit_group_ = true
+
+[node name="Center" type="Sprite2D" parent="."]
+position = Vector2(-3.999969, 4.000015)
+texture = ExtResource("13_odcuq")
+metadata/_edit_group_ = true
