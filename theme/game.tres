@@ -1,12 +1,17 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://d3dsr3iudi3gj"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d3dsr3iudi3gj"]
 
 [ext_resource type="FontFile" uid="uid://dqaa3o0r84tm0" path="res://theme/fonts/Chango/Chango-Regular.ttf" id="1_fbi62"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fbi62"]
 load_path = "res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.ctex"
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4ucg"]
+texture = SubResource("CompressedTexture2D_fbi62")
+modulate_color = Color(0.34509805, 0.34509805, 0.34509805, 1)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffs2y"]
 texture = SubResource("CompressedTexture2D_fbi62")
+modulate_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1gxn"]
 load_path = "res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.ctex"
@@ -23,12 +28,14 @@ modulate_color = Color(0.24115604, 0.24115604, 0.24115604, 1)
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/icon_pressed_color = Color(0.8089983, 0.8089983, 0.8089982, 1)
 Button/font_sizes/font_size = 19
 Button/fonts/font = ExtResource("1_fbi62")
-Button/styles/focus = SubResource("StyleBoxTexture_ffs2y")
+Button/styles/disabled = SubResource("StyleBoxTexture_w4ucg")
+Button/styles/focus = SubResource("StyleBoxTexture_w4ucg")
 Button/styles/hover = SubResource("StyleBoxTexture_ffs2y")
 Button/styles/normal = SubResource("StyleBoxTexture_fbi62")
 Button/styles/pressed = SubResource("StyleBoxTexture_543po")
