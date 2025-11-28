@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxrn8fa5m08pk"]
 
-[ext_resource type="Script" uid="uid://dwpwa0ncf34sb" path="res://scenes/game_over_screen/level_end.gd" id="1_l2cnm"]
+[ext_resource type="Script" uid="uid://dwpwa0ncf34sb" path="res://scenes/level_end/level_end.gd" id="1_l2cnm"]
 
 [node name="LevelEnd" type="Control"]
 layout_mode = 3
@@ -20,13 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
+color = Color(0.2, 0.2, 0.2, 0.7921569)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ColorRect"]
 layout_mode = 1
@@ -68,16 +65,19 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 
 [node name="MainMenu" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Main Menu"
 
 [node name="Restart" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Restart"
 
 [node name="NextLevel" type="Button" parent="MarginContainer/ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Next Level"

@@ -5,3 +5,6 @@ extends Node
 enum EnemyAction {STALKING, ATTACKING}
 
 enum SoundType {BGM, BGS, SFX, MFX}
+
+enum Result {LOSE, WIN}
+enum Condition {ALIVE, CAPTURED, DROWNED, COLLAPSED_TILE}

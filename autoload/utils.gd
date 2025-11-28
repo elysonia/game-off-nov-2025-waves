@@ -1,22 +1,25 @@
 extends Node
 
-@onready var _game_over_screen = preload("res://scenes/game_over_screen/game_over_screen.tscn")
+@onready var _level_end = preload("res://scenes/level_end/level_end.tscn")
 
 
-func goto_game_over() -> void:
-    play_sound(Enum.SoundType.BGS, "game-over")
+func goto_game_over(condition: Enum.Condition) -> void:
     get_tree().paused = true
-    var game_over_screen_instance = _game_over_screen.instantiate()
-    get_tree().root.add_child(game_over_screen_instance)
+    play_sound(Enum.SoundType.BGS, "game-over")
+    var level_end_instance = _level_end.instantiate()
+    level_end_instance.initialize(Enum.Result.LOSE, condition)
+
+    get_tree().root.add_child(level_end_instance)
 
 
 func goto_game_won() -> void:
     get_tree().paused = true
+    play_sound(Enum.SoundType.BGS, "win")
+    var level_end_instance = _level_end.instantiate()
+    level_end_instance.initialize(Enum.Result.WIN)
 
-    # TODO: Replace with real screen
-    var label = Label.new()
-    label.text = "You win!"
-    get_tree().root.add_child(label)
+    get_tree().root.add_child(level_end_instance)
+
 
 
 func goto_next_wave() -> void:
