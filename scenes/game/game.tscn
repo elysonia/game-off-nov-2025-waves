@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ouwkh8ty1wng"]
+[gd_scene load_steps=6 format=3 uid="uid://ouwkh8ty1wng"]
 
 [ext_resource type="Script" uid="uid://duocxikip7u2b" path="res://scenes/game/game.gd" id="1_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="1_sul5r"]
@@ -13,9 +13,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-135, -128, 1409, -128,
 vertices = PackedVector2Array(1270, 710, 10, 710, 10, 10, 1270, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 720, 1280, 720, 1280, 0)])
-
-[sub_resource type="LabelSettings" id="LabelSettings_0sr1o"]
-font_size = 24
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -104,12 +101,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 position = Vector2(648, 328)
 
-[node name="EnemiesLeft" type="Label" parent="SubViewportContainer/GameArea"]
-unique_name_in_owner = true
-offset_top = 40.0
-offset_right = 40.0
-offset_bottom = 63.0
-label_settings = SubResource("LabelSettings_0sr1o")
-
 [node name="WaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="ItemTimer" type="Timer" parent="."]
 unique_name_in_owner = true

@@ -765,6 +765,8 @@ metadata/_edit_vertical_guides_ = [-32.0, 32.0]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+path_desired_distance = 10.0
+path_max_distance = 20.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_enabled = true

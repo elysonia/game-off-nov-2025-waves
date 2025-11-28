@@ -126,7 +126,7 @@ func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
 
 
 func handle_death() -> void:
-	State.enemy_left -= 1
+	State.enemies_left -= 1
 	GlobalSignal.enemies_left_updated.emit()
 	# Play death anim here and wait
 	queue_free()
@@ -153,7 +153,7 @@ func _on_body_entered(body: Node2D) -> void:
 		await tween.finished
 		tween.kill()
 		process_mode = Node.PROCESS_MODE_DISABLED
-		Utils.goto_game_over()
+		Utils.goto_game_over(Enum.Condition.CAPTURED)
 
 
 func _on_area_entered(area: Area2D) -> void:

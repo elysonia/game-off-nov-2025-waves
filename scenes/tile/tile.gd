@@ -8,8 +8,7 @@ const COLOR = {
 }
 const MODULATE_COLOR = "#000000c7"
 
-var _is_water_anim_playing: bool = false
-var _is_lilypad_anim_playing: bool = false
+var tile_item: ItemSprite = null
 var player: Player = null
 
 ## The higher the value, the stronger the knockback
@@ -21,6 +20,8 @@ var player: Player = null
 @export var status_duration: float = 12.0
 ## True if the status is fixed, false if modifiable by interaction
 @export var is_status_fixed: bool = true
+
+@onready var _item_sprite = preload("res://scenes/item/item.tscn")
 
 
 func _ready():
@@ -52,6 +53,14 @@ func _process(_delta: float) -> void:
 
 	if time_left > 0:
 		%TimeLeft.text = str(time_left)
+
+
+func handle_load_item(item: Item) -> void:
+	var item_sprite_instance = _item_sprite.instantiate()
+	item_sprite_instance.initialize(item)
+	add_child(item_sprite_instance)
+	item_sprite_instance.position = position + Vector2(0, -10)
+	tile_item = item_sprite_instance
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -100,7 +109,7 @@ func _on_area_entered(area: Area2D) -> void:
 			player = null
 			print("Fell on unstable ground")
 			# Play player drowning animation
-			Utils.goto_game_over()
+			Utils.goto_game_over(Enum.Condition.COLLAPSED_TILE)
 
 
 func _on_body_entered(body: Node2D) -> void:
