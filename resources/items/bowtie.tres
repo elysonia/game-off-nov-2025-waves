@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c81kwtk4ubu6h"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_kvmkr"]
+
+[resource]
+script = ExtResource("1_kvmkr")
+name = "Bowtie"
+texture = "uid://cevqbvmei442x"
+description = "Completes the look"
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"
