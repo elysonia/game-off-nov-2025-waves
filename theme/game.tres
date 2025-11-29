@@ -7,11 +7,11 @@ load_path = "res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.c
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4ucg"]
 texture = SubResource("CompressedTexture2D_fbi62")
-modulate_color = Color(0.34509805, 0.34509805, 0.34509805, 1)
+modulate_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ffs2y"]
 texture = SubResource("CompressedTexture2D_fbi62")
-modulate_color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+modulate_color = Color(0.75398374, 0.7539839, 0.75398386, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1gxn"]
 load_path = "res://.godot/imported/button.png-473760ec7449fb30c95f607492aecb17.ctex"
