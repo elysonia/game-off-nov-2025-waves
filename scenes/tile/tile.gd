@@ -49,6 +49,9 @@ func _ready():
 
 
 func _process(_delta: float) -> void:
+	if State.is_level_end:
+		process_mode = Node.PROCESS_MODE_DISABLED
+
 	var time_left: int = roundi(%Timer.time_left)
 
 	if time_left > 0:

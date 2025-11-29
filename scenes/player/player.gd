@@ -68,6 +68,10 @@ func _draw():
 
 
 func _process(_delta: float) -> void:
+	if State.is_level_end:
+		process_mode = Node.PROCESS_MODE_DISABLED
+
+
 	if status == Status.READY:
 		queue_redraw()
 
