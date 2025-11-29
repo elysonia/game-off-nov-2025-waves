@@ -1,18 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ouwkh8ty1wng"]
+[gd_scene load_steps=2 format=3 uid="uid://ouwkh8ty1wng"]
 
 [ext_resource type="Script" uid="uid://duocxikip7u2b" path="res://scenes/game/game.gd" id="1_0sr1o"]
-[ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="1_sul5r"]
-[ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="2_7h61r"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
-vertices = PackedVector2Array(332.27344, 222.17969, 340.35156, 192, 729.8203, 180.27344, 760, 188.35156, 648, 267.64844, 617.8203, 275.72656, 604.35156, 608, 675.72656, 598.1797, 697.8203, 620.27344, 596.27344, 638.1797, 1399, -118, 1399, 822.0469, 1060.3516, 280, 1052.2734, 249.82031, 540.35156, 376, 595.72656, 358.1797, 617.8203, 380.27344, 532.27344, 406.1797, 708.35156, 328, 947.72656, 310.1797, 969.8203, 332.27344, 700.27344, 358.1797, 697.8203, 515.72656, 675.72656, 537.8203, 292.35156, 512, 284.27344, 481.8203, 788.35156, 568, 1011.72656, 542.1797, 1033.8203, 564.27344, 780.27344, 598.1797, 707.72656, 158.17969, 1052.2734, 310.1797, 1116.2734, 542.1797, 1124.3516, 512, 1030.1797, 332.27344, 790.1797, 180.27344, 939.64844, 280, 700.27344, 297.8203, 699.64844, 128, 332.27344, 161.82031, 1003.64844, 512, 780.27344, 537.8203, 820.35156, 128, 812.27344, 97.82031, 1030.1797, 227.72656, 1000, 219.64844, 667.64844, 568, 596.27344, 577.8203, 532.27344, 345.8203, 587.64844, 328, 969.8203, 227.72656, 812.27344, 158.17969, 947.72656, 249.82031, 1094.1797, 564.27344, 678.1797, 275.72656, 284.27344, 542.1797, 707.72656, 97.82031, 310.1797, 139.72656, 1011.72656, 481.8203, 758.1797, 515.72656, 1000, 340.35156, 1116.2734, 481.8203, 574.1797, 555.72656, 790.1797, 75.72656, 510.1797, 323.72656, 595.72656, 297.8203, 480, 315.64844, 449.8203, 323.72656, 427.72656, 345.8203, 310.1797, 244.27344, 419.64844, 376, 280, 252.35156, 1064, 572.35156, -125, 829.9375, 544, 668.35156, 728, 628.35156, 262.1797, 564.27344, 544, 547.64844, 480, 436.35156, 262.1797, 459.72656, 449.8203, 428.27344, 1033.8203, 459.72656, 728, 507.64844, 678.1797, 380.27344, 1064, 451.64844, -125, -118, 729.8203, 75.72656, 280, 131.64844, 758.1797, 620.27344, 574.1797, 660.27344, 427.72656, 406.1797, 232, 451.64844, 760, 67.64844, 249.82031, 139.72656, 227.72656, 161.82031, 219.64844, 192, 227.72656, 222.17969, 249.82031, 244.27344, 179.72656, 481.8203, 510.1797, 428.27344, 648, 388.35156, 1094.1797, 459.72656, 201.82031, 459.72656, 513.8203, 555.72656, 491.72656, 577.8203, 483.64844, 608, 491.72656, 638.1797, 232, 572.35156, 513.8203, 660.27344, 171.64844, 512, 179.72656, 542.1797, 201.82031, 564.27344)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17), PackedInt32Array(18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 2, 1), PackedInt32Array(31, 12, 11), PackedInt32Array(32, 33, 11), PackedInt32Array(34, 31, 11), PackedInt32Array(35, 36, 19, 18, 37, 3), PackedInt32Array(38, 30, 1, 39), PackedInt32Array(40, 27, 26, 41), PackedInt32Array(42, 43, 10, 44, 45), PackedInt32Array(46, 7, 6, 47), PackedInt32Array(15, 14, 48, 49), PackedInt32Array(10, 13, 44), PackedInt32Array(42, 45, 50, 51), PackedInt32Array(51, 50, 52, 35), PackedInt32Array(53, 32, 11), PackedInt32Array(35, 52, 36), PackedInt32Array(3, 37, 54), PackedInt32Array(55, 24, 23), PackedInt32Array(56, 38, 39, 57), PackedInt32Array(58, 40, 41, 59), PackedInt32Array(60, 34, 11, 61), PackedInt32Array(23, 46, 47, 62), PackedInt32Array(10, 43, 63), PackedInt32Array(49, 48, 64, 65), PackedInt32Array(3, 54, 4), PackedInt32Array(0, 5, 65, 64, 66), PackedInt32Array(0, 66, 67), PackedInt32Array(0, 67, 68, 69), PackedInt32Array(69, 68, 70, 71), PackedInt32Array(72, 53, 11), PackedInt32Array(28, 72, 11, 73, 74, 75), PackedInt32Array(76, 55, 23, 77), PackedInt32Array(78, 22, 25, 79, 80), PackedInt32Array(81, 59, 82, 83, 21, 20, 60, 84), PackedInt32Array(85, 86, 56, 57, 87), PackedInt32Array(81, 58, 59), PackedInt32Array(88, 29, 28), PackedInt32Array(89, 9, 8, 75), PackedInt32Array(71, 70, 90, 79, 91), PackedInt32Array(10, 63, 92), PackedInt32Array(85, 10, 92, 86), PackedInt32Array(85, 87, 93), PackedInt32Array(85, 93, 94), PackedInt32Array(73, 85, 94, 95), PackedInt32Array(73, 95, 96), PackedInt32Array(73, 96, 97), PackedInt32Array(73, 97, 71, 98), PackedInt32Array(99, 17, 16, 100, 22), PackedInt32Array(11, 33, 61), PackedInt32Array(60, 61, 101), PackedInt32Array(60, 101, 84), PackedInt32Array(83, 82, 22, 100), PackedInt32Array(78, 99, 22), PackedInt32Array(90, 80, 79), PackedInt32Array(71, 91, 102), PackedInt32Array(23, 62, 77), PackedInt32Array(76, 77, 103), PackedInt32Array(76, 103, 104), PackedInt32Array(76, 104, 105), PackedInt32Array(76, 105, 106, 107), PackedInt32Array(107, 106, 108, 73), PackedInt32Array(71, 102, 98), PackedInt32Array(73, 98, 109), PackedInt32Array(73, 109, 110), PackedInt32Array(73, 110, 111), PackedInt32Array(73, 111, 107), PackedInt32Array(73, 108, 74), PackedInt32Array(75, 88, 28), PackedInt32Array(75, 74, 89)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-135, -128, 1409, -128, 1409, 832, -135, 840)])
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_0sr1o"]
-vertices = PackedVector2Array(1270, 710, 10, 710, 10, 10, 1270, 10)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 0, 720, 1280, 720, 1280, 0)])
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -42,67 +30,9 @@ handle_input_locally = false
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/GameArea"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.4509804, 0.8235294, 1, 1)
-
-[node name="StalkNavRegion" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
-navigation_polygon = SubResource("NavigationPolygon_kelw5")
-
-[node name="Tiles" type="Node" parent="SubViewportContainer/GameArea/StalkNavRegion"]
+[node name="NotificationContainer" type="VBoxContainer" parent="SubViewportContainer/GameArea"]
 unique_name_in_owner = true
-
-[node name="Tile" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(648, 328)
-
-[node name="Tile2" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(760, 128)
-status = 1
-is_status_fixed = false
-
-[node name="Tile8" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(544, 608)
-status = 1
-is_status_fixed = false
-
-[node name="Tile9" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(1064, 512)
-status = 1
-is_status_fixed = false
-
-[node name="Tile4" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(480, 376)
-
-[node name="Tile3" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(728, 568)
-
-[node name="Tile5" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(280, 192)
-
-[node name="Tile6" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(1000, 280)
-
-[node name="Tile7" parent="SubViewportContainer/GameArea/StalkNavRegion/Tiles" instance=ExtResource("1_sul5r")]
-position = Vector2(232, 512)
-
-[node name="AttackNavRegion" type="NavigationRegion2D" parent="SubViewportContainer/GameArea"]
-position = Vector2(1, 0)
-navigation_polygon = SubResource("NavigationPolygon_0sr1o")
-navigation_layers = 2
-
-[node name="Enemies" type="Node" parent="SubViewportContainer/GameArea"]
-unique_name_in_owner = true
-
-[node name="Player" parent="SubViewportContainer/GameArea" instance=ExtResource("2_7h61r")]
-unique_name_in_owner = true
-position = Vector2(648, 328)
-
-[node name="WaveTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-
-[node name="ItemTimer" type="Timer" parent="."]
-unique_name_in_owner = true
+offset_left = 361.0
+offset_top = 8.0
+offset_right = 953.0
+offset_bottom = 144.0
