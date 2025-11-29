@@ -26,6 +26,12 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	handle_switch_mode(_mode)
 	%NavigationAgent2D.velocity_computed.connect(_on_velocity_computed)
+	%AnimationPlayer.play("spawning")
+
+
+func _process(_delta: float) -> void:
+	if State.is_level_end:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func _physics_process(_delta: float) -> void:
