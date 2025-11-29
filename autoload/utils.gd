@@ -37,7 +37,6 @@ func goto_level(level: int) -> void:
     State.total_items = 0
     State.total_item_collected = 0
     State.items_spawned = 0
-    State.is_level_end = false
 
     reset_overlays()
     SceneManager.change_scene(State.GAME_SCENE_PATH)
