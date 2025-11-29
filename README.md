@@ -9,7 +9,7 @@ Joined the game jam midway
 
 ## Godot Plugins
 * [**Edit resources as sheets** by don-tnowe]("don-tnowe/godot-resources-as-sheets-plugin/tree/Godot-4")
-* [**Scene Manager** by glass-brick]("https://github/glass-brick/Scene-Manager")
+* [**Scene Manager** by glassbrick]("https://github/glass-brick/Scene-Manager")
 * [**Sound Manager** by Xecestel]("https://gitlab.com/Xecestel/sound-manager")
 
 ## Tools
