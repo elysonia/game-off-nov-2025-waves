@@ -65,6 +65,7 @@ func initialize() -> void:
 
 	_spawn_positions.assign(wave.get_spawn_positions(50))
 
+	State.enemy_wave_cycle = 1
 	handle_load_wave(wave)
 	call_deferred("handle_load_item")
 	get_tree().call_group("enemies", "handle_switch_target_position", %Player.position)
@@ -83,6 +84,11 @@ func handle_load_wave(wave: Wave) -> void:
 
 	%WaveTimer.start(wave.duration)
 	GlobalSignal.enemies_left_updated.emit()
+
+	if OS.is_debug_build():
+		%DebugEnemiesLeft.text = str(State.enemies_left)
+	else:
+		%DebugEnemiesLeft.visible = false
 
 
 func handle_load_item() -> void:
@@ -180,6 +186,9 @@ func _on_item_timer_timeout() -> void:
 
 
 func _on_enemies_left_updated() -> void:
+	if OS.is_debug_build():
+		%DebugEnemiesLeft.text = str(State.enemies_left)
+
 	if State.enemies_left == 0:
 		_on_wave_timer_timeout()
 

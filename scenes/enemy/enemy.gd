@@ -39,9 +39,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func load_data(data: Wave):
-	attacking_range = data.attacking_range
+	attacking_range = data.attacking_range * State.enemy_wave_cycle
 	speed_map = data.speed_map
-	health = data.health
+	health = data.health * State.enemy_wave_cycle
 
 
 func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
@@ -107,7 +107,7 @@ func handle_navigate_to_target() -> void:
 	if _mode == Enum.EnemyAction.STALKING:
 		speed =  randf_range(speed_map[_mode] - 3, speed_map[Enum.EnemyAction.ATTACKING] - 1)
 
-
+	speed *= State.enemy_wave_cycle
 	var next_position: Vector2 = %NavigationAgent2D.get_next_path_position()
 	var new_velocity: Vector2 = global_position.direction_to(next_position) * speed
 	%NavigationAgent2D.velocity = new_velocity
