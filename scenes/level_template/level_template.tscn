@@ -360,8 +360,21 @@ navigation_polygon = SubResource("NavigationPolygon_kelw5")
 [node name="Tiles" type="Node" parent="StalkNavRegion"]
 unique_name_in_owner = true
 
-[node name="Tile" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+[node name="EnabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
 position = Vector2(624, 232)
+
+[node name="EnabledNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(784, 208)
+is_status_fixed = false
+
+[node name="DisabledNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(760, 376)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(792, 56)
+status = 1
 
 [node name="AttackNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(2, 0)
