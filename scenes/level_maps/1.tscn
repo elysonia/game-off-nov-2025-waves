@@ -43,11 +43,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.74345946, 0.8540354, 0.79331815, 1)
 
-[node name="decor" type="Node" parent="ColorRect"]
+[node name="decor" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -65,7 +70,6 @@ expand_mode = 1
 
 [node name="Control2" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1288.0
 offset_right = 2568.0
@@ -84,7 +88,6 @@ expand_mode = 1
 
 [node name="Control3" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 680.0
 offset_top = 720.0
@@ -104,7 +107,6 @@ expand_mode = 1
 
 [node name="Control4" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -592.0
 offset_top = 720.0
@@ -124,7 +126,6 @@ expand_mode = 1
 
 [node name="Control5" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1952.0
 offset_top = 608.0
@@ -144,7 +145,6 @@ expand_mode = 1
 
 [node name="Control6" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1336.0
 offset_top = 1328.0
@@ -164,7 +164,6 @@ expand_mode = 1
 
 [node name="Control7" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
 offset_top = 1432.0
@@ -184,7 +183,6 @@ expand_mode = 1
 
 [node name="Control8" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -1200.0
 offset_top = 1440.0
