@@ -56,7 +56,7 @@ func initialize() -> void:
 
 	var tiles = %Tiles.get_children().filter(
 		func(child):
-			return is_instance_of(child, Tile)
+			return is_instance_of(child, Tile) and child.check_can_hold_item()
 	)
 	for tile in tiles:
 		tile.add_to_group("tiles")
