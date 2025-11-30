@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxrn8fa5m08pk"]
+[gd_scene load_steps=2 format=3 uid="uid://c637akyxb32w1"]
 
-[ext_resource type="Script" uid="uid://dwpwa0ncf34sb" path="res://scenes/level_end/level_end.gd" id="1_l2cnm"]
+[ext_resource type="Script" uid="uid://ldmd1o3rkv3m" path="res://scenes/pause_screen/pause_screen.gd" id="1_gkn6s"]
 
-[node name="LevelEnd" type="Control"]
+[node name="PauseScreen" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -13,7 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
-script = ExtResource("1_l2cnm")
+script = ExtResource("1_gkn6s")
 metadata/_edit_vertical_guides_ = [640.0]
 metadata/_edit_horizontal_guides_ = [384.0]
 
@@ -40,7 +40,7 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 bbcode_enabled = true
-text = "[font_size={60}][b]Game Over[/b][/font_size]
+text = "[font_size={60}][b]Paused[/b][/font_size]
 "
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -48,7 +48,7 @@ vertical_alignment = 2
 [node name="Control" type="Control" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 3.0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/Control"]
@@ -70,6 +70,12 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 mouse_filter = 2
 
+[node name="Resume" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Resume"
+
 [node name="MainMenu" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
@@ -82,11 +88,18 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Restart"
 
-[node name="NextLevel" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+[node name="Levels" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "Next Level"
+text = "Levels
+"
+
+[node name="Options" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Options"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 visible = false

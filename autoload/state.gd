@@ -8,6 +8,9 @@ const SPAWN_BOTTOM_RIGHT_BOUND = Vector2(1880, 1320)
 const NOTIFICATION_DURATION = 5.0
 
 
+# Game
+var is_pause_enabled: bool = false
+
 # Level
 var level: int = 1
 var enemy_wave: int = 0
