@@ -40,11 +40,23 @@ func _physics_process(_delta: float) -> void:
 
 func load_data(data: Wave):
 	attacking_range = data.attacking_range + (State.enemy_wave_cycle * data.attacking_range_increment)
-	health = data.health + (State.enemy_wave_cycle * data.health_increment_per_cycle)
+
+	var new_health = data.health + (State.enemy_wave_cycle * data.health_increment_per_cycle)
+
+	if new_health <= data.max_health:
+		health = new_health
+	else:
+		health = data.max_health
+
 	speed_map = data.speed_map
 
 	for key in speed_map.keys():
 		speed_map[key] += data.speed_increment_map[key] * State.enemy_wave_cycle
+
+	if OS.is_debug_build():
+		%DebugText.text = str(health)
+	else:
+		%DebugText.visible = false
 
 
 func handle_switch_mode(next_mode: Enum.EnemyAction) -> void:
@@ -126,6 +138,9 @@ func handle_damage(damage: float, knockback: Vector2 = Vector2.ZERO) -> void:
 	tween.kill()
 
 	health -= damage
+
+	if OS.is_debug_build():
+		%DebugText.text = str(health)
 
 	if health <= 0:
 		handle_death()
