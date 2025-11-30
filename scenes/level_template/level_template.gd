@@ -65,7 +65,6 @@ func initialize() -> void:
 
 	_spawn_positions.assign(wave.get_spawn_positions(50))
 
-	State.enemy_wave_cycle = 1
 	handle_load_wave(wave)
 	call_deferred("handle_load_item")
 	get_tree().call_group("enemies", "handle_switch_target_position", %Player.position)
