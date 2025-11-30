@@ -1,10 +1,12 @@
 class_name Tile
 extends Area2D
 
+## Enabled: Is active by default, causes ripples when jumped on
+## Disabled: Activated by other ripples, causes ripples when jumped on
 enum Status {ENABLED, DISABLED}
 const COLOR = {
-	Status.ENABLED: "#ffffff",
-	Status.DISABLED: "#111c02",
+	Status.ENABLED: ["#ffffff", "#d39ed6", "#fcbcc0", "#ffffd1", "#cfe5db"],
+	Status.DISABLED: ["#111c02"],
 }
 const MODULATE_COLOR = "#000000c7"
 
@@ -39,12 +41,12 @@ func _ready():
 	if status == Status.DISABLED and not is_status_fixed:
 		%LilypadAnim.play("flower-timer-disabled")
 		%WaterAnim.play("water-surface-still")
-		%LilyFlowerDecor.modulate = COLOR[status]
-		%LilypadSprite.modulate = COLOR[status]
 	else:
 		%LilypadAnim.play("flower-decor")
 		%WaterAnim.play("RESET")
 
+	%LilyFlowerDecor.modulate = COLOR[status].pick_random()
+	%LilypadSprite.modulate = COLOR[status].pick_random()
 	%LilypadAnim.seek(randf_range(0.0, %LilypadAnim.current_animation_length), true)
 
 
@@ -81,8 +83,8 @@ func _on_area_entered(area: Area2D) -> void:
 			status = Status.ENABLED
 			var enabled_tween = create_tween().set_parallel()
 			%WaterAnim.play("water-surface-emerge")
-			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color("#fdd2aeff"), transition_animation.length)
-			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color("#fdd2aeff"), transition_animation.length)
+			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.ENABLED].pick_random()), transition_animation.length)
+			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color(COLOR[Status.ENABLED].pick_random()), transition_animation.length)
 			Utils.play_sound(Enum.SoundType.SFX, "lilypad-emerge")
 			await enabled_tween.finished
 			enabled_tween.kill()
@@ -97,8 +99,8 @@ func _on_area_entered(area: Area2D) -> void:
 		%WaterAnim.animation_set_next("water-surface-emerge", "water-surface-still")
 		%WaterAnim.play("water-surface-emerge", 1.0, true)
 		var timer_tween = create_tween().set_parallel()
-		timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
-		timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED]), transition_animation.length)
+		timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED].pick_random()), transition_animation.length)
+		timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED].pick_random()), transition_animation.length)
 		Utils.play_sound(Enum.SoundType.SFX, "lilypad-submerge")
 
 		await timer_tween.finished
