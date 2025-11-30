@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="Level" load_steps=6 format=3 uid="uid://pgjlojs1hdbr"]
+[gd_resource type="Resource" script_class="Level" load_steps=10 format=3 uid="uid://pgjlojs1hdbr"]
 
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_bfape"]
 [ext_resource type="Script" uid="uid://cp52fufqws5ws" path="res://scripts/level.gd" id="1_ce3ve"]
+[ext_resource type="Resource" uid="uid://c723hn5b4drke" path="res://resources/items/tophat.tres" id="2_chir5"]
 [ext_resource type="Script" uid="uid://bmolqh8j1ubvw" path="res://scripts/wave.gd" id="2_wbadn"]
+[ext_resource type="Resource" uid="uid://c81kwtk4ubu6h" path="res://resources/items/bowtie.tres" id="3_424sd"]
+[ext_resource type="Resource" uid="uid://banbxvri4ap06" path="res://resources/items/monocle.tres" id="4_14vpf"]
 
 [sub_resource type="Resource" id="Resource_ce3ve"]
 script = ExtResource("2_wbadn")
@@ -29,4 +33,5 @@ metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
 [resource]
 script = ExtResource("1_ce3ve")
 waves = Array[ExtResource("2_wbadn")]([SubResource("Resource_ce3ve"), SubResource("Resource_wbadn"), SubResource("Resource_b7fw4")])
+items = Array[ExtResource("1_bfape")]([ExtResource("2_chir5"), ExtResource("3_424sd"), ExtResource("4_14vpf")])
 metadata/_custom_type_script = "uid://cp52fufqws5ws"

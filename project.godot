@@ -24,6 +24,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="gameoff-2025-waves"
+run/main_scene="uid://bptbukkss7f70"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -32,19 +33,27 @@ config/icon="res://icon.svg"
 
 State="*res://autoload/state.gd"
 GlobalSignal="*res://autoload/signal.gd"
-Utils="*res://autoload/utils.gd"
 Enum="*res://autoload/enum.gd"
 LevelManager="*res://autoload/level_manager.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Utils="*res://autoload/utils.gd"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://d3dsr3iudi3gj"
+theme/custom_font="uid://cne0ch42p1qx6"
 
 [input]
 

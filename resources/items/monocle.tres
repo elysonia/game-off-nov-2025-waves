@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://banbxvri4ap06"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_spmj0"]
+
+[resource]
+script = ExtResource("1_spmj0")
+name = "Monocle"
+texture = "uid://bkqmwqdgslk20"
+description = "For a classic distinguished look"
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"

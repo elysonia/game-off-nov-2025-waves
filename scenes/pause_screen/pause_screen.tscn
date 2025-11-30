@@ -1,0 +1,112 @@
+[gd_scene load_steps=2 format=3 uid="uid://c637akyxb32w1"]
+
+[ext_resource type="Script" uid="uid://ldmd1o3rkv3m" path="res://scenes/pause_screen/pause_screen.gd" id="1_gkn6s"]
+
+[node name="PauseScreen" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_gkn6s")
+metadata/_edit_vertical_guides_ = [640.0]
+metadata/_edit_horizontal_guides_ = [384.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 0.7921569)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Text" type="RichTextLabel" parent="ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size={60}][b]Paused[/b][/font_size]
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 448.0
+offset_right = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer/Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Resume" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Restart" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Restart"
+
+[node name="Levels" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Levels
+"
+
+[node name="Options" type="Button" parent="ColorRect/VBoxContainer/Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Options"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

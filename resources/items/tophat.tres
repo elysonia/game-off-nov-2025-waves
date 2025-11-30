@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c723hn5b4drke"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_vbtoi"]
+
+[resource]
+script = ExtResource("1_vbtoi")
+name = "Tophat"
+texture = "uid://bwrnd0d6vwnva"
+description = "Proper hat"
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"

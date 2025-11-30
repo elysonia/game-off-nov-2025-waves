@@ -1,0 +1,362 @@
+[gd_scene load_steps=28 format=3 uid="uid://bptbukkss7f70"]
+
+[ext_resource type="Texture2D" uid="uid://bwh4xi4hrnkia" path="res://assets/player_sprite_2.png" id="1_ob46e"]
+[ext_resource type="Script" uid="uid://b58e1yf602vry" path="res://scenes/main_menu/main_menu.gd" id="1_uqeha"]
+[ext_resource type="Texture2D" uid="uid://cjump11877hb1" path="res://assets/bg_texture.png" id="2_3ovsr"]
+[ext_resource type="Texture2D" uid="uid://bhgsjjgkv8qxo" path="res://assets/crocs_rd_atk_1.png" id="2_uqeha"]
+[ext_resource type="Texture2D" uid="uid://b13t6up2gb1gg" path="res://assets/bg.png" id="3_5seab"]
+[ext_resource type="Texture2D" uid="uid://c3s15vlu41q8x" path="res://assets/crocs_stalk.png" id="3_wem23"]
+[ext_resource type="FontFile" uid="uid://dqaa3o0r84tm0" path="res://theme/fonts/Chango/Chango-Regular.ttf" id="7_5seab"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ovsr"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5seab"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xg86"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thkx5"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2yjq"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqpn7"]
+atlas = ExtResource("1_ob46e")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qel0l"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_3ovsr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5seab")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_4xg86")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_3ovsr")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_5seab")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thkx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2yjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqpn7")
+}],
+"loop": true,
+"name": &"ready",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wem23"]
+radius = 72.0
+height = 256.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrgl4"]
+atlas = ExtResource("3_wem23")
+region = Rect2(0, 0, 143, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn3lk"]
+atlas = ExtResource("3_wem23")
+region = Rect2(192, 0, 143, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ujhu"]
+atlas = ExtResource("3_wem23")
+region = Rect2(384, 0, 143, 72)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnpsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uqeha")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_rrgl4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dn3lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ujhu")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_rrgl4")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dn3lk")
+}],
+"loop": true,
+"name": &"stalk",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_uqeha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogArea/Frog:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_ob46e"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogArea/Frog:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wem23"]
+_data = {
+&"RESET": SubResource("Animation_uqeha"),
+&"idle": SubResource("Animation_ob46e")
+}
+
+[sub_resource type="Animation" id="Animation_5seab"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_3ovsr"]
+resource_name = "stalk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Croc:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"stalk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Croc2:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"stalk"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4xg86"]
+_data = {
+&"RESET": SubResource("Animation_5seab"),
+&"stalk": SubResource("Animation_3ovsr")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xg86"]
+font = ExtResource("7_5seab")
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+outline_size = 12
+shadow_size = 5
+shadow_offset = Vector2(1, 9)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(12, 14)
+stacked_shadow_0/color = Color(0, 0, 0, 0.7176471)
+
+[sub_resource type="LabelSettings" id="LabelSettings_thkx5"]
+font_size = 33
+font_color = Color(0, 0, 0, 1)
+outline_size = 2
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_uqeha")
+metadata/_edit_horizontal_guides_ = [384.0]
+metadata/_edit_vertical_guides_ = [640.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.74509805, 0.85490197, 0.7921569, 0.62352943)
+
+[node name="Water" type="TextureRect" parent="."]
+modulate = Color(0.94, 0.984, 1, 0.4509804)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3ovsr")
+expand_mode = 1
+
+[node name="Lilypad" type="TextureRect" parent="."]
+modulate = Color(0.7750634, 0.7750634, 0.7750634, 0.61960787)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5seab")
+expand_mode = 1
+
+[node name="FrogArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(728, 408)
+
+[node name="Frog" type="AnimatedSprite2D" parent="FrogArea"]
+unique_name_in_owner = true
+position = Vector2(24, -104)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qel0l")
+animation = &"idle"
+frame = 3
+frame_progress = 0.7769137
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrogArea"]
+position = Vector2(32, -104)
+shape = SubResource("CapsuleShape2D_wem23")
+
+[node name="Croc" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(152, 640)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vnpsp")
+animation = &"stalk"
+
+[node name="Croc2" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1136, 648)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_vnpsp")
+animation = &"stalk"
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(640, 360)
+
+[node name="MenuContainer" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 880.0
+offset_top = 144.0
+offset_right = 1048.0
+offset_bottom = 464.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Play" type="Button" parent="MenuContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play"
+
+[node name="Levels" type="Button" parent="MenuContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Levels"
+
+[node name="Options" type="Button" parent="MenuContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Options"
+
+[node name="Player" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_wem23")
+}
+
+[node name="Menu" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Crocs" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_4xg86")
+}
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 56.0
+offset_right = 948.0
+offset_bottom = 231.0
+text = "Lilypad Leap"
+label_settings = SubResource("LabelSettings_4xg86")
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 224.0
+offset_right = 625.0
+offset_bottom = 491.0
+text = "You are frog.
+You jump.
+Get items.
+Don't drown or get caught by crocodiles.
+
+"
+label_settings = SubResource("LabelSettings_thkx5")
