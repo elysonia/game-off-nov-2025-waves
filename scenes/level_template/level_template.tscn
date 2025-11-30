@@ -16,7 +16,9 @@ vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 126
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_0cxft"]
+[sub_resource type="LabelSettings" id="LabelSettings_serxs"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="LevelTemplate" type="Control"]
 layout_mode = 3
@@ -388,9 +390,8 @@ offset_top = 8.0
 offset_right = 954.0
 offset_bottom = 144.0
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-stream = SubResource("VideoStreamTheora_0cxft")
+[node name="DebugEnemiesLeft" type="Label" parent="NotificationContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_serxs")

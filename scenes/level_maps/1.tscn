@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy4cfmg33icta"]
+[gd_scene load_steps=9 format=3 uid="uid://dy4cfmg33icta"]
 
 [ext_resource type="Script" uid="uid://choy6xrioyr2d" path="res://scenes/level_template/level_template.gd" id="1_2qk1g"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="2_jb2pr"]
@@ -15,6 +15,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-528, -496, 1872, -504,
 vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 1269.2969, -280.39063, -269.8828)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw6jf"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -430,8 +434,15 @@ unique_name_in_owner = true
 
 [node name="NotificationContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+top_level = true
 layout_mode = 0
 offset_left = 362.0
 offset_top = 8.0
 offset_right = 954.0
 offset_bottom = 144.0
+
+[node name="DebugEnemiesLeft" type="Label" parent="NotificationContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_nw6jf")
