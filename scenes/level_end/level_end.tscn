@@ -40,7 +40,8 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 bbcode_enabled = true
-text = "[font_size={60}][b]Game Over[/b][/font_size]"
+text = "[font_size={60}][b]Game Over[/b][/font_size]
+"
 horizontal_alignment = 1
 vertical_alignment = 2
 

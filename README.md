@@ -11,6 +11,7 @@ Joined the game jam midway
 * [**Edit resources as sheets** by don-tnowe]("don-tnowe/godot-resources-as-sheets-plugin/tree/Godot-4")
 * [**Scene Manager** by glassbrick]("https://github/glass-brick/Scene-Manager")
 * [**Sound Manager** by Xecestel]("https://gitlab.com/Xecestel/sound-manager")
+* [**Shader for Transparent Water with screen Space Reflection and Refractions** by Shaders](https://github.com/marcelb/GodotSSRWater) (Didn't end up using this one)
 
 ## Tools
 * **Art:** [**Krita**](https://krita.org/en/)

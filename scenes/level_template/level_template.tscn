@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dt25mcup0dt74"]
+[gd_scene load_steps=9 format=3 uid="uid://dt25mcup0dt74"]
 
 [ext_resource type="Script" uid="uid://choy6xrioyr2d" path="res://scenes/level_template/level_template.gd" id="1_s1o48"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="2_0cxft"]
+[ext_resource type="Texture2D" uid="uid://dgul0242ujqm1" path="res://assets/bg_texture_2.png" id="2_serxs"]
+[ext_resource type="Texture2D" uid="uid://dhussp1usp0h5" path="res://assets/grass.png" id="3_62yph"]
 [ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="3_serxs"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
@@ -13,6 +15,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-528, -496, 1872, -504,
 vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 1269.2969, -280.39063, -269.8828)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_0cxft"]
 
 [node name="LevelTemplate" type="Control"]
 layout_mode = 3
@@ -28,6 +32,168 @@ script = ExtResource("1_s1o48")
 metadata/_edit_horizontal_guides_ = [1320.0, -600.0]
 metadata/_edit_vertical_guides_ = [-600.0, 1880.0]
 
+[node name="ground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -599.0
+offset_top = -600.0
+offset_right = 601.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.57752967, 0.32484835, 0.0798543, 1)
+
+[node name="Control" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="grass" type="TextureRect" parent="ground/Control"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1288.0
+offset_right = 2568.0
+offset_bottom = 720.0
+
+[node name="grass2" type="TextureRect" parent="ground/Control2"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 720.0
+offset_right = 1960.0
+offset_bottom = 1440.0
+
+[node name="grass3" type="TextureRect" parent="ground/Control3"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control4" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 720.0
+offset_right = 688.0
+offset_bottom = 1440.0
+
+[node name="grass4" type="TextureRect" parent="ground/Control4"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control5" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1952.0
+offset_top = 608.0
+offset_right = 3232.0
+offset_bottom = 1328.0
+
+[node name="grass5" type="TextureRect" parent="ground/Control5"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control6" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1336.0
+offset_top = 1328.0
+offset_right = 2616.0
+offset_bottom = 2048.0
+
+[node name="grass6" type="TextureRect" parent="ground/Control6"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control7" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 1432.0
+offset_right = 1344.0
+offset_bottom = 2152.0
+
+[node name="grass7" type="TextureRect" parent="ground/Control7"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control8" type="Control" parent="ground"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -1200.0
+offset_top = 1440.0
+offset_right = 80.0
+offset_bottom = 2160.0
+
+[node name="grass7" type="TextureRect" parent="ground/Control8"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -39,7 +205,156 @@ offset_right = 601.0
 offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.4509804, 0.8235294, 1, 1)
+color = Color(0.4509804, 0.8235294, 1, 0.69803923)
+
+[node name="Control" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1288.0
+offset_right = 2568.0
+offset_bottom = 720.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control2"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 720.0
+offset_right = 1960.0
+offset_bottom = 1440.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control3"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control4" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 720.0
+offset_right = 688.0
+offset_bottom = 1440.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control4"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control5" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1952.0
+offset_top = 608.0
+offset_right = 3232.0
+offset_bottom = 1328.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control5"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control6" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1336.0
+offset_top = 1328.0
+offset_right = 2616.0
+offset_bottom = 2048.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control6"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control7" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 1432.0
+offset_right = 1344.0
+offset_bottom = 2152.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control7"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
+
+[node name="Control8" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -1200.0
+offset_top = 1440.0
+offset_right = 80.0
+offset_bottom = 2160.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control8"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_serxs")
+expand_mode = 1
 
 [node name="StalkNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 0)
@@ -77,3 +392,10 @@ offset_left = 362.0
 offset_top = 8.0
 offset_right = 954.0
 offset_bottom = 144.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stream = SubResource("VideoStreamTheora_0cxft")

@@ -7,8 +7,6 @@ const SPAWN_TOP_LEFT_BOUND = Vector2(-600, -600)
 const SPAWN_BOTTOM_RIGHT_BOUND = Vector2(1880, 1320)
 const NOTIFICATION_DURATION = 5.0
 
-const GAME_SCENE_PATH = "res://scenes/game/game.tscn"
-
 
 # Level
 var level: int = 1

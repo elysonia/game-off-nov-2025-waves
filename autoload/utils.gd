@@ -1,10 +1,14 @@
 extends Node
 
 var _level_end_instance = null
+
 @onready var _level_end = preload("res://scenes/level_end/level_end.tscn")
+@onready var _main_menu = preload("res://scenes/main_menu/main_menu.tscn")
+@onready var _game_scene = preload("res://scenes/game/game.tscn")
 
 func _ready():
     play_sound(Enum.SoundType.BGM, "bgm-1")
+
 
 func goto_game_over(condition: Enum.Condition) -> void:
     get_tree().paused = true
@@ -39,11 +43,25 @@ func goto_level(level: int) -> void:
     State.items_spawned = 0
 
     reset_overlays()
-    SceneManager.change_scene(State.GAME_SCENE_PATH)
+    print("gotolevel")
+    SceneManager.change_scene(_game_scene)
 
 
 func goto_main_menu() -> void:
-    pass
+    get_tree().paused = false
+
+    State.level = 1
+    State.enemy_wave = 0
+    State.enemies_left = 0
+    State.total_items = 0
+    State.enemy_wave_cycle = 0
+    State.total_items = 0
+    State.total_item_collected = 0
+    State.items_spawned = 0
+
+    reset_overlays()
+    SceneManager.change_scene(_main_menu)
+
 
 
 func play_sound(type: Enum.SoundType, sound_name: String) -> void:

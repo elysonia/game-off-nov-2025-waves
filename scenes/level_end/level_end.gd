@@ -4,6 +4,7 @@ extends Control
 func _ready():
     %NextLevel.pressed.connect(_on_next_level_pressed)
     %Restart.pressed.connect(_on_restart_pressed)
+    %MainMenu.pressed.connect(_on_main_menu_pressed)
 
 
 func initialize(result: Enum.Result, condition: Enum.Condition = Enum.Condition.ALIVE) -> void:
@@ -21,7 +22,7 @@ func initialize(result: Enum.Result, condition: Enum.Condition = Enum.Condition.
     %Text.text = formatted_string
     var is_last_level = State.level >= LevelManager.MAX_LEVEL
     if is_last_level:
-        %NextLevel.queue_free()
+        %NextLevel.visible = false
 
 
 func get_result_text(result: Enum.Result) -> String:
@@ -49,3 +50,7 @@ func _on_restart_pressed() -> void:
 func _on_next_level_pressed() -> void:
     var next_level = State.level + 1
     Utils.goto_level(next_level)
+
+
+func _on_main_menu_pressed() -> void:
+    Utils.goto_main_menu()

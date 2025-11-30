@@ -24,7 +24,7 @@ resources_spreadsheet_view/freeze_first_column=true
 [application]
 
 config/name="gameoff-2025-waves"
-run/main_scene="uid://ouwkh8ty1wng"
+run/main_scene="uid://bptbukkss7f70"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"

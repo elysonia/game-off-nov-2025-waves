@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ouwkh8ty1wng"]
+[gd_scene load_steps=3 format=3 uid="uid://ouwkh8ty1wng"]
 
 [ext_resource type="Script" uid="uid://duocxikip7u2b" path="res://scenes/game/game.gd" id="1_0sr1o"]
+[ext_resource type="Texture2D" uid="uid://cjump11877hb1" path="res://assets/bg_texture.png" id="2_7h61r"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -36,3 +37,34 @@ offset_left = 361.0
 offset_top = 8.0
 offset_right = 953.0
 offset_bottom = 144.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/GameArea"]
+visible = false
+modulate = Color(0.7019608, 1, 1, 0.59607846)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7h61r")
+expand_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/GameArea"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4509804, 0.8235294, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/GameArea/ColorRect"]
+modulate = Color(0.7019608, 1, 1, 0.59607846)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7h61r")
+expand_mode = 1
