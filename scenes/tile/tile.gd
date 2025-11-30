@@ -10,6 +10,12 @@ const COLOR = {
 }
 const MODULATE_COLOR = "#000000c7"
 
+var _origin_status: Status
+var _lilypad_animation_player: AnimationPlayer
+
+var _textures_normal: Array = ["res://assets/lilypad1.png", "res://assets/lilypad2.png"]
+var _textures_broken: Array = ["res://assets/lilypad1_broken.png", "res://assets/lilypad2_broken.png"]
+
 var tile_item: ItemSprite = null
 var player: Player = null
 
@@ -31,23 +37,36 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
+	_origin_status = status
 	%Timer.wait_time = status_duration
 
 	# Make sure the collision shape of the instantiated scene is unique
 	# https://forum.godotengine.org/t/collisionshape2d-changes-for-every-instance-with-every-instance/95614/2
 	%CollisionShape2D.shape =  %CollisionShape2D.shape.duplicate(true)
 	%Ripple.initialize(%CollisionShape2D)
+	var texture_index = randi_range(0, 1)
+	var animation_players = [%LilypadAnim1, %LilypadAnim2]
+	_lilypad_animation_player = animation_players[texture_index]
 
-	if status == Status.DISABLED and not is_status_fixed:
-		%LilypadAnim.play("flower-timer-disabled")
+	if _origin_status == Status.DISABLED and not is_status_fixed:
+		_lilypad_animation_player.play("flower-timer-disabled")
 		%WaterAnim.play("water-surface-still")
 	else:
-		%LilypadAnim.play("flower-decor")
+		_lilypad_animation_player.play("flower-decor")
 		%WaterAnim.play("RESET")
 
-	%LilyFlowerDecor.modulate = COLOR[status].pick_random()
-	%LilypadSprite.modulate = COLOR[status].pick_random()
-	%LilypadAnim.seek(randf_range(0.0, %LilypadAnim.current_animation_length), true)
+	var is_enabled_not_fixed = _origin_status == Status.ENABLED and not is_status_fixed
+	var is_disabled_fixed = _origin_status == Status.DISABLED and is_status_fixed
+	var should_have_broken_texture = is_enabled_not_fixed or is_disabled_fixed
+
+	if should_have_broken_texture:
+		%LilypadSprite.texture = load(_textures_broken[texture_index])
+	else:
+		%LilypadSprite.texture = load(_textures_normal[texture_index])
+
+	%LilyFlowerDecor.modulate = COLOR[_origin_status].pick_random()
+	%LilypadSprite.modulate = COLOR[_origin_status].pick_random()
+	_lilypad_animation_player.seek(randf_range(0.0, _lilypad_animation_player.current_animation_length), true)
 
 
 func _process(_delta: float) -> void:
@@ -68,46 +87,86 @@ func handle_load_item(item: Item) -> void:
 	tile_item = item_sprite_instance
 
 
+func check_can_hold_item() -> bool:
+	var is_disabled_fixed = _origin_status == Status.DISABLED and is_status_fixed
+
+	return not is_disabled_fixed
+
+
 func _on_area_entered(area: Area2D) -> void:
 	if not is_instance_of(area, Tile):
 		return
 
 	if is_instance_of(area, Tile) and area.get_node("%Ripple").is_rippling and not is_status_fixed:
-		%LilypadAnim.stop()
-		%LilypadAnim.clear_queue()
+		_lilypad_animation_player.stop()
+		_lilypad_animation_player.clear_queue()
 
-		var transition_animation: Animation = %WaterAnim.get_animation("water-surface-emerge")
-		if status == Status.DISABLED:
+		var water_surface_emerge_animation: Animation = %WaterAnim.get_animation("water-surface-emerge")
+		if _origin_status == Status.DISABLED and status == Status.DISABLED:
 			%WaterAnim.stop()
 			%WaterAnim.clear_queue()
 			status = Status.ENABLED
 			var enabled_tween = create_tween().set_parallel()
 			%WaterAnim.play("water-surface-emerge")
-			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.ENABLED].pick_random()), transition_animation.length)
-			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color(COLOR[Status.ENABLED].pick_random()), transition_animation.length)
+			enabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.ENABLED].pick_random()), water_surface_emerge_animation.length)
+			enabled_tween.tween_property(%LilypadSprite, "modulate",  Color(COLOR[Status.ENABLED].pick_random()), water_surface_emerge_animation.length)
 			Utils.play_sound(Enum.SoundType.SFX, "lilypad-emerge")
 			await enabled_tween.finished
 			enabled_tween.kill()
 
-		%WaterAnim.play("RESET")
-		status = Status.ENABLED
-		%LilypadAnim.play("flower-timer")
-		%Timer.start(status_duration)
 
-		await %Timer.timeout
+		if _origin_status == Status.DISABLED and status == Status.ENABLED:
+			%WaterAnim.play("RESET")
+			status = Status.ENABLED
+			_lilypad_animation_player.play("flower-timer")
+			%Timer.start(status_duration)
 
-		%WaterAnim.animation_set_next("water-surface-emerge", "water-surface-still")
-		%WaterAnim.play("water-surface-emerge", 1.0, true)
-		var timer_tween = create_tween().set_parallel()
-		timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED].pick_random()), transition_animation.length)
-		timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED].pick_random()), transition_animation.length)
-		Utils.play_sound(Enum.SoundType.SFX, "lilypad-submerge")
+			await %Timer.timeout
 
-		await timer_tween.finished
-		status = Status.DISABLED
-		timer_tween.kill()
-		%LilypadAnim.animation_set_next("flower-timer", "flower-timer-disabled")
-		%LilypadAnim.play("flower-timer", 1.0, true)
+			%WaterAnim.animation_set_next("water-surface-emerge", "water-surface-still")
+			%WaterAnim.play("water-surface-emerge", 1.0, true)
+			var timer_tween = create_tween().set_parallel()
+			timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED].pick_random()), water_surface_emerge_animation.length)
+			timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.DISABLED].pick_random()), water_surface_emerge_animation.length)
+			Utils.play_sound(Enum.SoundType.SFX, "lilypad-submerge")
+
+			await timer_tween.finished
+			status = Status.DISABLED
+			timer_tween.kill()
+			_lilypad_animation_player.animation_set_next("flower-timer", "flower-timer-disabled")
+			_lilypad_animation_player.play("flower-timer", 1.0, true)
+
+		if _origin_status == Status.ENABLED and status == Status.ENABLED:
+			%WaterAnim.stop()
+			%WaterAnim.clear_queue()
+			status = Status.DISABLED
+			var disabled_tween = create_tween().set_parallel()
+			%WaterAnim.play("water-surface-emerge", 1.0, true)
+			disabled_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.DISABLED].pick_random()), water_surface_emerge_animation.length)
+			disabled_tween.tween_property(%LilypadSprite, "modulate",  Color(COLOR[Status.DISABLED].pick_random()), water_surface_emerge_animation.length)
+			Utils.play_sound(Enum.SoundType.SFX, "lilypad-submerge")
+			await disabled_tween.finished
+			disabled_tween.kill()
+
+		if _origin_status == Status.ENABLED and status == Status.DISABLED:
+			%WaterAnim.play("water-surface-still")
+			status = Status.DISABLED
+			_lilypad_animation_player.play("flower-timer")
+			%Timer.start(status_duration)
+
+			await %Timer.timeout
+
+			%WaterAnim.play("water-surface-emerge")
+			var timer_tween = create_tween().set_parallel()
+			timer_tween.tween_property(%LilyFlowerDecor, "modulate", Color(COLOR[Status.ENABLED].pick_random()), water_surface_emerge_animation.length)
+			timer_tween.tween_property(%LilypadSprite, "modulate", Color(COLOR[Status.ENABLED].pick_random()), water_surface_emerge_animation.length)
+			Utils.play_sound(Enum.SoundType.SFX, "lilypad-emerge")
+
+			await timer_tween.finished
+			status = Status.ENABLED
+			timer_tween.kill()
+			_lilypad_animation_player.animation_set_next("flower-timer", "flower-decor")
+			_lilypad_animation_player.play("flower-timer", 1.0, true)
 
 
 		if is_instance_valid(player):
