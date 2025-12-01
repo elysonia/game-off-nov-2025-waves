@@ -40,6 +40,7 @@ LevelManager="*res://autoload/level_manager.gd"
 SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Utils="*res://autoload/utils.gd"
+AppConfig="*res://addons/maaacks_options_menus/base/scenes/autoloads/app_config.tscn"
 
 [display]
 
@@ -50,7 +51,7 @@ window/stretch/aspect="ignore"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_options_menus/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/sound_manager/plugin.cfg")
 
 [gui]
 
@@ -69,6 +70,16 @@ rmb={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(133, 14),"global_position":Vector2(142, 62),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_options_menus/base/translations/menus_translations.en.translation", "res://addons/maaacks_options_menus/base/translations/menus_translations.fr.translation")
+
+[maaacks_options_menus]
+
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://scenes/"
 
 [rendering]
 
