@@ -8,6 +8,7 @@ var _item_nav_arrows: Array[Array] = []
 @onready var _enemy = preload("res://scenes/enemy/enemy.tscn")
 @onready var _notification = preload("res://scenes/notification/notification.tscn")
 @onready var _arrow = preload("res://scenes/arrow.tscn")
+@onready var _preview_detail = preload("res://scenes/level_template/preview_detail/preview_detail.tscn")
 
 
 func _ready():
@@ -52,6 +53,26 @@ func preview() -> void:
 	%Player.get_node("%Camera2D").zoom = Vector2(0.5, 0.5)
 	process_mode = Node.PROCESS_MODE_DISABLED
 
+
+func get_preview_details(level: int) -> Array[PreviewDetail]:
+	var level_data = LevelManager.get_level_data(level)
+
+	var items_count_map = {}
+	var items_texture = {}
+	for item in level_data.items:
+		if items_count_map.has(item.name):
+			items_count_map[item.name] += 1
+		else:
+			items_count_map[item.name] = 1
+			items_texture[item.name] = item.texture
+
+	var preview_details: Array[PreviewDetail] = []
+	for key in items_count_map.keys():
+		var preview_detail = _preview_detail.instantiate()
+		# get_node("PreviewDetails").add_child(preview_detail)
+		preview_detail.initialize(key,items_texture[key], items_count_map[key])
+		preview_details.append(preview_detail)
+	return preview_details
 
 func initialize() -> void:
 	_level_data = LevelManager.get_level_data(State.level)

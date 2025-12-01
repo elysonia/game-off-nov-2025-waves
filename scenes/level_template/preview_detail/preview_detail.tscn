@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4pcsmfa8djbh"]
+
+[ext_resource type="Script" uid="uid://dxh600ipi4i4w" path="res://scenes/level_template/preview_detail/preview_detail.gd" id="1_xodpj"]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 20
+script = ExtResource("1_xodpj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "ghtrhtryhtrhytrhythyt"
+vertical_alignment = 1
