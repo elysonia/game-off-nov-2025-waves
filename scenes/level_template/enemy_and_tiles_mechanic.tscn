@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dwcyb2gepqv3x"]
+[gd_scene load_steps=29 format=3 uid="uid://dwcyb2gepqv3x"]
 
 [ext_resource type="Texture2D" uid="uid://dx87yykacjig7" path="res://assets/crocs_stalk_2.png" id="1_5k0d8"]
 [ext_resource type="Script" uid="uid://d1ei0rskx18j4" path="res://scenes/level_template/enemy_and_tiles_mechanic.gd" id="1_m43vy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dhfxm7ed04mqb" path="res://scenes/ripple/ripple.tscn" id="4_m43vy"]
 [ext_resource type="Texture2D" uid="uid://bbkrsvx24ujj2" path="res://assets/lilypad1.png" id="5_3f4ey"]
 [ext_resource type="PackedScene" uid="uid://c3p1hirdbrrp3" path="res://scenes/tile/lily_flower_decor.tscn" id="6_lwd3s"]
+[ext_resource type="Texture2D" uid="uid://cxf2uf4vchetb" path="res://assets/lilypad2_broken.png" id="8_3f4ey"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pdix1"]
 font_size = 40
@@ -1695,8 +1696,18 @@ theme_override_font_sizes/font_size = 20
 text = "Land on lilypads to cause a ripple in the water. Ripples can damage enemies
 and bring up submerged lilypads.
 
-Emerged lilypads will stay until all flower petals have fallen."
+Emerged lilypads will stay until all flower petals have fallen. Ripples reset
+the timer.
+
+Broken floating lilypads submerge when hit with ripples. Ripples cause them
+to stay underwater.
+"
 label_settings = SubResource("LabelSettings_brc0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tiles/HBoxContainer"]
+position = Vector2(-81, 170)
+scale = Vector2(0.40234375, 0.3951613)
+texture = ExtResource("8_3f4ey")
 
 [node name="Close" type="Button" parent="."]
 unique_name_in_owner = true
