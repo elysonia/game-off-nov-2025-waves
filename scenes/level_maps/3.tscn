@@ -1,0 +1,482 @@
+[gd_scene load_steps=9 format=3 uid="uid://dbeygppby66i6"]
+
+[ext_resource type="Script" uid="uid://choy6xrioyr2d" path="res://scenes/level_template/level_template.gd" id="1_fe15c"]
+[ext_resource type="Texture2D" uid="uid://dhussp1usp0h5" path="res://assets/grass.png" id="2_32huk"]
+[ext_resource type="Texture2D" uid="uid://dgul0242ujqm1" path="res://assets/bg_texture_2.png" id="3_qpnoh"]
+[ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="4_tixf3"]
+[ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="5_fytxb"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
+vertices = PackedVector2Array(1284.3516, 896, 1384, 860.35156, 1414.1797, 852.27344, 1470.1797, 1027.7266, 1440, 1019.64844, 1276.2734, 926.1797, 1380.2734, 446.1797, 1388.3516, 416, 1526.1797, 164.27344, 1548.2734, 142.17969, 1846.0781, 1277.9297, 1436.2734, 769.8203, 1372.3516, 664, 1364.2734, 633.8203, 1267.6484, 416, 980.27344, 473.8203, 958.1797, 451.72656, 932.27344, 334.1797, 940.35156, 304, 1145.8203, 292.27344, 1176, 300.35156, 1275.7266, 385.8203, 1440, -44.351563, 1409.8203, -36.273438, 1116.3516, -56, 1108.2734, -86.17969, 1312, 603.64844, 988.35156, 504, 1297.8203, 468.27344, 1328, 476.35156, 1342.1797, 611.72656, 1444.3516, 800, 1500.3516, 1080, 1492.2734, 1049.8203, 1436.2734, 830.1797, 1224, 956.35156, 1409.8203, 1027.7266, 1108.3516, 984, 1100.2734, 953.8203, 1193.8203, 948.27344, 1556.3516, 112, 1861.8984, -493.96094, 1236.3516, 240, 1465.8203, 164.27344, 1496, 172.35156, 1380.2734, 385.8203, 1358.1797, 363.72656, 1496, 51.648438, 1483.4297, 55.007813, 1492.2734, 46.179688, 1440, 76.35156, 1452.5625, 72.97656, 1443.7266, 81.82031, 1353.8203, 852.27344, 1276.2734, 865.8203, 1281.8203, 611.72656, 1259.7266, 633.8203, 1196.3516, 624, 1188.2734, 593.8203, 1358.1797, 468.27344, 1548.2734, 81.82031, 908.35156, -8, 1003.72656, -25.820313, 1025.8203, -3.7265625, 900.27344, 22.179688, 756.27344, 86.17969, 849.8203, 251.72656, 827.72656, 273.8203, 692.35156, 256, 684.27344, 225.82031, 734.1797, 108.27344, 1169.8203, 51.726563, 1147.7266, 73.82031, 764.35156, 56, 848, 52.351563, 876.35156, 720, 1259.7266, 694.1797, 1281.8203, 716.27344, 868.27344, 750.1797, 1328, 355.64844, 1228.2734, 270.1797, 1123.7266, 270.1797, 1387.7266, -14.1796875, 1275.7266, 446.1797, 1387.7266, 1049.8203, 1297.8203, 363.72656, 1206.1797, 292.27344, 1443.7266, 142.17969, 1228.2734, 209.82031, 1331.7266, 830.1797, 1254.1797, 843.72656, 1526.1797, 59.726563, 1492.2734, 1110.1797, 1171.7266, 865.8203, 1163.6484, 896, 972.35156, 864, 964.27344, 833.8203, 849.8203, 356.27344, 875.72656, 473.8203, 867.64844, 504, 724.35156, 472, 716.27344, 441.8203, 827.72656, 334.1797, 1139.6484, 104, 804.35156, -96, 796.27344, -126.17969, 1003.72656, -86.17969, 995.64844, -56, 878.1797, -60.273438, 848, -68.35156, 1166.1797, 571.72656, 819.64844, 304, 684.27344, 286.1797, 1108.2734, -25.820313, 1379.6484, 16, 1230.1797, 51.726563, 1200, 43.648438, 1251.6484, 664, 1188.2734, 654.1797, 1115.6484, 240, 932.27344, 273.8203, 900.27344, -38.179688, 1379.6484, 1080, 1100.2734, 1014.1797, 716.27344, 502.1797, 875.72656, 534.1797, 1230.1797, 156.27344, 1252.2734, 134.17969, 1435.6484, 112, 1206.1797, 187.72656, 964.27344, 894.1797, 1171.7266, 926.1797, 492.35156, 248, 579.72656, 225.82031, 571.64844, 256, 484.27344, 278.1797, 601.8203, 203.72656, 484.27344, 217.82031, 651.72656, 86.17969, 579.72656, 286.1797, 462.1797, 300.27344, 868.27344, 689.8203, 1323.6484, 800, 1224, 835.64844, 1260.3516, 104, 1409.8203, 68.27344, 1387.7266, 46.179688, 1252.2734, 73.82031, 1200, 164.35156, 1176, 179.64844, 1169.8203, 156.27344, 1145.8203, 187.72656, 1147.7266, 134.17969, 1123.7266, 209.82031, 892.35156, 1080, 884.27344, 1049.8203, 884.27344, 1110.1797, 1387.7266, 1110.1797, 1254.1797, 948.27344, 1500.3516, 16, 1492.2734, -14.1796875, 1470.1797, -36.273438, 910.1797, 251.72656, 880, 243.64844, 704, 116.35156, 662.1797, 203.72656, 673.8203, 108.27344, 632, 195.64844, 1470.1797, 1132.2734, 1086.1797, -3.7265625, 662.1797, 308.27344, 694.1797, 419.72656, 1166.1797, 676.27344, -518, -486.03125, 1056, -116.35156, 910.1797, 356.27344, 928, 443.64844, 880, 364.35156, 897.8203, 451.72656, 664, 411.64844, 632, 316.35156, 633.8203, 419.72656, 601.8203, 308.27344, 611.72656, 441.8203, 1078.1797, 1036.2734, 694.1797, 524.27344, 897.8203, 556.27344, 846.1797, 667.72656, 816, 659.64844, 1025.8203, -108.27344, 774.1797, -148.27344, 817.8203, -60.273438, 796.27344, -65.82031, 795.72656, -38.179688, 774.1797, -43.726563, 787.64844, -8, 744, -35.648438, 1193.8203, 843.72656, 942.1797, 811.72656, 942.1797, 916.27344, 1048, 923.64844, 462.1797, 195.72656, 643.64844, 56, 432, 187.64844, 651.72656, 25.820313, 603.64844, 472, 432, 308.35156, 1056, 4.3515625, 846.1797, 772.27344, 1312, 724.35156, 1331.7266, 769.8203, 912, 803.64844, 862.1797, 1132.2734, 1409.8203, 1132.2734, 1136, 684.35156, 713.8203, -43.726563, 795.72656, 22.179688, 756.27344, 25.820313, 734.1797, 3.7265625, 862.1797, 1027.7266, 1048, 1044.3516, 1086.1797, -108.27344, 1440, 1140.3516, -518, 1262.0625, 832, 1140.3516, 1078.1797, 931.72656, 1136, 563.64844, 1105.8203, 571.72656, 1083.7266, 593.8203, 980.27344, 534.1797, 1075.6484, 624, 958.1797, 556.27344, 928, 564.35156, 1083.7266, 654.1797, 878.1797, 44.273438, 611.72656, 502.1797, 401.8203, 300.27344, 1105.8203, 676.27344, 785.8203, 667.72656, 763.72656, 689.8203, 664, 532.35156, 755.64844, 720, 633.8203, 524.27344, 1414.1797, 747.72656, 1364.2734, 694.1797, 1384, 739.64844, 1342.1797, 716.27344, 1353.8203, 747.72656, 881.8203, 811.72656, 859.72656, 833.8203, 816, 780.35156, 851.64844, 864, 785.8203, 772.27344, 744, -156.35156, 1017.8203, 1036.2734, 995.72656, 1014.1797, 987.64844, 984, 995.72656, 953.8203, 832, 1019.64844, 1017.8203, 931.72656, 912, 924.35156, 401.8203, 195.72656, 683.64844, -96, 691.72656, -65.82031, 673.8203, 3.7265625, 801.8203, 1027.7266, 859.72656, 894.1797, 881.8203, 916.27344, 779.72656, 1049.8203, 763.72656, 750.1797, 771.64844, 1080, 379.72656, 278.1797, 779.72656, 1110.1797, 817.8203, 44.273438, 704, -4.3515625, 691.72656, -126.17969, 379.72656, 217.82031, 801.8203, 1132.2734, 371.64844, 248, 713.8203, -148.27344)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 12, 13), PackedInt32Array(14, 15, 16, 17, 18, 19, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29, 30), PackedInt32Array(31, 10, 32, 33, 34), PackedInt32Array(35, 4, 36, 37, 38, 39), PackedInt32Array(40, 41, 10, 9), PackedInt32Array(42, 43, 44, 45, 46), PackedInt32Array(47, 48, 49), PackedInt32Array(50, 51, 52), PackedInt32Array(34, 33, 3, 2), PackedInt32Array(53, 1, 0, 54), PackedInt32Array(55, 56, 57, 58), PackedInt32Array(59, 6, 13, 30), PackedInt32Array(41, 40, 60), PackedInt32Array(61, 62, 63, 64), PackedInt32Array(65, 66, 67, 68, 69, 70), PackedInt32Array(8, 7, 45, 44), PackedInt32Array(71, 72, 73, 74), PackedInt32Array(75, 76, 77, 78), PackedInt32Array(42, 46, 79, 80), PackedInt32Array(81, 19, 18), PackedInt32Array(24, 23, 82), PackedInt32Array(83, 28, 27), PackedInt32Array(37, 36, 84), PackedInt32Array(80, 79, 85, 86), PackedInt32Array(87, 43, 42, 88), PackedInt32Array(29, 59, 30), PackedInt32Array(89, 53, 54, 90), PackedInt32Array(41, 60, 91), PackedInt32Array(92, 32, 10), PackedInt32Array(93, 94, 95, 96), PackedInt32Array(97, 98, 99, 100, 101, 102), PackedInt32Array(73, 72, 103, 65), PackedInt32Array(104, 105, 106, 107, 108, 109), PackedInt32Array(27, 26, 55, 110), PackedInt32Array(68, 67, 111, 112), PackedInt32Array(86, 85, 21, 20), PackedInt32Array(113, 24, 82, 114, 115, 116), PackedInt32Array(57, 56, 117, 118), PackedInt32Array(119, 81, 18, 120), PackedInt32Array(107, 62, 61, 121), PackedInt32Array(14, 83, 27, 15), PackedInt32Array(37, 84, 122, 123), PackedInt32Array(124, 100, 99, 125), PackedInt32Array(126, 127, 128, 87, 88, 129), PackedInt32Array(130, 95, 94, 131), PackedInt32Array(132, 133, 134, 135), PackedInt32Array(136, 133, 132, 137, 138), PackedInt32Array(135, 134, 139, 140), PackedInt32Array(76, 75, 141), PackedInt32Array(142, 89, 90, 143), PackedInt32Array(50, 52, 128, 127, 144, 145), PackedInt32Array(146, 145, 144, 147), PackedInt32Array(114, 146, 147, 115), PackedInt32Array(148, 126, 129, 149), PackedInt32Array(150, 148, 149, 151), PackedInt32Array(65, 152, 150, 151, 153), PackedInt32Array(122, 154, 155), PackedInt32Array(156, 154, 122, 157), PackedInt32Array(158, 5, 4), PackedInt32Array(41, 91, 47, 49, 159), PackedInt32Array(41, 159, 160), PackedInt32Array(41, 160, 161), PackedInt32Array(65, 103, 152), PackedInt32Array(65, 153, 119, 120, 162), PackedInt32Array(65, 162, 163), PackedInt32Array(65, 163, 66), PackedInt32Array(164, 70, 69, 165), PackedInt32Array(166, 164, 165, 167), PackedInt32Array(138, 166, 167, 136), PackedInt32Array(168, 92, 10), PackedInt32Array(113, 116, 71, 169), PackedInt32Array(170, 112, 111, 102, 101, 171), PackedInt32Array(118, 117, 76, 172), PackedInt32Array(41, 161, 22), PackedInt32Array(173, 41, 22, 174), PackedInt32Array(175, 17, 16, 176), PackedInt32Array(177, 175, 176, 178), PackedInt32Array(97, 177, 178, 98), PackedInt32Array(170, 171, 179, 180), PackedInt32Array(180, 179, 181, 182), PackedInt32Array(182, 181, 183, 140, 139), PackedInt32Array(184, 123, 122), PackedInt32Array(185, 124, 125, 186, 187, 188), PackedInt32Array(189, 106, 105, 190), PackedInt32Array(107, 121, 108), PackedInt32Array(104, 109, 191, 192), PackedInt32Array(192, 191, 193, 194), PackedInt32Array(194, 193, 195, 196), PackedInt32Array(197, 93, 96, 198), PackedInt32Array(199, 130, 131, 200), PackedInt32Array(138, 137, 201, 202), PackedInt32Array(202, 201, 203, 204), PackedInt32Array(140, 183, 205, 206), PackedInt32Array(207, 169, 71), PackedInt32Array(208, 78, 77, 209, 210, 142, 143, 197, 198, 211), PackedInt32Array(212, 156, 157, 213), PackedInt32Array(76, 141, 187, 214), PackedInt32Array(215, 196, 195, 216, 217, 218), PackedInt32Array(122, 155, 219, 220), PackedInt32Array(22, 25, 221), PackedInt32Array(222, 168, 10), PackedInt32Array(213, 222, 10, 223, 224), PackedInt32Array(35, 158, 4), PackedInt32Array(131, 39, 38, 225), PackedInt32Array(55, 58, 110), PackedInt32Array(27, 110, 226), PackedInt32Array(27, 226, 227), PackedInt32Array(27, 227, 228, 229), PackedInt32Array(229, 228, 230, 231), PackedInt32Array(232, 231, 230, 233, 187), PackedInt32Array(234, 64, 63, 207, 71), PackedInt32Array(206, 205, 235, 236), PackedInt32Array(214, 172, 76), PackedInt32Array(237, 214, 187), PackedInt32Array(233, 237, 187), PackedInt32Array(186, 232, 187), PackedInt32Array(185, 188, 238), PackedInt32Array(185, 238, 239, 240), PackedInt32Array(240, 239, 241, 242), PackedInt32Array(10, 31, 11), PackedInt32Array(12, 11, 243, 244), PackedInt32Array(244, 243, 245, 246), PackedInt32Array(246, 245, 247, 209), PackedInt32Array(209, 247, 210), PackedInt32Array(208, 211, 248), PackedInt32Array(208, 248, 249, 250), PackedInt32Array(250, 249, 251, 252), PackedInt32Array(174, 189, 190, 253), PackedInt32Array(220, 184, 122), PackedInt32Array(254, 220, 219), PackedInt32Array(255, 254, 219), PackedInt32Array(256, 255, 219), PackedInt32Array(257, 256, 219, 258), PackedInt32Array(199, 259, 257, 258, 260), PackedInt32Array(204, 203, 261, 262, 263, 264), PackedInt32Array(265, 252, 251, 266, 258), PackedInt32Array(131, 225, 200), PackedInt32Array(199, 200, 259), PackedInt32Array(267, 260, 258), PackedInt32Array(266, 267, 258), PackedInt32Array(252, 265, 268, 269), PackedInt32Array(235, 242, 241, 269, 268, 270, 236), PackedInt32Array(271, 236, 270, 272, 223, 173), PackedInt32Array(74, 234, 71), PackedInt32Array(273, 74, 73), PackedInt32Array(216, 273, 73, 217), PackedInt32Array(215, 218, 274), PackedInt32Array(215, 274, 264, 263), PackedInt32Array(173, 275, 262, 261, 276), PackedInt32Array(224, 212, 213), PackedInt32Array(277, 224, 223), PackedInt32Array(272, 277, 223), PackedInt32Array(278, 271, 173), PackedInt32Array(276, 278, 173), PackedInt32Array(279, 275, 173), PackedInt32Array(253, 279, 173), PackedInt32Array(174, 253, 173), PackedInt32Array(174, 22, 221)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-528, -496, 1872, -504, 1856, 1288, -528, 1272)])
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0sr1o"]
+vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 1269.2969, -280.39063, -269.8828)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
+
+[sub_resource type="LabelSettings" id="LabelSettings_serxs"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelTemplate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_fe15c")
+metadata/_edit_horizontal_guides_ = [1320.0, -600.0]
+metadata/_edit_vertical_guides_ = [-600.0, 1880.0]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -599.0
+offset_top = -600.0
+offset_right = 601.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.74345946, 0.8540354, 0.79331815, 1)
+
+[node name="decor" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="grass" type="TextureRect" parent="ColorRect/decor/Control"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1288.0
+offset_right = 2568.0
+offset_bottom = 720.0
+
+[node name="grass2" type="TextureRect" parent="ColorRect/decor/Control2"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 720.0
+offset_right = 1960.0
+offset_bottom = 1440.0
+
+[node name="grass3" type="TextureRect" parent="ColorRect/decor/Control3"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control4" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 720.0
+offset_right = 688.0
+offset_bottom = 1440.0
+
+[node name="grass4" type="TextureRect" parent="ColorRect/decor/Control4"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control5" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1952.0
+offset_top = 608.0
+offset_right = 3232.0
+offset_bottom = 1328.0
+
+[node name="grass5" type="TextureRect" parent="ColorRect/decor/Control5"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control6" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1336.0
+offset_top = 1328.0
+offset_right = 2616.0
+offset_bottom = 2048.0
+
+[node name="grass6" type="TextureRect" parent="ColorRect/decor/Control6"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control7" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 1432.0
+offset_right = 1344.0
+offset_bottom = 2152.0
+
+[node name="grass7" type="TextureRect" parent="ColorRect/decor/Control7"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control8" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -1200.0
+offset_top = 1440.0
+offset_right = 80.0
+offset_bottom = 2160.0
+
+[node name="grass7" type="TextureRect" parent="ColorRect/decor/Control8"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_32huk")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1288.0
+offset_right = 2568.0
+offset_bottom = 720.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control2"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 720.0
+offset_right = 1960.0
+offset_bottom = 1440.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control3"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control4" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 720.0
+offset_right = 688.0
+offset_bottom = 1440.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control4"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control5" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1952.0
+offset_top = 608.0
+offset_right = 3232.0
+offset_bottom = 1328.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control5"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control6" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1336.0
+offset_top = 1328.0
+offset_right = 2616.0
+offset_bottom = 2048.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control6"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control7" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 1432.0
+offset_right = 1344.0
+offset_bottom = 2152.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control7"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="Control8" type="Control" parent="ColorRect"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -1200.0
+offset_top = 1440.0
+offset_right = 80.0
+offset_bottom = 2160.0
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control8"]
+modulate = Color(1, 1, 1, 0.43137255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qpnoh")
+expand_mode = 1
+
+[node name="StalkNavRegion" type="NavigationRegion2D" parent="."]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_kelw5")
+
+[node name="Tiles" type="Node" parent="StalkNavRegion"]
+unique_name_in_owner = true
+
+[node name="EnabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1224, 896)
+
+[node name="EnabledFixed2" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1048, 984)
+
+[node name="EnabledFixed3" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1136, 624)
+
+[node name="EnabledFixed4" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1312, 664)
+
+[node name="EnabledFixed5" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1176, 240)
+
+[node name="EnabledFixed6" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1200, 104)
+
+[node name="EnabledFixed7" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1496, 112)
+
+[node name="EnabledFixed8" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(744, -96)
+
+[node name="EnabledFixed14" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(664, 472)
+
+[node name="EnabledFixed9" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(704, 56)
+
+[node name="EnabledFixed10" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(880, 304)
+
+[node name="EnabledFixed11" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1440, 1080)
+
+[node name="EnabledFixed12" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(912, 864)
+
+[node name="EnabledFixed13" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(928, 504)
+
+[node name="DisabledNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1328, 416)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed7" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(832, 1080)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed8" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(816, 720)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed6" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1384, 800)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed5" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(632, 256)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed3" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(848, -8)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed4" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1056, -56)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed2" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(1440, 16)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledNotFixed9" parent="StalkNavRegion/Tiles" instance=ExtResource("4_tixf3")]
+position = Vector2(432, 248)
+status = 1
+is_status_fixed = false
+
+[node name="AttackNavRegion" type="NavigationRegion2D" parent="."]
+position = Vector2(2, 0)
+navigation_polygon = SubResource("NavigationPolygon_0sr1o")
+navigation_layers = 2
+
+[node name="Enemies" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("5_fytxb")]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(1225, 912)
+
+[node name="ItemTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="WaveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="NotificationContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 362.0
+offset_top = 8.0
+offset_right = 954.0
+offset_bottom = 144.0
+mouse_filter = 2
+
+[node name="DebugEnemiesLeft" type="Label" parent="NotificationContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_serxs")

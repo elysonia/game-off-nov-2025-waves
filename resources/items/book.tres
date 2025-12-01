@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://br0xgd00ypqc0"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_ysch7"]
+
+[resource]
+script = ExtResource("1_ysch7")
+name = "Book"
+texture = "uid://chw6ol2npens1"
+description = "+ 1 Knowledge"
+interval_to_next_item = 15.0
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"

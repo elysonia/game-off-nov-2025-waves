@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://be0nshxx7p6x3"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_4wp14"]
+
+[resource]
+script = ExtResource("1_4wp14")
+name = "Suit"
+texture = "uid://b8rmhv0cns74u"
+interval_to_next_item = 15.0
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"
