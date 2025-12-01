@@ -9,6 +9,7 @@ var _item_nav_arrows: Array[Array] = []
 @onready var _notification = preload("res://scenes/notification/notification.tscn")
 @onready var _arrow = preload("res://scenes/arrow.tscn")
 
+
 func _ready():
 	%Player.player_landed.connect(_on_player_landed)
 	%WaveTimer.timeout.connect(_on_wave_timer_timeout)
@@ -18,7 +19,6 @@ func _ready():
 	GlobalSignal.item_collected.connect(_on_item_collected)
 	GlobalSignal.enemies_left_updated.connect(_on_enemies_left_updated)
 	set_physics_process(false)
-	initialize()
 	call_deferred("_post_ready")
 
 
@@ -47,6 +47,12 @@ func update_nav_arrows() -> void:
 		arrow.look_at(item_sprite.global_position)
 
 
+func preview() -> void:
+	%Player.get_node("%Camera2D").position = %Player.position
+	%Player.get_node("%Camera2D").zoom = Vector2(0.5, 0.5)
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+
 func initialize() -> void:
 	_level_data = LevelManager.get_level_data(State.level)
 
@@ -72,7 +78,7 @@ func initialize() -> void:
 
 func handle_load_wave(wave: Wave) -> void:
 	State.enemies_left += wave.enemy_count
-
+	print("wave: ", wave, " _enemy: ", _enemy)
 	for i in range(wave.enemy_count):
 		var enemy_instance = _enemy.instantiate()
 		enemy_instance.position = _spawn_positions.pick_random()
@@ -168,6 +174,19 @@ func _on_wave_timer_timeout() -> void:
 		State.enemy_wave_cycle += 1
 
 	State.enemy_wave = next_wave
+
+
+func get_item_status() -> String:
+	var is_all_items_spawned = State.total_items == State.items_spawned
+
+	if is_all_items_spawned:
+		return "[color=green]All items spawned[/color]"
+	var is_max_concurrent_items = State.total_item_collected - State.items_spawned >= _level_data.max_concurrent_items
+
+	if is_max_concurrent_items:
+		return "[color=red]Max concurrent items[/color]"
+
+	return "Next item in: " + str(roundi(%ItemTimer.time_left))
 
 
 func _on_item_timer_timeout() -> void:

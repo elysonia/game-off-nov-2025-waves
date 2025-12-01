@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_LEVEL = 1
+const MAX_LEVEL = 2
 const LEVEL_DATA_PATH_FORMAT_STRING = "res://resources/levels/{level}.tres"
 const LEVEL_MAP_PATH_FORMAT_STRING = "res://scenes/level_maps/{level}.tscn"
 
