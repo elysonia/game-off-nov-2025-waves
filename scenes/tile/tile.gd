@@ -81,7 +81,7 @@ func _process(_delta: float) -> void:
 
 func handle_load_item(item: Item) -> void:
 	var item_sprite_instance = _item_sprite.instantiate()
-	item_sprite_instance.initialize(item)
+	item_sprite_instance.initialize(item, self)
 	add_child(item_sprite_instance)
 	item_sprite_instance.position = position + Vector2(0, -10)
 	tile_item = item_sprite_instance
