@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://kl04ujpa0ylt"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_2s411"]
+
+[resource]
+script = ExtResource("1_2s411")
+name = "Moustache"
+texture = "uid://bexhryy0g6w1g"
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"

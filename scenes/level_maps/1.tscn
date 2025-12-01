@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy4cfmg33icta"]
+[gd_scene load_steps=10 format=3 uid="uid://dy4cfmg33icta"]
 
 [ext_resource type="Script" uid="uid://choy6xrioyr2d" path="res://scenes/level_template/level_template.gd" id="1_2qk1g"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="2_jb2pr"]
@@ -6,15 +6,26 @@
 [ext_resource type="Texture2D" uid="uid://dgul0242ujqm1" path="res://assets/bg_texture_2.png" id="2_nw6jf"]
 [ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="3_nw6jf"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_lkva7"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.3372549, 0.3372549, 0.3372549, 0.7019608)
+shadow_offset = Vector2(1, 3.025)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
-vertices = PackedVector2Array(756.35156, 496, 880, 444.35156, 910.1797, 436.27344, 1846.0781, 1277.9297, 748.27344, 526.1797, 908.35156, 160, 1861.8984, -493.96094, 940.35156, 384, 932.27344, 353.8203, 900.27344, 190.17969, 684.35156, 232, 817.8203, 212.27344, 848, 220.35156, 880, 323.64844, 849.8203, 331.72656, 676.27344, 262.1797, 873.8203, 12.2734375, 848, 99.64844, 817.8203, 107.72656, 492.35156, 72, 484.27344, 41.820313, 851.72656, -9.8203125, 910.1797, 331.72656, 878.1797, 212.27344, 849.8203, 436.27344, 748.27344, 465.8203, 401.8203, 19.726563, 379.72656, 41.820313, 76.35156, 24, 68.27344, -6.1796875, 760, -227.64844, 873.8203, -92.27344, 851.72656, -70.17969, 236.35156, -88, 228.27344, -118.17969, 729.8203, -235.72656, 795.72656, 129.82031, 795.72656, 190.17969, 676.27344, 201.82031, 932.27344, 414.1797, 900.27344, 129.82031, 827.72656, 414.1797, 726.1797, 443.72656, 476.35156, 408, 819.64844, 384, 468.27344, 438.1797, 68.27344, 54.179688, 195.72656, 201.82031, 187.64844, 232, 36.351563, 200, 28.273438, 169.82031, 46.179688, 76.27344, 843.64844, -40, 228.27344, -57.820313, 964.35156, -40, 956.27344, -70.17969, 820.35156, -288, 812.27344, -318.1797, 934.1797, -92.27344, 904, -100.35156, 812.27344, -257.8203, 790.1797, -235.72656, 371.64844, 72, 787.64844, 160, 654.1797, 179.72656, 484.27344, 102.17969, 624, 171.64844, 827.72656, 353.8203, 654.1797, 284.27344, 28.273438, 230.17969, 195.72656, 262.1797, 468.27344, 377.8203, 624, 292.35156, 668.35156, -424, 660.27344, -454.1797, 956.27344, -9.8203125, 878.1797, 107.72656, 934.1797, 12.2734375, 404.35156, -296, 707.72656, -318.1797, 699.64844, -288, 396.27344, -265.8203, 608, -363.64844, 396.27344, -326.1797, 577.8203, -371.72656, 707.72656, -257.8203, 374.1797, -243.72656, 593.8203, 284.27344, 571.72656, 262.1797, 446.1797, 355.72656, 308.35156, 232, 571.72656, 201.82031, 563.64844, 232, 300.27344, 262.1797, 462.1797, 124.27344, 300.27344, 201.82031, 432, 132.35156, 416, 347.64844, 385.8203, 355.72656, 278.1797, 284.27344, 363.72656, 377.8203, 248, 292.35156, 206.17969, -140.27344, 344, -235.64844, 206.17969, -35.726563, 432, 11.6484375, 660.27344, -393.8203, 790.1797, -340.27344, 760, -348.35156, 379.72656, 102.17969, 278.1797, 179.72656, 248, 171.64844, 593.8203, 179.72656, 401.8203, 124.27344, 217.82031, 179.72656, 6.1796875, 147.72656, 16, 84.35156, -24, 139.64844, -14.1796875, 76.27344, -54.179688, 147.72656, -36.273438, 54.179688, 726.1797, 548.27344, -518, 1262.0625, 696, 556.35156, 665.8203, 548.27344, 643.72656, 526.1797, 635.64844, 496, 217.82031, 284.27344, 355.64844, 408, 6.1796875, 252.27344, 729.8203, -340.27344, 638.1797, -371.72656, 555.72656, -393.8203, 547.64844, -424, 374.1797, -348.27344, 555.72656, -454.1797, 344, -356.35156, 904, 20.351563, 462.1797, 19.726563, 638.1797, -476.27344, 313.8203, -243.72656, 291.72656, -265.8203, 176, -148.35156, 283.64844, -296, 145.82031, -140.27344, 446.1797, 460.27344, 643.72656, 465.8203, 416, 468.35156, 696, 435.64844, 46.179688, -28.273438, 176, -27.648438, -44.351563, 24, -76.27344, 169.82031, -518, -486.03125, -24, 260.35156, 363.72656, 438.1797, 665.8203, 443.72656, 385.8203, 460.27344, -54.179688, 252.27344, -76.27344, 230.17969, -84.35156, 200, -36.273438, -6.1796875, -14.1796875, -28.273438, 16, -36.351563, 291.72656, -326.1797, 123.72656, -118.17969, 115.64844, -88, 577.8203, -476.27344, 313.8203, -348.27344, 145.82031, -35.726563, 123.72656, -57.820313, 608, -484.35156)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 3, 7, 8, 9), PackedInt32Array(10, 11, 12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 20, 21), PackedInt32Array(9, 8, 22, 23), PackedInt32Array(24, 1, 0, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 31, 32, 33, 34, 35), PackedInt32Array(19, 18, 36), PackedInt32Array(37, 11, 10, 38), PackedInt32Array(23, 22, 13, 12), PackedInt32Array(39, 7, 3), PackedInt32Array(6, 5, 40), PackedInt32Array(41, 24, 25, 42), PackedInt32Array(43, 44, 41, 45), PackedInt32Array(46, 47, 48, 49, 50, 51), PackedInt32Array(33, 32, 52, 53), PackedInt32Array(6, 54, 55), PackedInt32Array(56, 57, 6, 55, 58), PackedInt32Array(56, 58, 59, 60), PackedInt32Array(60, 59, 31, 61), PackedInt32Array(28, 27, 62, 46), PackedInt32Array(63, 37, 38, 64), PackedInt32Array(65, 19, 36, 63, 64, 66), PackedInt32Array(15, 14, 67, 68), PackedInt32Array(2, 39, 3), PackedInt32Array(69, 49, 48, 70), PackedInt32Array(44, 43, 71, 72, 68, 67), PackedInt32Array(6, 73, 74), PackedInt32Array(75, 6, 40, 76, 77), PackedInt32Array(78, 79, 80, 81), PackedInt32Array(82, 79, 78, 83, 84), PackedInt32Array(81, 80, 85, 86), PackedInt32Array(87, 72, 71), PackedInt32Array(88, 87, 71, 89), PackedInt32Array(90, 91, 92, 93), PackedInt32Array(94, 91, 90, 95, 96), PackedInt32Array(93, 92, 88, 89, 97), PackedInt32Array(93, 97, 98, 99), PackedInt32Array(99, 98, 100, 101), PackedInt32Array(30, 61, 31), PackedInt32Array(86, 85, 35, 34, 102, 103), PackedInt32Array(104, 53, 52, 21, 105), PackedInt32Array(106, 73, 6, 107, 108), PackedInt32Array(46, 62, 109, 110, 111), PackedInt32Array(65, 66, 112), PackedInt32Array(65, 112, 91, 94), PackedInt32Array(113, 96, 95), PackedInt32Array(109, 113, 95, 110), PackedInt32Array(46, 111, 114), PackedInt32Array(46, 114, 47), PackedInt32Array(51, 50, 115, 116), PackedInt32Array(116, 115, 117, 118), PackedInt32Array(118, 117, 119, 120), PackedInt32Array(121, 4, 3), PackedInt32Array(121, 3, 122, 123), PackedInt32Array(124, 123, 122), PackedInt32Array(125, 124, 122), PackedInt32Array(126, 125, 122), PackedInt32Array(127, 101, 100, 128, 129), PackedInt32Array(129, 69, 70, 127), PackedInt32Array(6, 57, 107), PackedInt32Array(106, 108, 130), PackedInt32Array(106, 130, 79, 131), PackedInt32Array(82, 131, 79), PackedInt32Array(132, 84, 83), PackedInt32Array(133, 132, 83, 134), PackedInt32Array(135, 133, 134, 136), PackedInt32Array(75, 54, 6), PackedInt32Array(137, 77, 76), PackedInt32Array(16, 137, 76, 17), PackedInt32Array(21, 20, 138), PackedInt32Array(6, 74, 139), PackedInt32Array(140, 103, 102), PackedInt32Array(141, 140, 102, 142), PackedInt32Array(143, 141, 142, 144), PackedInt32Array(145, 146, 126, 122, 147), PackedInt32Array(145, 45, 41, 148), PackedInt32Array(105, 26, 29, 149, 150), PackedInt32Array(151, 120, 119, 152, 153), PackedInt32Array(154, 129, 128, 155, 122), PackedInt32Array(41, 42, 148), PackedInt32Array(145, 148, 156), PackedInt32Array(145, 156, 146), PackedInt32Array(157, 147, 122), PackedInt32Array(155, 157, 122), PackedInt32Array(158, 154, 122), PackedInt32Array(159, 158, 122), PackedInt32Array(159, 122, 153, 160), PackedInt32Array(152, 160, 153), PackedInt32Array(161, 151, 153), PackedInt32Array(162, 161, 153), PackedInt32Array(163, 162, 153), PackedInt32Array(153, 164, 143, 144, 165), PackedInt32Array(166, 149, 163, 153, 165), PackedInt32Array(153, 167, 135, 136, 168), PackedInt32Array(21, 138, 105), PackedInt32Array(150, 104, 105), PackedInt32Array(169, 150, 149), PackedInt32Array(170, 169, 149), PackedInt32Array(166, 170, 149), PackedInt32Array(168, 164, 153), PackedInt32Array(6, 139, 171), PackedInt32Array(153, 6, 171), PackedInt32Array(167, 153, 171)])
+vertices = PackedVector2Array(924.35156, 536, 992, 508.35156, 1022.1797, 500.27344, 1028.2734, 705.8203, 1006.1797, 683.72656, 916.27344, 566.1797, 1044.2734, 478.1797, 1052.3516, 448, 1086.1797, 324.27344, 1108.2734, 302.1797, 1846.0781, 1277.9297, 1036.3516, 736, 724.35156, 592, 833.8203, 588.27344, 864, 596.35156, 716.27344, 622.1797, 1056, 211.64844, 1025.8203, 219.72656, 676.35156, 120, 668.27344, 89.82031, 961.8203, 500.27344, 916.27344, 505.8203, 1861.8984, -493.96094, 1116.3516, 272, 1108.2734, 241.82031, 894.1797, 588.27344, 945.8203, 683.72656, 923.72656, 705.8203, 596.35156, 688, 694.1797, 644.27344, 811.72656, 566.1797, 716.27344, 561.8203, 1044.2734, 417.8203, 1056, 332.35156, 1022.1797, 395.72656, 1025.8203, 324.27344, 1003.72656, 241.82031, 668.27344, 150.17969, 939.72656, 478.1797, 894.1797, 483.72656, 976, 675.64844, 1028.2734, 766.1797, 652.27344, 326.1797, 660.35156, 296, 995.64844, 272, 1003.72656, 302.1797, 992, 387.64844, 961.8203, 395.72656, 630.1797, 348.27344, 811.72656, 505.8203, 803.64844, 536, 664, 531.64844, 468.35156, 504, 460.27344, 473.8203, 600, 356.35156, 915.64844, 736, 588.27344, 718.1797, 1108.2734, 966.1797, 1116.3516, 936, 931.64844, 448, 864, 475.64844, 694.1797, 539.72656, 4.3515625, 200, 1.140625, 188.03906, 30.179688, 180.27344, 355.72656, 473.8203, -60.351563, 128, -57.140625, 139.95313, -86.17969, 147.72656, 652.27344, 265.8203, 646.1797, 172.27344, 630.1797, 243.72656, 616, 180.35156, 600, 235.64844, 585.8203, 172.27344, 1086.1797, 219.72656, -518, -486.03125, 646.1797, 67.72656, 563.72656, 150.17969, 569.8203, 243.72656, 380.27344, 150.17969, 60.351563, 128, 52.273438, 97.82031, 267.64844, 120, 275.72656, 150.17969, 275.72656, 89.82031, 30.179688, 75.72656, 52.273438, 158.17969, 297.8203, 172.27344, 377.8203, 451.72656, 1006.1797, 788.27344, 1108.2734, 905.8203, 1086.1797, 883.72656, 388.35156, 120, 563.72656, 89.82031, 555.64844, 120, 380.27344, 89.82031, 585.8203, 67.72656, 939.72656, 417.8203, 833.8203, 483.72656, 569.8203, 348.27344, 438.1797, 451.72656, 547.72656, 326.1797, 408, 443.64844, 923.72656, 766.1797, 566.1797, 740.27344, 1086.1797, 988.27344, 328, 180.35156, 358.1797, 172.27344, 539.64844, 296, 547.72656, 265.8203, 1056, 875.64844, 1025.8203, 883.72656, 976, 796.35156, 1003.72656, 905.8203, 945.8203, 788.27344, 297.8203, 67.72656, 0, 67.64844, -3.7265625, 230.17969, -25.820313, 252.27344, 347.64844, 504, -56, 260.35156, 355.72656, 534.1797, 358.1797, 67.72656, 995.64844, 936, 536, 748.35156, 1003.72656, 966.1797, -518, 1262.0625, -52.273438, 97.82031, 1056, 996.35156, 1025.8203, 988.27344, 505.8203, 740.27344, 483.72656, 718.1797, 475.64844, 688, 483.72656, 657.8203, -86.17969, 252.27344, 377.8203, 556.27344, 664, 652.35156, 633.8203, 644.27344, 588.27344, 657.8203, 611.72656, 622.1797, 566.1797, 635.72656, 603.64844, 592, 536, 627.64844, 611.72656, 561.8203, 505.8203, 635.72656, 460.27344, 534.1797, 616, 59.648438, 328, 59.648438, -30.179688, 75.72656, -108.27344, 169.82031, -116.35156, 200, -108.27344, 230.17969, 633.8203, 539.72656, 438.1797, 556.27344, 408, 564.35156)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10, 11, 3), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 1, 0, 21), PackedInt32Array(2, 6, 3), PackedInt32Array(22, 10, 23, 24), PackedInt32Array(14, 25, 26, 27, 28, 29), PackedInt32Array(30, 13, 12, 31), PackedInt32Array(9, 23, 10), PackedInt32Array(8, 7, 32, 33), PackedInt32Array(33, 32, 34, 35), PackedInt32Array(18, 17, 36, 37), PackedInt32Array(38, 20, 21, 39), PackedInt32Array(5, 4, 40, 25), PackedInt32Array(41, 11, 10), PackedInt32Array(25, 40, 26), PackedInt32Array(42, 43, 44, 45, 46, 47), PackedInt32Array(48, 49, 50, 51, 52, 53, 54), PackedInt32Array(35, 34, 46, 45), PackedInt32Array(28, 27, 55, 56), PackedInt32Array(57, 58, 10), PackedInt32Array(42, 59, 38, 39, 60), PackedInt32Array(50, 30, 31, 61), PackedInt32Array(62, 63, 64, 65), PackedInt32Array(66, 67, 68), PackedInt32Array(37, 36, 44, 43, 69, 70), PackedInt32Array(70, 69, 71, 72), PackedInt32Array(72, 71, 73, 74), PackedInt32Array(22, 24, 75), PackedInt32Array(76, 22, 75, 16, 77), PackedInt32Array(78, 74, 73, 79, 80), PackedInt32Array(81, 82, 83, 84), PackedInt32Array(85, 83, 82, 86), PackedInt32Array(65, 87, 81, 84, 88, 89), PackedInt32Array(90, 41, 10, 91, 92), PackedInt32Array(93, 94, 95, 80), PackedInt32Array(94, 93, 96, 97), PackedInt32Array(80, 95, 78), PackedInt32Array(42, 47, 98), PackedInt32Array(42, 98, 59), PackedInt32Array(42, 60, 99), PackedInt32Array(42, 99, 49, 48), PackedInt32Array(100, 54, 53, 101), PackedInt32Array(102, 100, 101, 103), PackedInt32Array(56, 55, 104, 105), PackedInt32Array(106, 57, 10), PackedInt32Array(107, 108, 109, 102, 103, 89), PackedInt32Array(80, 79, 110, 108), PackedInt32Array(108, 110, 109), PackedInt32Array(88, 107, 89), PackedInt32Array(10, 58, 91), PackedInt32Array(90, 92, 111), PackedInt32Array(90, 111, 112, 113), PackedInt32Array(113, 112, 114, 115), PackedInt32Array(76, 116, 85, 86, 117), PackedInt32Array(64, 87, 65), PackedInt32Array(118, 62, 65), PackedInt32Array(119, 118, 65, 120), PackedInt32Array(121, 119, 120, 122), PackedInt32Array(97, 96, 123), PackedInt32Array(115, 114, 124, 105, 104), PackedInt32Array(125, 105, 124, 126, 127), PackedInt32Array(128, 66, 68, 76), PackedInt32Array(129, 106, 10), PackedInt32Array(129, 10, 127, 130), PackedInt32Array(126, 130, 127), PackedInt32Array(131, 125, 127), PackedInt32Array(132, 131, 127), PackedInt32Array(133, 132, 127), PackedInt32Array(134, 133, 127, 135, 121, 136), PackedInt32Array(29, 15, 14), PackedInt32Array(137, 29, 28), PackedInt32Array(138, 137, 28, 139), PackedInt32Array(140, 138, 139, 141), PackedInt32Array(142, 140, 141, 143), PackedInt32Array(52, 144, 142, 143, 145, 146), PackedInt32Array(16, 19, 77), PackedInt32Array(76, 77, 147), PackedInt32Array(76, 147, 97, 123, 148), PackedInt32Array(76, 148, 116), PackedInt32Array(76, 117, 149), PackedInt32Array(76, 149, 128), PackedInt32Array(76, 68, 150), PackedInt32Array(127, 76, 150, 151), PackedInt32Array(127, 151, 152), PackedInt32Array(127, 152, 135), PackedInt32Array(50, 61, 51), PackedInt32Array(52, 51, 153), PackedInt32Array(52, 153, 144), PackedInt32Array(154, 146, 145, 134), PackedInt32Array(155, 154, 134), PackedInt32Array(136, 155, 134), PackedInt32Array(121, 122, 136)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-528, -496, 1872, -504, 1856, 1288, -528, 1272)])
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0sr1o"]
 vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 1269.2969, -280.39063, -269.8828)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw6jf"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -27,6 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2qk1g")
+is_tutorial_mode = true
 metadata/_edit_horizontal_guides_ = [1320.0, -600.0]
 metadata/_edit_vertical_guides_ = [-600.0, 1880.0]
 
@@ -43,11 +55,16 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.74345946, 0.8540354, 0.79331815, 1)
 
-[node name="decor" type="Node" parent="ColorRect"]
+[node name="decor" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -65,7 +82,6 @@ expand_mode = 1
 
 [node name="Control2" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1288.0
 offset_right = 2568.0
@@ -84,7 +100,6 @@ expand_mode = 1
 
 [node name="Control3" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 680.0
 offset_top = 720.0
@@ -104,7 +119,6 @@ expand_mode = 1
 
 [node name="Control4" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -592.0
 offset_top = 720.0
@@ -124,7 +138,6 @@ expand_mode = 1
 
 [node name="Control5" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1952.0
 offset_top = 608.0
@@ -144,7 +157,6 @@ expand_mode = 1
 
 [node name="Control6" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 1336.0
 offset_top = 1328.0
@@ -164,7 +176,6 @@ expand_mode = 1
 
 [node name="Control7" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = 64.0
 offset_top = 1432.0
@@ -184,7 +195,6 @@ expand_mode = 1
 
 [node name="Control8" type="Control" parent="ColorRect/decor"]
 custom_minimum_size = Vector2(1280, 720)
-layout_mode = 3
 anchors_preset = 0
 offset_left = -1200.0
 offset_top = 1440.0
@@ -351,6 +361,16 @@ grow_vertical = 2
 texture = ExtResource("2_nw6jf")
 expand_mode = 1
 
+[node name="LevelNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 16.0
+offset_right = 227.0
+offset_bottom = 67.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_lkva7")
+
 [node name="StalkNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_kelw5")
@@ -358,63 +378,56 @@ navigation_polygon = SubResource("NavigationPolygon_kelw5")
 [node name="Tiles" type="Node" parent="StalkNavRegion"]
 unique_name_in_owner = true
 
-[node name="Tile" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(624, 232)
+[node name="EnabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(328, 120)
 
-[node name="Tile2" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(416, 408)
+[node name="EnabledFixed2" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(600, 296)
 
-[node name="Tile3" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(696, 496)
+[node name="EnabledFixed3" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(408, 504)
 
-[node name="Tile4" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(880, 384)
+[node name="EnabledFixed4" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(536, 688)
+
+[node name="EnabledFixed5" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(864, 536)
+
+[node name="EnabledFixed6" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(992, 448)
+
+[node name="EnabledFixed7" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(976, 736)
+
+[node name="EnabledFixed8" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(0, 128)
+
+[node name="EnabledFixed9" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(-56, 200)
+
+[node name="DisableNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(616, 120)
 status = 1
 is_status_fixed = false
 
-[node name="Tile5" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(432, 72)
+[node name="DisableNotFixed2" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(664, 592)
 status = 1
 is_status_fixed = false
 
-[node name="Tile6" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(248, 232)
-
-[node name="Tile7" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(-24, 200)
+[node name="DisableNotFixed3" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(1056, 936)
 status = 1
 is_status_fixed = false
 
-[node name="Tile8" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(16, 24)
-
-[node name="Tile9" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(176, -88)
-status = 1
-is_status_fixed = false
-
-[node name="Tile10" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(344, -296)
-
-[node name="Tile11" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(608, -424)
-
-[node name="Tile12" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(760, -288)
-status = 1
-is_status_fixed = false
-
-[node name="Tile13" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(904, -40)
-
-[node name="Tile14" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
-position = Vector2(848, 160)
+[node name="DisableNotFixed4" parent="StalkNavRegion/Tiles" instance=ExtResource("2_jb2pr")]
+position = Vector2(1056, 272)
 status = 1
 is_status_fixed = false
 
 [node name="Player" parent="StalkNavRegion/Tiles" instance=ExtResource("3_nw6jf")]
 unique_name_in_owner = true
-position = Vector2(624, 248)
+position = Vector2(328, 136)
 
 [node name="AttackNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(2, 0)
@@ -432,8 +445,74 @@ unique_name_in_owner = true
 
 [node name="NotificationContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
+top_level = true
 layout_mode = 0
 offset_left = 362.0
 offset_top = 8.0
 offset_right = 954.0
 offset_bottom = 144.0
+
+[node name="DebugEnemiesLeft" type="Label" parent="NotificationContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_nw6jf")
+
+[node name="Instructions" type="Control" parent="."]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="LMBReady" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 216.0
+offset_right = 389.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1. Left click to get ready to jump"
+
+[node name="JumpDistance" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 105.0
+offset_top = 256.0
+offset_right = 523.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "2. Move the mouse around to adjust jump distance"
+
+[node name="LMBJump" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 296.0
+offset_right = 531.0
+offset_bottom = 322.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "3. Left click to jump"
+
+[node name="CancelJump" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 336.0
+offset_right = 539.0
+offset_bottom = 362.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "4. Right click to exit \"ready to jump\" mode"
+
+[node name="GPS" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 376.0
+offset_right = 531.0
+offset_bottom = 402.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "5. Follow the arrows to the items, collect items to win"

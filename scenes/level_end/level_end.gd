@@ -21,7 +21,7 @@ func initialize(result: Enum.Result, condition: Enum.Condition = Enum.Condition.
 
     %Text.text = formatted_string
     var is_last_level = State.level >= LevelManager.MAX_LEVEL
-    if is_last_level:
+    if is_last_level or result == Enum.Result.LOSE:
         %NextLevel.visible = false
 
 

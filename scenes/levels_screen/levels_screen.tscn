@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc8q2u3x58abm"]
+
+[ext_resource type="FontFile" uid="uid://dqaa3o0r84tm0" path="res://theme/fonts/Chango/Chango-Regular.ttf" id="1_d5yls"]
+[ext_resource type="Script" uid="uid://c8g81jgohraqx" path="res://scenes/levels_screen/levels_screen.gd" id="1_hw5h8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hw5h8"]
+font = ExtResource("1_d5yls")
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5feql"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hw5h8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(1100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level selection"
+label_settings = SubResource("LabelSettings_hw5h8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Back" type="Button" parent="Panel/VBoxContainer/HBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Levels" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Control"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Preview" type="SubViewport" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer"]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(796, 523)
+render_target_update_mode = 4
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer/Preview"]
+offset_left = -16.0
+offset_top = 223.0
+offset_right = 780.0
+offset_bottom = 274.0
+text = "Click on a level to preview"
+label_settings = SubResource("LabelSettings_5feql")
+horizontal_alignment = 1
+
+[node name="PreviewOverlay" type="SubViewport" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer"]
+unique_name_in_owner = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(796, 523)
+render_target_update_mode = 4
+
+[node name="PreviewDetailContainer" type="ColorRect" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer/PreviewOverlay"]
+unique_name_in_owner = true
+offset_right = 344.0
+offset_bottom = 527.0
+color = Color(0.14901961, 0.14901961, 0.14901961, 0.76862746)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer/PreviewOverlay/PreviewDetailContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="PreviewDetails" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer/SubViewportContainer/PreviewOverlay/PreviewDetailContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Play" type="Button" parent="Panel/VBoxContainer/HBoxContainer/Control/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play"

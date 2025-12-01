@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="Level" load_steps=11 format=3 uid="uid://dav1qntp1nqrk"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_rdnig"]
+[ext_resource type="Resource" uid="uid://c81kwtk4ubu6h" path="res://resources/items/bowtie.tres" id="2_jf6ay"]
+[ext_resource type="Script" uid="uid://cp52fufqws5ws" path="res://scripts/level.gd" id="2_n2pv5"]
+[ext_resource type="Resource" uid="uid://banbxvri4ap06" path="res://resources/items/monocle.tres" id="3_oa7eu"]
+[ext_resource type="Script" uid="uid://bmolqh8j1ubvw" path="res://scripts/wave.gd" id="3_sotoy"]
+[ext_resource type="Resource" uid="uid://kl04ujpa0ylt" path="res://resources/items/moustache.tres" id="4_k45gr"]
+[ext_resource type="Resource" uid="uid://be0nshxx7p6x3" path="res://resources/items/suit.tres" id="5_84pw1"]
+[ext_resource type="Resource" uid="uid://c723hn5b4drke" path="res://resources/items/tophat.tres" id="6_p8u3n"]
+
+[sub_resource type="Resource" id="Resource_a3tfx"]
+script = ExtResource("3_sotoy")
+enemy_count = 20
+duration = 20.0
+health = 30.0
+health_increment_per_cycle = 0.2
+speed_map = Dictionary[int, float]({
+0: 40.0,
+1: 50.0
+})
+speed_increment_map = Dictionary[int, float]({
+0: 0.5,
+1: 0.5
+})
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[sub_resource type="Resource" id="Resource_8b1x0"]
+script = ExtResource("3_sotoy")
+enemy_count = 30
+duration = 30.0
+health = 40.0
+health_increment_per_cycle = 0.2
+attacking_range = 2.0
+speed_map = Dictionary[int, float]({
+0: 45.0,
+1: 50.0
+})
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[resource]
+script = ExtResource("2_n2pv5")
+level = 4
+waves = Array[ExtResource("3_sotoy")]([SubResource("Resource_a3tfx"), SubResource("Resource_8b1x0")])
+max_concurrent_enemies = 70
+items = Array[ExtResource("1_rdnig")]([ExtResource("2_jf6ay"), ExtResource("3_oa7eu"), ExtResource("4_k45gr"), ExtResource("5_84pw1"), ExtResource("6_p8u3n")])
+metadata/_custom_type_script = "uid://cp52fufqws5ws"

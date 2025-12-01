@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cljycknixklsq"]
+
+[ext_resource type="PackedScene" uid="uid://vh1ucj2rfbby" path="res://addons/maaacks_options_menus/base/scenes/menus/options_menu/mini_options_menu.tscn" id="1_8lxe7"]
+[ext_resource type="Script" uid="uid://dvdwmr7thcab2" path="res://scenes/scenes/menus/options_menu/mini_options_menu.gd" id="2_ptjhm"]
+
+[node name="MiniOptionsMenu" instance=ExtResource("1_8lxe7")]
+script = ExtResource("2_ptjhm")
+
+[node name="Back" type="Button" parent="." index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "Back"

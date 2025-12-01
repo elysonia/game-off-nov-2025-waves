@@ -1,0 +1,58 @@
+[gd_resource type="Resource" script_class="Level" load_steps=11 format=3 uid="uid://c8qfggb60xo7t"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_lqhwv"]
+[ext_resource type="Resource" uid="uid://banbxvri4ap06" path="res://resources/items/monocle.tres" id="2_2mk5c"]
+[ext_resource type="Script" uid="uid://cp52fufqws5ws" path="res://scripts/level.gd" id="2_lrssm"]
+[ext_resource type="Script" uid="uid://bmolqh8j1ubvw" path="res://scripts/wave.gd" id="3_gmu4r"]
+[ext_resource type="Resource" uid="uid://be0nshxx7p6x3" path="res://resources/items/suit.tres" id="3_jqklx"]
+[ext_resource type="Resource" uid="uid://c81kwtk4ubu6h" path="res://resources/items/bowtie.tres" id="4_f13py"]
+[ext_resource type="Resource" uid="uid://c723hn5b4drke" path="res://resources/items/tophat.tres" id="5_eod8e"]
+
+[sub_resource type="Resource" id="Resource_cmfo0"]
+script = ExtResource("3_gmu4r")
+enemy_count = 15
+health = 25.0
+health_increment_per_cycle = 5.0
+max_health = 100.0
+speed_map = Dictionary[int, float]({
+0: 40.0,
+1: 45.0
+})
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[sub_resource type="Resource" id="Resource_3pnse"]
+script = ExtResource("3_gmu4r")
+enemy_count = 20
+duration = 15.0
+health = 35.0
+health_increment_per_cycle = 5.0
+max_health = 100.0
+attacking_range = 2.0
+speed_map = Dictionary[int, float]({
+0: 42.0,
+1: 47.0
+})
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[sub_resource type="Resource" id="Resource_ew5cm"]
+script = ExtResource("3_gmu4r")
+enemy_count = 20
+duration = 15.0
+health = 40.0
+health_increment_per_cycle = 5.0
+max_health = 100.0
+attacking_range = 2.0
+attacking_range_increment = 0.2
+speed_map = Dictionary[int, float]({
+0: 45.0,
+1: 48.0
+})
+metadata/_custom_type_script = "uid://bmolqh8j1ubvw"
+
+[resource]
+script = ExtResource("2_lrssm")
+level = 3
+waves = Array[ExtResource("3_gmu4r")]([SubResource("Resource_cmfo0"), SubResource("Resource_3pnse"), SubResource("Resource_ew5cm")])
+max_concurrent_enemies = 60
+items = Array[ExtResource("1_lqhwv")]([ExtResource("2_2mk5c"), ExtResource("3_jqklx"), ExtResource("4_f13py"), ExtResource("5_eod8e"), ExtResource("2_2mk5c"), ExtResource("5_eod8e")])
+metadata/_custom_type_script = "uid://cp52fufqws5ws"

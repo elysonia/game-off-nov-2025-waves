@@ -1,13 +1,17 @@
 class_name LevelTemplate
 extends Control
 
+
 var _level_data: Level = null
 var _spawn_positions: Array[Vector2]
 var _item_nav_arrows: Array[Array] = []
+@export var is_tutorial_mode: bool = false
 
 @onready var _enemy = preload("res://scenes/enemy/enemy.tscn")
 @onready var _notification = preload("res://scenes/notification/notification.tscn")
 @onready var _arrow = preload("res://scenes/arrow.tscn")
+@onready var _preview_detail = preload("res://scenes/level_template/preview_detail/preview_detail.tscn")
+
 
 func _ready():
 	%Player.player_landed.connect(_on_player_landed)
@@ -18,7 +22,6 @@ func _ready():
 	GlobalSignal.item_collected.connect(_on_item_collected)
 	GlobalSignal.enemies_left_updated.connect(_on_enemies_left_updated)
 	set_physics_process(false)
-	initialize()
 	call_deferred("_post_ready")
 
 
@@ -47,6 +50,33 @@ func update_nav_arrows() -> void:
 		arrow.look_at(item_sprite.global_position)
 
 
+func preview() -> void:
+	%Player.get_node("%Camera2D").position = %Player.position
+	%Player.get_node("%Camera2D").zoom = Vector2(0.5, 0.5)
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func get_preview_details(level: int) -> Array[PreviewDetail]:
+	var level_data = LevelManager.get_level_data(level)
+
+	var items_count_map = {}
+	var items_texture = {}
+	for item in level_data.items:
+		if items_count_map.has(item.name):
+			items_count_map[item.name] += 1
+		else:
+			items_count_map[item.name] = 1
+			items_texture[item.name] = item.texture
+
+	var preview_details: Array[PreviewDetail] = []
+	for key in items_count_map.keys():
+		var preview_detail = _preview_detail.instantiate()
+		# get_node("PreviewDetails").add_child(preview_detail)
+		preview_detail.initialize(key,items_texture[key], items_count_map[key])
+		preview_details.append(preview_detail)
+	return preview_details
+
+
 func initialize() -> void:
 	_level_data = LevelManager.get_level_data(State.level)
 
@@ -56,7 +86,7 @@ func initialize() -> void:
 
 	var tiles = %Tiles.get_children().filter(
 		func(child):
-			return is_instance_of(child, Tile)
+			return is_instance_of(child, Tile) and child.check_can_hold_item()
 	)
 	for tile in tiles:
 		tile.add_to_group("tiles")
@@ -72,7 +102,7 @@ func initialize() -> void:
 
 func handle_load_wave(wave: Wave) -> void:
 	State.enemies_left += wave.enemy_count
-
+	print("wave: ", wave, " _enemy: ", _enemy)
 	for i in range(wave.enemy_count):
 		var enemy_instance = _enemy.instantiate()
 		enemy_instance.position = _spawn_positions.pick_random()
@@ -83,6 +113,11 @@ func handle_load_wave(wave: Wave) -> void:
 
 	%WaveTimer.start(wave.duration)
 	GlobalSignal.enemies_left_updated.emit()
+
+	if OS.is_debug_build():
+		%DebugEnemiesLeft.text = str(State.enemies_left)
+	else:
+		%DebugEnemiesLeft.visible = false
 
 
 func handle_load_item() -> void:
@@ -165,6 +200,19 @@ func _on_wave_timer_timeout() -> void:
 	State.enemy_wave = next_wave
 
 
+func get_item_status() -> String:
+	var is_all_items_spawned = State.total_items == State.items_spawned
+
+	if is_all_items_spawned:
+		return "[color=green]All items spawned[/color]"
+	var is_max_concurrent_items = State.total_item_collected - State.items_spawned >= _level_data.max_concurrent_items
+
+	if is_max_concurrent_items:
+		return "[color=red]Max concurrent items[/color]"
+
+	return "Next item in: " + str(roundi(%ItemTimer.time_left))
+
+
 func _on_item_timer_timeout() -> void:
 	var is_all_items_spawned = State.total_items == State.items_spawned
 	var is_max_concurrent_items = State.total_item_collected - State.items_spawned >= _level_data.max_concurrent_items
@@ -180,6 +228,9 @@ func _on_item_timer_timeout() -> void:
 
 
 func _on_enemies_left_updated() -> void:
+	if OS.is_debug_build():
+		%DebugEnemiesLeft.text = str(State.enemies_left)
+
 	if State.enemies_left == 0:
 		_on_wave_timer_timeout()
 

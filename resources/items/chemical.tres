@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://wh23mme2ow25"]
+
+[ext_resource type="Script" uid="uid://b4b3hnwdoxwls" path="res://scripts/item.gd" id="1_5fwud"]
+
+[resource]
+script = ExtResource("1_5fwud")
+name = "Chemical"
+texture = "uid://gr0xo1vncnlp"
+interval_to_next_item = 20.0
+metadata/_custom_type_script = "uid://b4b3hnwdoxwls"

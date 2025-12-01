@@ -16,7 +16,9 @@ vertices = PackedVector2Array(1541, -246.11719, 1541, 1150.5625, -509.29688, 126
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-521, -504, -521, 1280, 1863, 1296, 1863, -496)])
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_0cxft"]
+[sub_resource type="LabelSettings" id="LabelSettings_serxs"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
 
 [node name="LevelTemplate" type="Control"]
 layout_mode = 3
@@ -32,168 +34,6 @@ script = ExtResource("1_s1o48")
 metadata/_edit_horizontal_guides_ = [1320.0, -600.0]
 metadata/_edit_vertical_guides_ = [-600.0, 1880.0]
 
-[node name="ground" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -599.0
-offset_top = -600.0
-offset_right = 601.0
-offset_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.57752967, 0.32484835, 0.0798543, 1)
-
-[node name="Control" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="grass" type="TextureRect" parent="ground/Control"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control2" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = 1288.0
-offset_right = 2568.0
-offset_bottom = 720.0
-
-[node name="grass2" type="TextureRect" parent="ground/Control2"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control3" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = 680.0
-offset_top = 720.0
-offset_right = 1960.0
-offset_bottom = 1440.0
-
-[node name="grass3" type="TextureRect" parent="ground/Control3"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control4" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = -592.0
-offset_top = 720.0
-offset_right = 688.0
-offset_bottom = 1440.0
-
-[node name="grass4" type="TextureRect" parent="ground/Control4"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control5" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = 1952.0
-offset_top = 608.0
-offset_right = 3232.0
-offset_bottom = 1328.0
-
-[node name="grass5" type="TextureRect" parent="ground/Control5"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control6" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = 1336.0
-offset_top = 1328.0
-offset_right = 2616.0
-offset_bottom = 2048.0
-
-[node name="grass6" type="TextureRect" parent="ground/Control6"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control7" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = 64.0
-offset_top = 1432.0
-offset_right = 1344.0
-offset_bottom = 2152.0
-
-[node name="grass7" type="TextureRect" parent="ground/Control7"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
-[node name="Control8" type="Control" parent="ground"]
-custom_minimum_size = Vector2(1280, 720)
-anchors_preset = 0
-offset_left = -1200.0
-offset_top = 1440.0
-offset_right = 80.0
-offset_bottom = 2160.0
-
-[node name="grass7" type="TextureRect" parent="ground/Control8"]
-modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62yph")
-expand_mode = 1
-
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -205,7 +45,164 @@ offset_right = 601.0
 offset_bottom = 600.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.4509804, 0.8235294, 1, 0.69803923)
+color = Color(0.74345946, 0.8540354, 0.79331815, 1)
+
+[node name="decor" type="Control" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="grass" type="TextureRect" parent="ColorRect/decor/Control"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control2" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1288.0
+offset_right = 2568.0
+offset_bottom = 720.0
+
+[node name="grass2" type="TextureRect" parent="ColorRect/decor/Control2"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control3" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 720.0
+offset_right = 1960.0
+offset_bottom = 1440.0
+
+[node name="grass3" type="TextureRect" parent="ColorRect/decor/Control3"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control4" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -592.0
+offset_top = 720.0
+offset_right = 688.0
+offset_bottom = 1440.0
+
+[node name="grass4" type="TextureRect" parent="ColorRect/decor/Control4"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control5" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1952.0
+offset_top = 608.0
+offset_right = 3232.0
+offset_bottom = 1328.0
+
+[node name="grass5" type="TextureRect" parent="ColorRect/decor/Control5"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control6" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 1336.0
+offset_top = 1328.0
+offset_right = 2616.0
+offset_bottom = 2048.0
+
+[node name="grass6" type="TextureRect" parent="ColorRect/decor/Control6"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control7" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 1432.0
+offset_right = 1344.0
+offset_bottom = 2152.0
+
+[node name="grass7" type="TextureRect" parent="ColorRect/decor/Control7"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
+
+[node name="Control8" type="Control" parent="ColorRect/decor"]
+custom_minimum_size = Vector2(1280, 720)
+anchors_preset = 0
+offset_left = -1200.0
+offset_top = 1440.0
+offset_right = 80.0
+offset_bottom = 2160.0
+
+[node name="grass7" type="TextureRect" parent="ColorRect/decor/Control8"]
+modulate = Color(0, 0.25490198, 0.03529412, 0.7882353)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62yph")
+expand_mode = 1
 
 [node name="Control" type="Control" parent="ColorRect"]
 custom_minimum_size = Vector2(1280, 720)
@@ -363,8 +360,21 @@ navigation_polygon = SubResource("NavigationPolygon_kelw5")
 [node name="Tiles" type="Node" parent="StalkNavRegion"]
 unique_name_in_owner = true
 
-[node name="Tile" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+[node name="EnabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
 position = Vector2(624, 232)
+
+[node name="EnabledNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(784, 208)
+is_status_fixed = false
+
+[node name="DisabledNotFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(760, 376)
+status = 1
+is_status_fixed = false
+
+[node name="DisabledFixed" parent="StalkNavRegion/Tiles" instance=ExtResource("2_0cxft")]
+position = Vector2(792, 56)
+status = 1
 
 [node name="AttackNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(2, 0)
@@ -392,10 +402,10 @@ offset_left = 362.0
 offset_top = 8.0
 offset_right = 954.0
 offset_bottom = 144.0
+mouse_filter = 2
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-stream = SubResource("VideoStreamTheora_0cxft")
+[node name="DebugEnemiesLeft" type="Label" parent="NotificationContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_serxs")

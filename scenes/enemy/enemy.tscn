@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://vskn803ncoqh"]
+[gd_scene load_steps=30 format=3 uid="uid://vskn803ncoqh"]
 
 [ext_resource type="Script" uid="uid://cwvp37skmajwc" path="res://scenes/enemy/enemy.gd" id="1_4a83h"]
 [ext_resource type="Texture2D" uid="uid://cxn638n0bjl8l" path="res://assets/crocs_rd_atk_2.png" id="2_cwlon"]
@@ -942,6 +942,10 @@ _data = {
 &"stalking": SubResource("Animation_13gj6")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_4efjx"]
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
 [node name="Enemy" type="Area2D"]
 script = ExtResource("1_4a83h")
 metadata/_edit_horizontal_guides_ = [-32.0, 32.0]
@@ -1011,3 +1015,11 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_hvxgb")
 }
+
+[node name="DebugText" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -29.0
+offset_top = -18.0
+offset_right = 11.0
+offset_bottom = 2.0
+label_settings = SubResource("LabelSettings_4efjx")
