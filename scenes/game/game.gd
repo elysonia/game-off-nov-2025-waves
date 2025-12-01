@@ -2,6 +2,9 @@ class_name Game
 extends Control
 
 var _level_map_instance: LevelTemplate
+@onready var _enemy_and_tiles = preload("res://scenes/level_template/enemy_and_tiles_mechanic.tscn")
+
+
 func _ready():
 	GlobalSignal.item_collected.connect(_on_item_collected)
 
@@ -21,9 +24,15 @@ func initialize() -> void:
 	var level_map_instance = level_map.instantiate()
 	%GameArea.add_child(level_map_instance)
 	%Overlay.transparent_bg = true
-	level_map_instance.initialize()
 	_level_map_instance = level_map_instance
 	%Items.text = "Items Collected: 0/" + str(State.total_items)
+
+	if level_map_instance.is_tutorial_mode:
+		var last_tutorial = _enemy_and_tiles.instantiate()
+		add_child(last_tutorial)
+		await last_tutorial.node_freed
+	level_map_instance.initialize()
+
 
 
 func handle_update_item_timer() -> void:

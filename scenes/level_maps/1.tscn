@@ -31,6 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_2qk1g")
+is_tutorial_mode = true
 metadata/_edit_horizontal_guides_ = [1320.0, -600.0]
 metadata/_edit_vertical_guides_ = [-600.0, 1880.0]
 
@@ -439,3 +440,62 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "test"
 label_settings = SubResource("LabelSettings_nw6jf")
+
+[node name="Instructions" type="Control" parent="."]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="LMBReady" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 216.0
+offset_right = 389.0
+offset_bottom = 242.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1. Left click to get ready to jump"
+
+[node name="JumpDistance" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 105.0
+offset_top = 256.0
+offset_right = 523.0
+offset_bottom = 282.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "2. Move the mouse around to adjust jump distance"
+
+[node name="LMBJump" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 296.0
+offset_right = 531.0
+offset_bottom = 322.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "3. Left click to jump"
+
+[node name="CancelJump" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 121.0
+offset_top = 336.0
+offset_right = 539.0
+offset_bottom = 362.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "4. Right click to exit \"ready to jump\" mode"
+
+[node name="GPS" type="Label" parent="Instructions"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 376.0
+offset_right = 531.0
+offset_bottom = 402.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "5. Follow the arrows to the items, collect items to win"

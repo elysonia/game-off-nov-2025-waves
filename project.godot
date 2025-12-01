@@ -27,7 +27,9 @@ config/name="gameoff-2025-waves"
 run/main_scene="uid://bptbukkss7f70"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/image="uid://cda0fk358tr4d"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=4
 
 [autoload]
 

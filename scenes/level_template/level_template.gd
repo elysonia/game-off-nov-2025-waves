@@ -1,9 +1,11 @@
 class_name LevelTemplate
 extends Control
 
+
 var _level_data: Level = null
 var _spawn_positions: Array[Vector2]
 var _item_nav_arrows: Array[Array] = []
+@export var is_tutorial_mode: bool = false
 
 @onready var _enemy = preload("res://scenes/enemy/enemy.tscn")
 @onready var _notification = preload("res://scenes/notification/notification.tscn")
@@ -73,6 +75,7 @@ func get_preview_details(level: int) -> Array[PreviewDetail]:
 		preview_detail.initialize(key,items_texture[key], items_count_map[key])
 		preview_details.append(preview_detail)
 	return preview_details
+
 
 func initialize() -> void:
 	_level_data = LevelManager.get_level_data(State.level)
