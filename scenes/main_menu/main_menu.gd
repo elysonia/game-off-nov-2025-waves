@@ -72,7 +72,7 @@ func _on_play_pressed() -> void:
 
 
 func _on_levels_pressed() -> void:
-    pass
+    Utils.goto_levels()
 
 
 func _on_options_pressed() -> void:
