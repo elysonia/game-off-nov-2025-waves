@@ -7,7 +7,7 @@ Finished game: [**Lilypad Leap**](https://kryione.itch.io/lilypad-leap)
 
 Made with [Godot v4.5.1 (stable)](https://godotengine.org/download/archive/4.5.1-stable/)
 
-Joined the game jam midway, code is a below my preferred standard :) thanks for looking though
+Joined the game jam midway, code is below my preferred standard :) thanks for looking though
 
 ## Godot Plugins
 * [**gd-plug -Plugin Manager** by imjp94](https://github.com/imjp94/gd-plug?tab=readme-ov-file)
