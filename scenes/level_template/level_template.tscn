@@ -1,10 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt25mcup0dt74"]
+[gd_scene load_steps=10 format=3 uid="uid://dt25mcup0dt74"]
 
 [ext_resource type="Script" uid="uid://choy6xrioyr2d" path="res://scenes/level_template/level_template.gd" id="1_s1o48"]
 [ext_resource type="PackedScene" uid="uid://bvex0uxatt47j" path="res://scenes/tile/tile.tscn" id="2_0cxft"]
 [ext_resource type="Texture2D" uid="uid://dgul0242ujqm1" path="res://assets/bg_texture_2.png" id="2_serxs"]
 [ext_resource type="Texture2D" uid="uid://dhussp1usp0h5" path="res://assets/grass.png" id="3_62yph"]
 [ext_resource type="PackedScene" uid="uid://2q0divxk8s5" path="res://scenes/player/player.tscn" id="3_serxs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_62yph"]
+font_size = 40
+font_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.3372549, 0.3372549, 0.3372549, 0.7019608)
+shadow_offset = Vector2(1, 3.025)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kelw5"]
 vertices = PackedVector2Array(1861.8984, -493.96094, 1846.0781, 1277.9297, 684.35156, 232, 676.27344, 201.82031, 676.27344, 262.1797, -518, 1262.0625, -518, -486.03125, 593.8203, 284.27344, 654.1797, 284.27344, 654.1797, 179.72656, 624, 171.64844, 593.8203, 179.72656, 571.72656, 201.82031, 563.64844, 232, 624, 292.35156, 571.72656, 262.1797)
@@ -352,6 +359,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_serxs")
 expand_mode = 1
+
+[node name="LevelNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 113.0
+offset_top = 16.0
+offset_right = 227.0
+offset_bottom = 67.0
+text = "Level "
+label_settings = SubResource("LabelSettings_62yph")
 
 [node name="StalkNavRegion" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 0)
